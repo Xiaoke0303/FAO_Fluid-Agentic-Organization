@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evidence Record",
+  "description": "支持某一声明的证据记录",
+  "type": "object",
+  "required": ["evidence_type", "source", "captured_at", "supports_claim"],
+  "properties": {
+    "evidence_type": {
+      "type": "string",
+      "enum": ["tool_output", "web_page", "file_content", "api_response", "screenshot", "other"],
+      "description": "证据类型"
+    },
+    "source": {
+      "type": "string",
+      "description": "证据来源（工具名、URL、文件名等）"
+    },
+    "locator": {
+      "type": "string",
+      "description": "定位信息（行号、选择器、锚点等）"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "获取时间（ISO 8601）"
+    },
+    "content_hash": {
+      "type": "string",
+      "description": "内容哈希（用于验证完整性）"
+    },
+    "supports_claim": {
+      "type": "string",
+      "description": "支持的声明内容"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["verified", "inferred", "guessed", "unverified"],
+      "description": "验证状态"
+    },
+    "note": {
+      "type": "string",
+      "description": "补充说明"
+    }
+  }
+}

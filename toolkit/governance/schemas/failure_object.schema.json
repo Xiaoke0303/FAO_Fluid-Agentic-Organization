@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Failure Object",
+  "description": "失败报告的结构化对象",
+  "type": "object",
+  "required": ["failure_type", "attempted_steps", "blocked_on", "missing_capability"],
+  "properties": {
+    "failure_type": {
+      "type": "string",
+      "enum": ["tool_unavailable", "permission_denied", "not_found", "timeout", "api_error", "unknown", "other"],
+      "description": "失败类型"
+    },
+    "attempted_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "已尝试的步骤"
+    },
+    "blocked_on": {
+      "type": "string",
+      "description": "阻塞点"
+    },
+    "missing_capability": {
+      "type": "string",
+      "description": "缺失的能力或权限"
+    },
+    "next_requirement": {
+      "type": "string",
+      "description": "继续完成所需条件"
+    },
+    "distinguish_note": {
+      "type": "string",
+      "description": "区分说明（内容不存在 vs 无法确认）"
+    },
+    "error_details": {
+      "type": "string",
+      "description": "错误详情"
+    },
+    "note": {
+      "type": "string",
+      "description": "补充说明"
+    }
+  }
+}
