@@ -6,11 +6,11 @@
 
 ## 入口
 
-- [toolkit/minimal-core/](./toolkit/minimal-core/) — 长期运行节点的最小内核：方向、记忆、节律
-- [toolkit/governance/](./toolkit/governance/) — 真实性治理：边界暴露、外部调用检查、失败报告、最小自主排查
-- [WHITEPAPER.md](./WHITEPAPER.md) — 五层模型与必要条件
+- `toolkit/minimal-core/` 长期运行节点的最小内核：方向、记忆、节律
+- `toolkit/governance/` 真实性治理：边界暴露、外部调用检查、失败报告、最小自主排查
+- `WHITEPAPER.md` 五层模型与必要条件
 
-minimal-core 解决不漂移的问题，governance 解决不伪装的问题。
+minimal-core 解决长期运行中的不漂移，governance 解决对外交互中的不伪装。
 
 ---
 
@@ -27,7 +27,7 @@ minimal-core 解决不漂移的问题，governance 解决不伪装的问题。
 ## 最小任务单元示意
 
 | 要素 | 内容 |
-|------|------|
+|---|---|
 | 任务 | 生成 Q1 财报分析 |
 | AI 代理 | 整理数据，生成分析草稿 |
 | 人类锚点 | 审核、终审、承担后果 |
@@ -40,7 +40,7 @@ minimal-core 解决不漂移的问题，governance 解决不伪装的问题。
 ## 当前状态
 
 | 项目 | 状态 |
-|------|------|
+|---|---|
 | 阶段 | 概念验证期 |
 | 版本 | v0.3 |
 | 当前重点 | minimal-core 补强、governance 治理层、首页入口修复 |
