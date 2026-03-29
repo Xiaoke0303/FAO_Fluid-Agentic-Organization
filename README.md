@@ -51,4 +51,6 @@
 | 当前重点 | minimal-core、governance、templates 三层补齐 |
 | 参与方式 | 提修正 / 补案例 |
 
+根目录中的 `SOUL.md` / `AGENTS.md` / `USER.md` / `IDENTITY.md` / `HEARTBEAT.md` / `MEMORY.md` 属于运行层文件，主要用于本地/云端节点运行，不构成白皮书主叙事。
+
 本项目也会通过公开案例观察与相关开放讨论的选择性参与，持续进行校准。
