@@ -44,7 +44,7 @@
 
 这些动作的共同点是：它们都在边界约束下进行，都在建立或确认责任关系。
 
-相关假设可参见：[Demand Guarantee Claims Reflow](../cases/hypotheses/demand-guarantee-claims-reflow.md)
+相关假设可参见：[见索即付保函索赔流程重构](../cases/hypotheses/demand-guarantee-claims-reflow.md)
 
 ## 4.5 引向治理
 

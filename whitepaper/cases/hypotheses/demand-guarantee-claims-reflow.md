@@ -1,67 +1,69 @@
-> This document records a hypothesis derived from observation or case material.
-> It is not yet a validated conclusion.
+> 本文件记录的是基于观察与方案提炼出的工作假设，尚未经过真实组织落地验证。
+> 它不是已验证结论，也不是成功案例。
 
 ---
 
-# FAO Hypothesis: Demand Guarantee Claims Reflow
+# FAO 假设：见索即付保函索赔流程重构
 
-## Background
+*Demand Guarantee Claims Reflow*
 
-Demand guarantee claims processing presents a typical scenario where structured tasks coexist with professional judgment. When a beneficiary submits a claim, the bank must examine document conformity against guarantee terms within a limited timeframe, while navigating legal constraints and compliance obligations.
+## 背景
 
-## Current Misalignment
+见索即付保函索赔处理是一个典型场景：结构化任务与专业判断并存。当受益人提交索赔时，银行必须在有限时间内审查单据与保函条款的相符性，同时应对法律约束与合规义务。
 
-In existing workflows:
-- Cognitive load concentrates on frontline operators who perform both structured checks and preliminary judgment calls
-- The boundary between "formal examination" and "substantive judgment" remains ambiguous
-- AML/sanctions screening often runs as a disconnected batch process, creating timing gaps
-- When errors occur, accountability chains become difficult to trace
+## 当前错位
 
-## Reflow Hypothesis
+在现有工作流中：
+- 认知负荷集中于一线操作人员，他们同时承担结构化检查与初步判断
+- "形式审查"与"实质判断"之间的边界模糊
+- AML / 制裁筛查通常作为独立的后置批量流程运行，产生时间差
+- 当错误发生时，责任追溯链条难以厘清
 
-The claims process can be restructured into three routing categories:
+## 重构假设
 
-| Category | Tasks | Routing |
-|----------|-------|---------|
-| **Assignable** | Document parsing, field extraction, formal requirement checking, historical record retrieval, anomaly flagging | Intelligent processing node performs structured extraction; human operator confirms |
-| **Must Escalate (Expert/Compliance)** | AML/sanctions hits, fraud signals, legal disputes, clause interpretation, major discrepancies beyond simple correction, counter-guarantee coordination | Escalate to expert/compliance nodes for substantive judgment |
-| **Must Escalate (Authorization)** | Amount exceeding authority limits, matters beyond authorization matrix | Route through existing authorization path |
-| **Must Close** | Final payment/refusal decision, external commitment, compliance clearance, case archiving | Authorized node only |
+索赔流程可重构为三类路由（Routing）：
 
-## Three Boundaries
+| 类别 | 任务 | 路由方式 |
+|------|------|----------|
+| **可分配（Assignable）** | 单据解析、字段提取、形式要件核对、历史记录检索、异常标记 | 智能处理节点执行结构化提取；人工操作节点确认 |
+| **必须升级（专家/合规）** | AML / 制裁命中、欺诈信号、法律争议、条款解释、无法通过简单补正解决的重大不符点、反担保衔接 | 升级至专家/合规节点进行实质判断 |
+| **必须升级（授权）** | 金额超限、超出授权矩阵的事项 | 按现有授权路径路由 |
+| **必须收口（Close）** | 最终付款/拒付决定、对外承诺、合规确认、案件归档 | 仅限授权节点 |
 
-**Responsibility Boundary**: Intelligent processing may extract and flag, but final liability for payment/refusal rests with designated authorizers.
+## 三类边界
 
-**Judgment Boundary**: Fraud determination, legal interpretation, and clause analysis remain with human experts; intelligent processing provides information support only.
+**责任边界（Responsibility Boundary）**：智能处理可进行提取与标记，但付款/拒付的最终责任由指定授权人员承担。
 
-**External Boundary**: Any legally binding communication to beneficiaries must be issued by authorized human signatories; intelligent processing may assist drafting but cannot send.
+**判断边界（Judgment Boundary）**：欺诈判定、法律解释、条款分析保留给人工专家；智能处理仅提供信息支持。
 
-## AML / Sanctions as Cross-Cutting Compliance Layer
+**对外边界（External Boundary）**：任何对受益人具有法律约束力的沟通必须由经授权的人工签署人发出；智能处理可协助起草，但不可发送。
 
-AML and sanctions screening function as a mandatory checkpoint across all claims:
-- Runs in parallel with initial structured review
-- Any hit (regardless of false-positive likelihood) triggers immediate diversion to compliance review path
-- Cannot be overridden by operational nodes or intelligent processing
-- Subsequent processing contingent on compliance clearance
+## AML / Sanctions 作为横切性合规约束层
 
-## Pilot Boundary
+AML 与制裁筛查作为所有索赔的强制检查点：
+- 与首轮结构化审查并行运行
+- 任何命中（无论是否可能为误报）立即触发转入合规审查路径
+- 不可由操作节点或智能处理覆盖
+- 后续处理取决于合规 clearance
 
-This hypothesis proposes a limited pilot scope:
-- **Inbound document structured review and escalation routing only**
-- Intelligent processing handles parsing, formal checking, anomaly flagging, and template generation
-- No modification to existing payment/refusal authorization systems
-- No replacement of AML/sanctions infrastructure—only integration as caller
-- No change to compliance approval authority
-- No change to external notification issuance mechanisms
+## 试点边界
 
-## What Remains to Be Validated
+本假设提出有限的试点范围：
+- **仅限来件结构化审查与升级分流**
+- 智能处理负责解析、形式核对、异常标记、模板生成
+- 不修改现有付款/拒付授权体系
+- 不替代 AML / 制裁基础设施——仅作为调用方接入
+- 不改变合规审批权限
+- 不改变对外通知签发机制
 
-- Accuracy of structured field extraction against manual review
-- Appropriateness of escalation triggers (false positive/negative rates)
-- Integration feasibility with existing core banking and compliance systems
-- Organizational acceptance of redefined role boundaries
-- Measurable impact on operational risk indicators
+## 待验证点
+
+- 结构化字段提取与人工复核的准确性对比
+- 升级触发器的适当性（误报/漏报率）
+- 与现有核心银行系统及合规系统的集成可行性
+- 组织对重新定义角色边界的接受度
+- 对操作风险指标的可衡量影响
 
 ---
 
-*This hypothesis reflects an internal pilot proposal and has not been validated through real organizational implementation.*
+*本假设反映的是一个内部试点提案，尚未经过真实组织落地验证。*
