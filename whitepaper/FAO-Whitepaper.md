@@ -248,6 +248,8 @@ FAO框架识别三类不能随任务自动流动的边界：
 
 这些动作的共同点是：它们都在边界约束下进行，都在建立或确认责任关系。
 
+相关假设可参见：[Demand Guarantee Claims Reflow](cases/hypotheses/demand-guarantee-claims-reflow.md)
+
 ## 4.5 引向治理
 
 路由将任务分配给不同主体处理，但这带来一个问题：当智能体承担执行、生成建议、甚至做出初步判断时，如何确保这些行为在受控条件下进行？
