@@ -1,8 +1,7 @@
-# 白皮书入口已更新
+# 白皮书入口
 
-当前白皮书正文已迁移至：
-[whitepaper/README.md](whitepaper/README.md)
+当前白皮书正文：
+[whitepaper/FAO-Whitepaper.md](whitepaper/FAO-Whitepaper.md)
 
----
-
-*本文件仅用于兼容旧链接，不再维护正文内容。*
+快速导航：
+[whitepaper/README.md](whitepaper/README.md) —— 章节目录与证据层入口
