@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Correction Record",
+  "description": "错误在被纠正后，正式转成未来判断约束的结构化记录",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "timestamp",
+    "error_type",
+    "original_expression",
+    "corrected_expression",
+    "source",
+    "writeback_target",
+    "retrieval_priority",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Correction record 的唯一标识"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "记录创建时间戳，ISO 8601 格式"
+    },
+    "error_type": {
+      "type": "string",
+      "description": "错误类型分型",
+      "enum": [
+        "factual_error",
+        "judgment_error",
+        "term_confusion",
+        "boundary_error",
+        "sequence_error",
+        "pseudo_completion",
+        "environment_misattribution"
+      ]
+    },
+    "original_expression": {
+      "type": "string",
+      "description": "原错误表达"
+    },
+    "corrected_expression": {
+      "type": "string",
+      "description": "修正后的稳定表达"
+    },
+    "source": {
+      "type": "string",
+      "description": "纠错来源，例如 human feedback / verified source / internal review"
+    },
+    "writeback_target": {
+      "type": "string",
+      "description": "纠错结果写入的目标位置",
+      "enum": [
+        "memory_index",
+        "judgment_card",
+        "term_map",
+        "incubation",
+        "changelog"
+      ]
+    },
+    "retrieval_priority": {
+      "type": "string",
+      "description": "未来检索时的优先级",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "当前记录的状态",
+      "enum": [
+        "draft",
+        "validated",
+        "incubating",
+        "deprecated",
+        "superseded"
+      ]
+    },
+    "task_type": {
+      "type": "string",
+      "description": "关联的任务类型（可选）"
+    },
+    "notes": {
+      "type": "string",
+      "description": "补充说明（可选）"
+    },
+    "supersedes": {
+      "type": "string",
+      "description": "被本记录取代的前序记录 ID（可选）"
+    },
+    "verification_level": {
+      "type": "string",
+      "description": "验证级别（可选）",
+      "enum": [
+        "human_confirmed",
+        "source_confirmed",
+        "internally_inferred"
+      ]
+    }
+  }
+}

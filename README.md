@@ -1,59 +1,81 @@
 # FAO (Fluid Agentic Organization)
 
-当人类与智能体共同参与任务时，组织开始面对一类新的现实问题：
+FAO 是一个面向人类主体与智能体主体协作的组织框架项目。当前重点包括通用工作节点框架、旧工具包迁移与领域包占位。
 
-- 任务可以流动，但责任未必能流动
-- 输出可以生成，但判断未必被承担
-- 工具可以调用，但执行未必真实发生
-- 协作可以加速，但边界可能变得模糊
+当前仓库正在形成一个新的通用工作节点框架。`framework/` 是当前新的上位骨架候选，包含框架定义、元动作、角色契约、真实性合同、运行规则等核心文件。
 
-这不是效率问题。这是主体条件变化带来的组织问题。
-
-FAO 试图处理的，不是"如何让 AI 多做一点"，而是"在异质主体协作条件下，如何重新安排任务、责任与治理"。
+旧 `toolkit/` 目录仍保留，作为历史分组、实现来源与迁移来源。
 
 ---
 
-## FAO 不是在做什么
+## 当前结构
 
-FAO 不是一个通用的 agent workflow 模板，也不是把人类工作简单拆给多个 AI 的自动化口号。
-
-它关注的是另一类问题：
-- 在不同主体能力不对称的情况下，任务应如何路由
-- 在执行能力增强但责任关系模糊时，边界应如何保留
-- 在输出越来越容易生成时，真实性与失败应如何被显化
-
-所以，FAO 更接近一种面向异质主体共存条件的组织分析框架，而不是服务于"提效"的编排技巧集合。
+| 目录 | 说明 |
+|------|------|
+| **`framework/`** | 通用工作节点框架。当前新的上位骨架候选，包含框架定义、元动作、OpenClaw 映射、角色、真实性、运行规则、前置检查、薄记忆、纠错协议、迁移计划等核心文件。 |
+| **`toolkit/`** | 旧分组仍保留。`minimal-core/` 与 `governance/` 当前作为 legacy grouping / implementation source，后续按迁移计划逐步映射。 |
+| **`domains/`** | 领域包层。当前已有 `domains/guarantee/` 作为最小占位，依赖 `framework/`，不是通用框架正文的一部分。 |
 
 ---
 
-## 仓库包含什么
+## framework 骨架
 
-**[whitepaper/](whitepaper/)** — 完整问题陈述与理论展开，讨论异质主体、不能流动的边界、任务路由、治理与责任安排。
+`framework/` 是当前理解 FAO 的首选入口：
 
-**[toolkit/minimal-core/](toolkit/minimal-core/)** — 最小运行单元，提供方向层、连续性层、节律层三个基础层。
+- `UNIVERSAL-WORK-NODE-FRAMEWORK.md` — 框架总定义，六个功能模块说明
+- `META-ACTIONS.md` — 14 个元动作表，骨架的元操作层
+- `OPENCLAW-MAPPING.md` — 与 OpenClaw 默认 bootstrap 规则的映射文档
 
-**[toolkit/governance/](toolkit/governance/)** — 治理层，处理外部调用验证、结论核实、失败暴露、责任边界显化等问题。
-
-**[toolkit/governance/templates/](toolkit/governance/templates/)** — 节点接入模板，帮助不同主体在进入协作系统时形成基本锚点。
+其余文件在此骨架下展开：角色契约、真实性合同、运行规则、前置检查序列、薄记忆索引、纠错写回协议、判断卡片接口、迁移计划等。
 
 ---
 
-## 最小阅读路径
+## toolkit 退位说明
 
-第一次来？根据你的兴趣选择：
+`toolkit/minimal-core/` 与 `toolkit/governance/` 继续保留，主要作为：
 
-- **想快速理解问题**：先读 [whitepaper/](whitepaper/) 第1、3、5章
-- **想看最小结构**：先读 [toolkit/minimal-core/](toolkit/minimal-core/)
-- **想看真实性治理**：先读 [toolkit/governance/](toolkit/governance/)
+- 旧分组的历史记录
+- 实现来源与参考
+- 迁移计划的映射来源
+
+当前不直接删除，不宣布作废。后续以 `framework/MIGRATION-PLAN.md` 为准，逐步完成内容级映射。
+
+---
+
+## domains 占位
+
+`domains/guarantee/` 当前只是最小领域包占位：
+
+- 证明 `framework/` 可以承接具体专业域
+- 不代表保函领域包已完整成形
+- 不代表仓库已内置完整法律意见系统
+
+---
+
+## 成本主线占位
+
+成本是白皮书中的重要主线。当前 framework v1 只内含最弱形式的成本纪律（避免无谓展开、及时收敛、前置检查），尚未在本轮仓库结构中把成本全面展开为独立控制面。
+
+---
+
+## 建议阅读顺序
+
+1. `framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md`
+2. `framework/META-ACTIONS.md`
+3. `framework/OPENCLAW-MAPPING.md`
+4. `framework/MIGRATION-PLAN.md`
+5. 再回看 `toolkit/` 与 `domains/`
 
 ---
 
 ## 当前状态
 
-- **阶段**：概念验证期
-- **版本**：v0.3
+- **阶段**：framework v1 骨架已形成，进入迁移与整体验证阶段
+- **版本**：v0.4
 - **参与方式**：提修正 / 补案例 / 指出不清楚之处
 
 ---
 
-_FAO 不是终点，而是一个用来继续观察、整理、试错和修正的组织分析框架。_
+## 当前如何参与
+
+当前仓库以 `framework/` 为主入口。欢迎围绕文档清晰度、接口边界、领域包形态提出修正。
