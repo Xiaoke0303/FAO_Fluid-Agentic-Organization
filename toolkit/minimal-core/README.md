@@ -20,7 +20,7 @@ minimal-core 更接近**旧版稳定内核分组**，主要承接方向、薄记
 ## 与 framework 的关系
 
 - [framework/](../framework/) 是当前新的上位骨架候选
-- minimal-core/ 中的内容可作为新框架的来源、映射对象或历史实现参考
+- [minimal-core/](./) 中的内容可作为新框架的来源、映射对象或历史实现参考
 - 后续以 [framework/MIGRATION-PLAN.md](../framework/MIGRATION-PLAN.md) 为准逐步迁移
 
 ---
@@ -46,6 +46,4 @@ minimal-core 更接近**旧版稳定内核分组**，主要承接方向、薄记
 
 - 不扩展成体系
 - 不解释，不辩护
-- 允许修订与废弃
-护
 - 允许修订与废弃
