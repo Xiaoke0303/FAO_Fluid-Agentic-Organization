@@ -1,0 +1,50 @@
+> This document records a public observation sample.
+> It provides signals, not proof.
+
+---
+
+# Observation — Hermes 作为运行时路由样本
+
+**来源**：NousResearch/hermes-agent（GitHub）  
+**记录时间**：2026-04-10
+
+---
+
+## 一、这是什么信号
+
+Hermes 不是在堆功能，而是在把 Agent 组织成运行时系统。
+
+Loop 被视为真正的大脑，不是单次问答的延伸；Prompt 不是静态文案，而是上下文组装与压缩流程；Provider Router 的价值不在模型本身，而在稳定的路由层；Tool System 不是工具列表，而是工具调用流程；Execution Backends 说明执行地面本身是 runtime 的一部分；Memory 不是全文塞进 prompt，而是 persistent memory、session search 与 compression 的组合；Skills 更接近程序化记忆；Gateway 不是聊天入口，而是多平台行为总线；Cron Scheduler 表明 agent 可以主动运行，而不仅是等消息；Safety 则嵌入执行架构之中，不只是内容审核。
+
+这些特征共同指向一个判断：Agent 节点正在从 "prompt + tools 的会话器" 收敛成 "具有器官分工的运行时主体"。
+
+## 二、它对 FAO 的真正启发是什么
+
+这里的关键是"双重路由"的区分：
+
+**组织路由**：任务在不同主体（人 / agent / 团队 / 外部系统）之间如何流动。
+
+**运行时路由**：同一个 agent 节点内部，任务、模型、工具、执行后端、上下文如何被路由。
+
+Hermes 的主要价值在于把"运行时路由"做成了可观察的结构。但它解决的是一个节点"内部如何组织能力"的问题。FAO 关注的则是"任务在主体之间如何流动且责任不消失"的问题。两者不是替代关系，而是上下层关系。
+
+当运行时路由能力越来越强时，组织路由中的责任锚定、边界约束与 human checkpoint 反而越重要。因为 runtime 强大并不会自动让责任可见，它甚至可能让智能体的"伪完成"更具说服力。
+
+## 三、它不能替 FAO 回答什么
+
+- Hermes 不能自动解决责任锚定
+- 不能自动解决 human checkpoint
+- 不能自动解决对外边界问题
+- 运行时强，不等于组织治理成立
+
+一个 agent 节点可以把技能生成、记忆压缩、工具调度、跨平台行为都做得很流畅，但它仍然不能天然承担对外后果。这正是 FAO 所强调的"能力可以下放，责任不能消失"的边界。
+
+## 四、它对 FAO 仓库应留下什么观察
+
+这张卡把 Hermes 定性为"runtime 分层样本"。它值得保留为观察对象，但不进入 FAO 主文论证的核心。
+
+它提示 FAO 需要持续关注一个问题：当节点内部的 runtime routing 越来越成熟时，组织 routing 的治理框架是否需要同步升级——而不是被默认忽略。
+
+---
+
+**保留判断**：这个项目值得作为 Agent runtime 分层与运行时路由的观察样本保留，但它不能替代 FAO 对组织路由、责任锚定与边界治理的讨论。
