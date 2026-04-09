@@ -35,6 +35,7 @@ FAO（Fluid Agentic Organization，流态代理组织）是一种在人类主体
 
 - `cases/legal/`：法律案例，用于校准责任边界
 - `cases/observations/`：公开观察样本，提供外部信号，不构成证明
+  - `observation-hermes-runtime-routing.md`：Hermes Agent 作为运行时路由样本的观察
   - `conceptual-neighbors.md`：FAO 的概念邻近与思想背景说明，不承担主论证功能
 - `cases/hypotheses/`：待验证假设推演，不代表已成立结论
 
