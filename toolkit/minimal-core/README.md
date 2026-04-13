@@ -25,6 +25,16 @@ minimal-core 更接近**旧版稳定内核分组**，主要承接方向、薄记
 
 ---
 
+## 迁移状态
+
+`minimal-core/` 当前处于"部分承接已明确、部分内容仍保留为历史来源"的过渡状态：
+
+- `memory.md` — 其"薄记忆"原则已由 [`framework/continuity/MEMORY-INDEX.md`](../../framework/continuity/MEMORY-INDEX.md) 承接
+- `soul.md` — 当前仍主要作为 legacy / bootstrap 来源保留，尚无 framework 内一对一的正式显式承接文件
+- `heartbeat.md` — 当前仍主要作为 legacy / bootstrap 来源保留，framework 层目前只有概念承接，尚无独立显式文件一对一承接
+
+---
+
 ## 原有内容说明
 
 | 文件 | 作用 |
