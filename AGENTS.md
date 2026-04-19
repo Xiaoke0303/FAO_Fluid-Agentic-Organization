@@ -87,11 +87,61 @@
 
 **回复模板**：见 `templates/github-reply-template.md`
 
-### 3. 外部回流记录（Log）
+**交付格式**：见 `notes/external-observation-format-v2.md`
 
-**每次参与后记录到**：`memory/external-observation.md`
+**执行口径**：
+- 一轮最多 1 条"可参与项"
+- 没有强信号时，明确写"本轮无值得参与项"
+- 不因为有模板就增加参与次数
 
-**固定格式**：
+
+### 3. 厚记忆同步接口（预留）
+
+**定位**：云端薄记忆与本地厚记忆的协作边界
+
+**原则**：
+- 云端不存储厚记忆，只按需查询
+- 写回操作由本地节点主导（云端发起请求，本地决定是否写入）
+- 厚记忆不可用时，云端优雅降级到纯薄记忆模式
+
+**预留配置**（待本地节点部署后启用）：
+```yaml
+thick_memory:
+  # 本地节点服务地址（由用户配置）
+  endpoint: "${LOCAL_FAO_NODE}/api/memory"
+  
+  # 查询触发条件
+  query_trigger:
+    explicit: true      # 用户主动要求"查一下历史"
+    judgment: false     # 判断时不自动查询（避免依赖）
+    
+  # 响应超时
+  timeout_ms: 5000
+  
+  # 降级策略
+  fallback: thin_only  # 超时或失败时只用薄记忆
+  
+  # 缓存策略（云端侧）
+  cache:
+    enabled: true
+    ttl_minutes: 30     # 本地结果缓存在 STM 30 分钟
+    max_items: 10       # 最多缓存 10 条厚记忆结果
+```
+
+**接口约定**（预留）：
+```
+GET /api/memory/query?q={query}&n={limit}
+→ 返回: {results: [{text, similarity, source}], cached: bool}
+
+POST /api/memory/writeback
+→ 请求: {content, metadata: {timestamp, verified, source}}
+→ 返回: {stored: bool, id: string}
+```
+
+**当前状态**：预留接口，待本地节点（小克）部署 Ontology v2 后对接。
+
+
+**固定格式**（旧格式迁移中，新格式见 `notes/external-observation-format-v2.md`）：
 - 日期
 - 链接
 - 对方问题
