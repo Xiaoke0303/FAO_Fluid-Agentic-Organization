@@ -64,11 +64,11 @@
 | `HERMES-MAPPING.md` | Mapping | ✅ v1.0 | Hermes 运行时样本映射 |
 | `AGENTS.md` (workspace) | Runtime+Assurance+Role | ✅ 已本地重写 | 按 framework v1 四线重编 |
 
-**本地新增强项（未 push）**：
-- `AGENTS.md`：已按 Identity/Memory/Judgment/Failure 四线 + Truth Contract + Operating Rules + Pre-flight 重编为中文运行入口
-- `scripts/github_fao_patrol_stage1.py` + `scripts/openclaw_observer_stage1.py`：两段式数据获取脚本
-- `cron/jobs.json`：周期任务改为每日，外部交互任务采用两段式模式
-- `memory/zhuangzi-daily.md`：新增（待今晚首次运行）
+**本地新增强项（历史记录，部分已推送至 feature 分支）**：
+- `AGENTS.md`：已按 Identity/Memory/Judgment/Failure 四线 + Truth Contract + Operating Rules + Pre-flight 重编为中文运行入口（当前在 add-top5-agent-mappings 分支，PR #25 已关闭，待独立处理）
+- `scripts/github_fao_patrol_stage1.py` + `scripts/openclaw_observer_stage1.py`：两段式数据获取脚本（当前在 add-top5-agent-mappings 分支）
+- `cron/jobs.json`：周期任务改为每日，外部交互任务采用两段式模式（当前在 add-top5-agent-mappings 分支）
+- `memory/zhuangzi-daily.md`：新增（已在 main 通过其他路径落实）
 
 **结论**：`framework/` v1 骨架已形成，本地嫁接测试已完毕，具备接管条件。
 
@@ -200,9 +200,9 @@
 - ❌ 暂不补完整 orchestration / eval / tracing 平台
 - ❌ 暂不直接删除旧目录
 - ❌ 暂不把所有旧内容一次性改写进新框架
-- ❌ 暂不修改旧 README 和说明文案（阶段 2 待启动）
+- ❌ 暂不修改旧 README 和说明文案（阶段 2 已部分启动，本轮继续推进）
 - ❌ 暂不改动 `toolkit/minimal-core/`、`toolkit/governance/` 正文（阶段 3 待启动）
-- ❌ **暂不把本地 AGENTS.md / cron 调整 / scripts 推送到 GitHub**（已遵守）
+- ❌ **AGENTS.md / cron 调整 / scripts 的推送已另开分支处理**（PR #25 已关闭，待独立决策是否合并）
 
 ---
 
