@@ -31,8 +31,13 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 - [core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) — 框架总定义，六个功能模块说明
 - [core/META-ACTIONS.md](framework/core/META-ACTIONS.md) — 14 个元动作表，骨架的元操作层
 - [mapping/OPENCLAW-MAPPING.md](framework/mapping/OPENCLAW-MAPPING.md) — 与 OpenClaw 默认 bootstrap 规则的映射文档
+- [assurance/TRUTH-CONTRACT.md](framework/assurance/TRUTH-CONTRACT.md) — 真实性合同
+- [runtime/OPERATING-RULES.md](framework/runtime/OPERATING-RULES.md) — 运行母规则
+- [runtime/CONTEXT-BUDGET.md](framework/runtime/CONTEXT-BUDGET.md) — 运行时成本量化接口
+- [continuity/MEMORY-INDEX.md](framework/continuity/MEMORY-INDEX.md) — 长期连续性薄索引
+- [continuity/CORRECTION-WRITEBACK.md](framework/continuity/CORRECTION-WRITEBACK.md) — 纠错写回协议
 
-其余文件在此骨架下展开：角色契约、真实性合同、运行规则、前置检查序列、薄记忆索引、纠错写回协议、判断卡片接口、迁移计划等。
+其余文件在此骨架下展开：角色契约、前置检查序列、判断卡片接口、迁移计划等。
 
 ---
 
@@ -60,7 +65,7 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 
 ## 成本主线占位
 
-成本是白皮书中的重要主线。当前 framework v1 只内含最弱形式的成本纪律（避免无谓展开、及时收敛、前置检查），尚未在本轮仓库结构中把成本全面展开为独立控制面。
+成本是白皮书中的重要主线。运行时成本最小闭环已形成（`OPERATING-RULES.md` 承接触发条件与推进规则，`CONTEXT-BUDGET.md` 承接量化接口），组织级成本仍在白皮书展开。
 
 ---
 
