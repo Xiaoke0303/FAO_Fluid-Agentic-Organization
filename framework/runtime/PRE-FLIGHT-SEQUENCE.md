@@ -116,7 +116,7 @@
 | `OPERATING-RULES.md` | Operating Rules 定义任务流程，Pre-flight 是流程开始前的检查序列。后者是前者的前置条件。 |
 | `judgment-cards/README.md` | Pre-flight 检查既有判断接口是否可用，Judgment Cards 是被检查的对象之一。 |
 | `CORRECTION-WRITEBACK.md` | Correction 处理已发生的判断错误，Pre-flight 通过前置检查预防错误。两者是事后与事前的关系。 |
-| `ENVIRONMENT-PRECONDITIONS.md` | Pre-flight 检查任务级前置条件，Environment Preconditions 检查环境级前置条件。前者在后者之后。 |
+| `ENVIRONMENT-PRECONDITIONS.md` | PRE-FLIGHT 是任务级前置检查，独立成立；ENVIRONMENT-PRECONDITIONS 是环境级前置检查，属于增强层，当前尚未补写。 |
 
 ---
 
