@@ -69,22 +69,38 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 
 ---
 
-## 建议阅读顺序
+## 阅读入口
 
-1. [whitepaper/FAO-Whitepaper.md](whitepaper/FAO-Whitepaper.md) —— FAO 组织分析主文
-2. [framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) —— 如需查看实现支撑
-3. [domains/guarantee/](domains/guarantee/) —— 如需查看业务落点
+本项目当前由三个并行层构成，读者可按需求进入对应入口，无需强制单一路径。
 
----
+### 组织分析层
 
-## 白皮书入口
+面向 FAO 的组织分析与核心论述。
 
-- [whitepaper/FAO-Whitepaper.md](whitepaper/FAO-Whitepaper.md) —— FAO 组织分析主文，当前唯一首要入口
-- [whitepaper/README.md](whitepaper/README.md) —— 白皮书目录与章节入口
+- `whitepaper/FAO-Whitepaper.md` —— FAO 组织分析主文
+- `whitepaper/README.md` —— 白皮书目录与章节入口
 
-需要查看实现支撑时，再进入 `framework/`；需要查看业务落点时，再进入 `domains/guarantee/`。
+### 通用工作节点框架
 
----
+面向通用工作节点的框架定义、元动作与运行规则。与白皮书并行，不是白皮书的附属实现。
+
+- `framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md` —— 框架总定义
+- `framework/README.md` —— 框架目录与全部文件索引
+
+### 映射与实例验证层
+
+面向框架在真实运行时中的映射衔接与验证记录。当前已启动，尚处早期。
+
+- `framework/mapping/verification/` —— 实例验证记录（第一条 OpenClaw 样本已落盘）
+- `framework/mapping/MIGRATION-PLAN.md` —— framework 迁移计划与阶段定义
+- `framework/mapping/OPENCLAW-MAPPING.md` —— OpenClaw 映射文档
+
+### 参考目录
+
+以下目录不作为当前主入口，仅供参考。
+
+- `toolkit/` —— 早期实验与 legacy 分组，历史记录与实现来源
+- `whitepaper/cases/` —— 白皮书配套案例与观察材料，随白皮书正文阅读
 
 ## 成本工作笔记
 
