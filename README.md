@@ -8,9 +8,7 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 
 `framework/` 是通用工作节点框架，与白皮书并行，不是白皮书的附属实现。
 
-`domains/guarantee/` 是支撑白皮书第4-5章主线的试点假设，用于把抽象主线压到真实业务场景，不是完整产品方案。
-
-`notes/cost-line.md` 是工作线索笔记，对外正式口径以白皮书正文为准。
+`notes/cost-line.md` 与 `notes/memory-line.md` 是 sidecar working notes，不是 framework 本体，对外正式口径以白皮书正文为准。
 
 ---
 
@@ -20,7 +18,7 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 |------|------|
 | **[framework/](framework/)** | 通用工作节点框架。当前新的上位骨架候选，包含框架定义、元动作、OpenClaw 映射、角色、真实性、运行规则、前置检查、薄记忆、纠错协议、迁移计划等核心文件。 |
 | **[toolkit/](toolkit/)** | 旧分组仍保留。[minimal-core/](toolkit/minimal-core/) 与 [governance/](toolkit/governance/) 当前作为 legacy grouping / implementation source，后续按迁移计划逐步映射。 |
-| **[domains/](domains/)** | 领域包层。当前已有 [domains/guarantee/](domains/guarantee/) 作为最小占位，依赖 [framework/](framework/)，不是通用框架正文的一部分。 |
+| **[domains/](domains/)** | 领域包占位。预留 framework 向具体专业域的扩展接口，当前无已展开的活跃领域包。 |
 
 ---
 
@@ -53,13 +51,12 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 
 ---
 
-## domains 占位
+## 主线笔记入口
 
-[domains/guarantee/](domains/guarantee/) 当前只是最小领域包占位：
+以下 working notes 作为 sidecar 保留，不替代白皮书主文，也不直接构成 framework 的一部分。
 
-- 证明 [framework/](framework/) 可以承接具体专业域
-- 不代表保函领域包已完整成形
-- 不代表仓库已内置完整法律意见系统
+- `notes/cost-line.md` —— 成本主线 working note
+- `notes/memory-line.md` —— 记忆主线 working note
 
 ---
 
@@ -101,12 +98,7 @@ FAO 是一个面向人类主体与智能体主体协作的组织框架项目。
 
 - `toolkit/` —— 早期实验与 legacy 分组，历史记录与实现来源
 - `whitepaper/cases/` —— 白皮书配套案例与观察材料，随白皮书正文阅读
-
-## 成本工作笔记
-
-- [notes/cost-line.md](notes/cost-line.md) —— 成本主线工作笔记（working note）
-
-成本是 FAO 后续需要展开的重要主线，当前先以 working note 形式保留。它不替代白皮书主文，也不直接构成 framework 的一部分。
+- `notes/` —— sidecar working notes，见上方「主线笔记入口」节
 
 ---
 
