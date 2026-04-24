@@ -13,7 +13,7 @@
 
 用于承接：这类问题通常如何判断、适用条件是什么、常见陷阱是什么、稳定表达是什么。
 
-**关于具体领域判断卡**：`framework/judgment-cards/` 用于定义通用 judgment card 接口。具体领域判断卡应优先放入对应 domain pack（如 `domains/guarantee/judgment-cards/`），而不是长期留在 framework 核心层。
+**关于具体领域判断卡**：`framework/judgment-cards/` 用于定义通用 judgment card 接口。具体领域判断卡应优先放入对应 domain pack，而不是长期留在 framework 核心层。
 
 ---
 
