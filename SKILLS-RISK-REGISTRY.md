@@ -137,6 +137,41 @@
 
 ---
 
+## 6. Quarantined — pua/
+
+**Status**: `quarantined`
+**Location**: `~/.openclaw/quarantine/pua-2026-04-29/pua/`
+**Date**: 2026-04-29
+
+### 隔离原因
+
+- 第三方公开仓库：`github.com/tanweai/pua.git`
+- 不是 FAO 资产
+- 不是 OpenClaw skill
+- 名称存在误解/声誉风险
+- submodule 脏状态污染主仓库
+- 当前 FAO 运行时不需要
+
+### 当前状态
+
+- `quarantined`
+- `not loaded`
+- `not registered`
+- `not executed`
+- `not tracked as submodule`
+- `moved out of repository`
+
+### 恢复条件
+
+- 从 quarantine 路径恢复，或从上游重新 clone
+- 需要人工确认
+
+### 原路径记录
+
+原路径：`archives/non-skill-projects/pua/`
+
+---
+
 ---
 
 ## 6. Moved Non-Skill Directory — pua/
