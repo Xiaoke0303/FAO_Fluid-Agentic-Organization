@@ -100,24 +100,42 @@
 
 ---
 
-## 5. Inspected but Not Moved — claude-mem/
+## 5. Quarantined — claude-mem/
 
-| Check Item | Result |
-|------------|--------|
-| SKILL.md | ❌ None (not an OpenClaw skill) |
-| README | ✅ Yes (README.md) |
-| package.json | ✅ Yes (multiple) |
-| Shell scripts | ✅ Yes (install.sh, test-e2e.sh, etc.) |
-| File write | ⚠️ Installer modifies OpenClaw gateway config |
-| Network | ⚠️ Downloads from install.cmem.ai |
-| Credential access | ⚠️ Requires AI provider API key |
-| Directory size | 101M |
-| Subdirectories | 16 |
-| .git | ✅ Yes (git repository) |
+**Status**: `quarantined`
+**Location**: `~/.openclaw/quarantine/claude-mem-2026-04-29/claude-mem/`
+**Date**: 2026-04-29
 
-**Status**: `source: unknown | status: inspect manually | default load: no`
+### 隔离原因
 
-**Assessment**: This is a complete third-party project (claude-mem persistent memory plugin for OpenClaw), not a skill. It contains installer scripts that modify gateway configuration and download remote code. Should not reside in `skills/`. Requires human decision on whether to keep, move, or remove.
+- 非 OpenClaw skill：无 SKILL.md
+- 大型第三方项目：101M，含 .git、完整 Node.js 项目结构
+- installer (`openclaw/install.sh`) 可能修改 OpenClaw gateway 配置
+- installer 可能从远程 (`install.cmem.ai`) 下载脚本
+- 可能需要 AI provider API key
+- 与当前 FAO 薄记忆原则存在冲突
+
+### 当前状态
+
+- `quarantined`
+- `not loaded`
+- `not registered`
+- `not executed`
+- `not installed`
+
+### 恢复条件
+
+- 需要人工安全审查
+- 需要确认来源（github.com/thedotmack/claude-mem）
+- 需要确认不会修改 gateway 配置
+- 需要确认不会读取/使用现有凭据
+- 需要确认与 FAO memory-line 不冲突
+
+### 原路径记录
+
+原路径：`skills/claude-mem/`
+
+---
 
 ---
 
