@@ -1,1 +1,0 @@
-python3 /root/.openclaw/workspace/memory/recall.py "厚记忆" --format json -n 2
