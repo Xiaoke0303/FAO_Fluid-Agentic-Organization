@@ -31,5 +31,5 @@ toolkit/ 保留早期 minimal-core 与 governance 实验的历史痕迹。
 
 | 目录 | 说明 |
 |------|------|
-| [minimal-core/](minimal-core/) | 早期最小内核分组。包含方向、薄记忆、节律等概念的历史表述。对 FAO 的气质与约束有历史参考价值，但不再是当前 runtime 的正式入口。 |
-| [governance/](governance/) | 早期治理实现分组。包含真实性、外部调用、失败暴露等历史表述。部分治理组件仍被 framework/ 引用，但 toolkit/governance/ 本身不再作为项目主入口。 |
+| [minimal-core/](minimal-core/) | **历史定向层**。方向、薄记忆、节律等概念的历史表述。已由根目录 bootstrap 文件和 framework/ 承接，保留为历史参考。 |
+| [governance/](governance/) | **历史治理分组**。真实性、外部调用、失败暴露等治理组件的历史表述。部分已迁移至 framework/，其余保留为 legacy 来源。 |
