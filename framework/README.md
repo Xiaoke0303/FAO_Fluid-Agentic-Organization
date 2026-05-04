@@ -6,8 +6,26 @@
 
 ## 文档定位
 
-本目录包含 FAO 通用工作节点框架的核心文件，是当前理解 FAO 的首选入口。
+本目录是 FAO 当前正式的 **运行时与接口层（runtime and interface layer）**。
 
+framework/ 将 whitepaper/ 中的组织分析主张翻译为可操作的接口与约束，包括工作节点结构、角色契约、运行规则、上下文预算、记忆/纠错写回接口，以及元动作与路由约束。
+
+---
+
+## 与 whitepaper/ 的关系
+
+whitepaper/ 提供组织分析语言与论证。  
+framework/ 提供运行接口与操作约束。  
+两者并行，互不替代。
+
+## 与 toolkit/ 的关系
+
+toolkit/ 保留为早期最小工具集与治理实验的历史参考。  
+当 framework/ 与 toolkit/ 存在冲突时，**framework/ 优先**。  
+
+当前仍在进行的迁移细节以 [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) 为准。
+
+---
 ---
 
 ## 建议阅读顺序
