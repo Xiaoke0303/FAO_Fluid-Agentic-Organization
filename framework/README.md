@@ -28,6 +28,32 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 ---
 ---
 
+## Reading Map: Four Roots to Framework Modules
+
+```text
+Four roots:
+
+- Orientation / Constitution → core/
+  - CONSTITUTION.md anchors non-transferable boundaries and base constraints.
+- Role / Responsibility → role/
+  - ROLE-CONTRACT.md defines who may do what, and where responsibility remains anchored.
+- Continuity / Memory → continuity/
+  - MEMORY-INDEX.md and CORRECTION-WRITEBACK.md define what persists, what is corrected, and how judgment remains traceable.
+- Rhythm / Cadence → rhythm/
+  - HEARTBEAT.md defines when to pause, observe, metabolize, or continue.
+
+Branches grown from the roots:
+
+- Assurance → assurance/
+  - Truth, evidence, and completion-state constraints grown from constitutional boundaries.
+- Runtime → runtime/
+  - Execution rules, pre-flight checks, external calls, failure handling, cost, and term discipline.
+- Mapping → mapping/
+  - Alignment layer for translating concepts, legacy files, domain cases, and external references into FAO framework layers.
+```
+
+---
+
 ## 建议阅读顺序
 
 1. [core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) - 框架总定义
