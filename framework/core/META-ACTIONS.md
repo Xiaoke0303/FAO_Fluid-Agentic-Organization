@@ -22,14 +22,14 @@
 | 判断 | 调用可复用的判断性知识 | `judgment-cards/` | 否 | 不复造轮子 | 建议 | 需新建 |
 | 纠错 | 承认错误并完成错误分型 | `CORRECTION-WRITEBACK.md` | 否 | 未冒充已 | 可选 | 需新建 |
 | 写回 | 让本次纠错改变下次判断 | `CORRECTION-WRITEBACK.md` | 否 | 错不再犯 | 建议 | 需新建 |
-| 状态锚定 | 明确当前任务、阶段、下一步、约束 | `STATE.md` | 是 | 此刻在哪里 | 建议 | 部分在系统 prompt |
+| 状态锚定 | 明确当前任务、阶段、下一步、约束 | `STATE.md`（当前不设独立文件；由 `OPERATING-RULES.md`、`PRE-FLIGHT-SEQUENCE.md` 与运行时状态回查隐式承载） | 是 | 此刻在哪里 | 建议 | 部分在系统 prompt |
 | 统筹 | 拆解、路由、收敛、升级 | `OPERATING-RULES.md` | 否 | 先分后合 | 可选 | 需新建 |
 | 控本 | 权衡 token、工具、人类注意力与切换成本 | `CONTEXT-BUDGET.md` + `OPERATING-RULES.md` | 是 | 省着花 | 建议 | 需新建 |
 | 求真 | 不把未执行说成已执行，不把未验证说成已确认 | `TRUTH-CONTRACT.md` | 是 | 如实说 | 可选 | 部分在系统约束 |
 | 验证 | 进行结果校验、外部调用校验、证据链保全 | `EXTERNAL-CALL-PROTOCOL.md` | 否 | 验过才算 | 建议 | 需新建 |
 | 代谢 | 停止无效扩张，清理冗余，归档过期内容 | `HEARTBEAT.md` | 是 | 定期清理 | 可选 | `HEARTBEAT.md` 可映射 |
 | 消歧 | 处理术语别名、常见混淆和误指 | `TERM-MAP.md` | 否 | 同名不同义要标 | 可选 | 需新建 |
-| 环境切分 | 区分环境前提不足与节点本身失败 | `ENVIRONMENT-PRECONDITIONS.md` | 否 | 是我不行还是环境不行 | 建议 | 需新建 |
+| 环境切分 | 区分环境前提不足与节点本身失败 | `ENVIRONMENT-PRECONDITIONS.md`（当前不设独立文件；增强层预留，环境级前提不纳入最小闭环） | 否 | 是我不行还是环境不行 | 建议 | 增强层预留；当前不阻塞最小闭环 |
 
 ---
 
@@ -92,7 +92,7 @@
 ### 状态锚定
 
 - **解决什么问题**：防止上下文丢失、任务阶段混乱
-- **落在哪些文件**：`STATE.md`
+- **落在哪些文件**：`STATE.md`（当前不设独立文件；由 `OPERATING-RULES.md`、`PRE-FLIGHT-SEQUENCE.md` 与运行时状态回查隐式承载）
 - **是否常驻**：是
 - **一句压缩**：此刻在哪里
 
@@ -157,7 +157,7 @@
 ### 环境切分
 
 - **解决什么问题**：区分"节点能力不足"与"环境前提不满足"
-- **落在哪些文件**：`ENVIRONMENT-PRECONDITIONS.md`
+- **落在哪些文件**：`ENVIRONMENT-PRECONDITIONS.md`（当前不设独立文件；增强层预留，环境级前提不纳入最小闭环）
 - **是否常驻**：否（失败排查时触发）
 - **一句压缩**：是我不行还是环境不行
 
@@ -172,14 +172,14 @@
 | `MEMORY-INDEX.md` | 择记 |
 | `judgment-cards/` | 判断 |
 | `CORRECTION-WRITEBACK.md` | 纠错、写回 |
-| `STATE.md` | 状态锚定 |
+| `STATE.md`（当前不设独立文件） | 状态锚定 |
 | `OPERATING-RULES.md` | 统筹、控本 |
 | `CONTEXT-BUDGET.md` | 控本 |
 | `TRUTH-CONTRACT.md` | 求真 |
 | `EXTERNAL-CALL-PROTOCOL.md` | 验证 |
 | `HEARTBEAT.md` | 代谢 |
 | `TERM-MAP.md` | 消歧 |
-| `ENVIRONMENT-PRECONDITIONS.md` | 环境切分 |
+| `ENVIRONMENT-PRECONDITIONS.md`（当前不设独立文件；增强层预留） | 环境切分 |
 
 ---
 
