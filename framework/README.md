@@ -41,6 +41,12 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 
 ---
 
+> **阅读提示**：仁空玄致是判断来源，不是阅读顺序。
+> 先按下方工程目录顺序阅读 framework 文件，再将四根作为贯穿各文件的判断视角。
+> mapping/ 中的迁移与验证文档可在需要追溯历史或平台映射时回看。
+
+---
+
 ## 建议阅读顺序
 
 1. [core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) - 框架总定义
@@ -55,9 +61,9 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 10. [runtime/EXTERNAL-CALL-PROTOCOL.md](runtime/EXTERNAL-CALL-PROTOCOL.md) - 外部调用协议
 11. [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
 12. [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
-11. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
-12. [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射
-13. [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
+13. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
+14. [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射
+15. [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
 
 ---
 
