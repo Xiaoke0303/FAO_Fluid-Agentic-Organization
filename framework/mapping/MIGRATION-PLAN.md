@@ -1,6 +1,7 @@
 # 迁移计划
 
-> 新 `framework/` 上位骨架接管旧分类法的逐步迁移方案。
+> 新 `framework/` 上位骨架接管旧分类法的逐步迁移方案。  
+> **Framework Version: v1.0.1** — Temporal Anchoring as Pre-flight Step 0
 
 ---
 
@@ -53,7 +54,7 @@
 | `META-ACTIONS.md` | Constitution | ✅ v1.0 | 元动作表 |
 | `ROLE-CONTRACT.md` | Role | ✅ v1.0 | 角色契约 |
 | `TRUTH-CONTRACT.md` | Assurance | ✅ v1.0 | 真实性合同 |
-| `PRE-FLIGHT-SEQUENCE.md` | Runtime | ✅ v1.0 | 前置检查序列 |
+| `PRE-FLIGHT-SEQUENCE.md` | Runtime | ✅ v1.0.1 | 前置检查序列（新增 Step 0 时间上下文检查） |
 | `OPERATING-RULES.md` | Runtime | ✅ v1.0 | 运行母规则 |
 | `MEMORY-INDEX.md` | Continuity | ✅ v1.0 | 长期连续性薄索引 |
 | `CORRECTION-WRITEBACK.md` | Continuity | ✅ v1.0 | 纠错写回协议 |

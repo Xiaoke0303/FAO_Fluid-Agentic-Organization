@@ -65,6 +65,28 @@
 
 ## 四、最小前置检查顺序
 
+### 0. 时间上下文检查（Temporal Context Check）
+
+**Temporal Anchoring is not a separate runtime entity. It is the first gate of pre-flight: before checking scope, boundary, permission, cost or truth-state, the system must first anchor the task in time.**
+
+检查项：
+
+| 字段 | 说明 |
+|------|------|
+| `current_time` | 当前时间；如无法获取，标记 `unknown`，不得猜测 |
+| `workstream` / `line` | 本任务属于哪条线（whitepaper / governance / cost / memory / guarantee / external-observation 等） |
+| `last_effective_update` | 该线最后一次有效推进时间：`today` / `yesterday` / `last week` / `unknown` |
+| `task_mode` | `record` / `review` / `continue` / `execute` / `freeze` |
+| `state_validity` | 旧状态是否仍可作为当前依据；`unknown` 时不得默认有效 |
+| `permission_validity` | 涉及写文件、外部调用、发布、合并、资金、权限时，旧授权不得自动延续，必须重新确认 |
+
+**核心规则**：
+- 旧讨论不自动升级为当前执行命令；
+- 旧授权不自动延续为当前授权；
+- 旧验证不自动等于当前验证；
+- 分支对话、跨日期任务、涉及外部调用或写入动作时，必须先做时间上下文检查；
+- 没有时间上下文的状态，不得自动视为当前有效。
+
 ### 1. 任务边界检查
 确认任务目标、范围、终止条件是否清楚。若边界不清，后续检查无意义。
 
@@ -98,6 +120,7 @@
 
 | 步骤 | 失败信号 |
 |------|----------|
+| 0. 时间上下文检查 | 当前时间未知或标记为 `unknown`；任务时间线未对齐；跨日期任务未重新确认时间上下文；旧状态/授权被默认视为当前有效 |
 | 1. 任务边界检查 | 任务边界不清；目标模糊 |
 | 2. 角色匹配检查 | 角色越权；当前 role contract 不覆盖本任务 |
 | 3. 信息完备性检查 | 关键信息缺失；最小信息集不满足 |
@@ -146,6 +169,16 @@
 - 检查时间：
 
 ## 检查项
+
+### 0. 时间上下文检查
+- [ ] current_time 已标注（unknown 时不得继续）
+- [ ] workstream / line 已明确
+- [ ] last_effective_update 已记录
+- [ ] task_mode 已确认
+- [ ] state_validity 已评估（unknown 不默认有效）
+- [ ] permission_validity 已重新确认（涉及写/调用/发布/合并/资金/权限时）
+
+**失败信号**：时间未知 / 跨日期未对齐 / 旧状态默认有效 / 旧授权自动延续
 
 ### 1. 任务边界检查
 - [ ] 任务目标明确
@@ -207,6 +240,7 @@
 
 ---
 
-*版本：v1.0*  
+*版本：v1.0.1*  
 *所属模块：Runtime*  
+*更新说明：新增 Step 0 Temporal Context Check，将 Temporal Anchoring 作为 preflight 第零门*  
 *承接元动作：统筹、状态锚定、部分控本*
