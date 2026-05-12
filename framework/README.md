@@ -36,8 +36,8 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 |------|---------|----------------------|
 | **仁** | 责任如何被承接——谁能收口，流动后谁仍承担 | `role/ROLE-CONTRACT.md`, `runtime/PRE-FLIGHT-SEQUENCE.md`, `core/CONSTITUTION.md` |
 | **空** | 记忆与判断如何不执死——允许废弃、松动、代谢 | `continuity/MEMORY-INDEX.md`, `continuity/CORRECTION-WRITEBACK.md`, `rhythm/HEARTBEAT.md` |
-| **玄** | 变化与不确定如何被容纳——漂移、语义不稳、环境共塑 | `runtime/OPERATING-RULES.md`, `rhythm/HEARTBEAT.md`, `runtime/TERM-MAP.md`, `mapping/` |
-| **致** | 判断如何落实为行动与验证——知行合一、写回、实例校验 | `assurance/TRUTH-CONTRACT.md`, `continuity/CORRECTION-WRITEBACK.md`, `runtime/OPERATING-RULES.md`, `mapping/verification/` |
+| **玄** | 变化与不确定如何被容纳——漂移、语义不稳、环境共塑 | `runtime/OPERATING-RULES.md`, `rhythm/HEARTBEAT.md`, `runtime/TERM-MAP.md` |
+| **致** | 判断如何落实为行动与验证——知行合一、写回、实例校验 | `assurance/TRUTH-CONTRACT.md`, `continuity/CORRECTION-WRITEBACK.md`, `runtime/OPERATING-RULES.md` |
 
 ---
 
@@ -62,8 +62,19 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 11. [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
 12. [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
 13. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
-14. [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射
-15. [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
+
+---
+
+## Reference and Alignment
+
+mapping/ is a horizontal alignment and translation layer.
+It is used when tracing concept mappings, legacy transitions, domain cases, runtime comparisons, or external references.
+It is not part of the core reading path.
+
+- [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射
+- [mapping/HERMES-MAPPING.md](mapping/HERMES-MAPPING.md) - Hermes 运行时路由样本映射
+- [mapping/META-ACTIONS-CROSSWALK.md](mapping/META-ACTIONS-CROSSWALK.md) - 元动作跨运行时对照表
+- [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
 
 ---
 
@@ -97,10 +108,15 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 ### rhythm/ 节律层
 - [rhythm/HEARTBEAT.md](rhythm/HEARTBEAT.md) - 时间组织原则层(止、观、代谢)
 
-### mapping/ 迁移与映射
+---
+
+### mapping/ 迁移与映射（横向参考层）
+
+mapping/ 是横向映射与转译层，用于概念、legacy、domain case、运行时对照和外部参照的对齐；当前不纳入主干阅读顺序。
+
 - [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射文档
 - [mapping/HERMES-MAPPING.md](mapping/HERMES-MAPPING.md) - Hermes 运行时路由样本映射
-- [mapping/META-ACTIONS-CROSSWALK.md](mapping/META-ACTIONS-CROSSWALK.md) - 元动作交叉映射
+- [mapping/META-ACTIONS-CROSSWALK.md](mapping/META-ACTIONS-CROSSWALK.md) - 元动作跨运行时对照表
 - [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
 
 ---

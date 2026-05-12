@@ -6,9 +6,7 @@
 
 ## 一、文档定位
 
-本文是 **crosswalk（翻译表）**，不是新理论层。
-
-FAO 仍以现有 `framework/`（core / runtime / assurance / continuity / mapping）为主骨架。本文仅作为 mapping/ 层的对照参考，帮助理解 FAO 元动作在主流 runtime 中大致落到什么入口。
+本文属于 framework/mapping/，是横向映射与转译层，不是 framework 的核心功能层级。本文仅作为 mapping/ 层的对照参考，帮助理解 FAO 元动作在主流 runtime 中大致落到什么入口。
 
 文中出现的 **E / T / C / S / L / V** 仅作为外部参照坐标系，不替代 FAO 自身结构。
 

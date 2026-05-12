@@ -61,8 +61,8 @@
 | `judgment-cards/README.md` | Continuity | ✅ v1.0 | 判断卡片接口 |
 | `judgment-cards/GUARANTEE-STRUCTURE-DISAMBIGUATION.md` | Continuity | ✅ v1.0 | 第一张具体判断卡片 |
 | `schemas/correction_record.schema.json` | Continuity | ✅ v1.0 | 纠错记录 Schema |
-| `OPENCLAW-MAPPING.md` | Mapping | ✅ v1.1 | OpenClaw 映射文档（含 Hermes 样本） |
-| `HERMES-MAPPING.md` | Mapping | ✅ v1.0 | Hermes 运行时样本映射 |
+| `OPENCLAW-MAPPING.md` | **Mapping (horizontal alignment / translation layer)** | ✅ v1.1 | OpenClaw 映射文档（含 Hermes 样本）。**Not a core functional module; kept outside the backbone discussion.** |
+| `HERMES-MAPPING.md` | **Mapping (horizontal alignment / translation layer)** | ✅ v1.0 | Hermes 运行时样本映射。**Not a core functional module; kept outside the backbone discussion.** |
 | `AGENTS.md` (workspace) | Runtime+Assurance+Role | ✅ 已本地重写 | 按 framework v1 四线重编 |
 
 **本地新增强项（历史记录，部分已推送至 feature 分支）**：
