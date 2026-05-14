@@ -9,6 +9,12 @@
 | `legal/` | 法律案例、劳动争议、责任边界与合规观察 |
 | `observations/` | 非法律性质的组织观察样本，提供外部信号，不构成结构证明 |
 
+## 当前 legal case candidates
+
+| 文件 | 主题 | 状态 |
+|------|------|------|
+| `legal/ai-generated-seeding-note-unfair-competition-case.md` | AI 定向生成虚假种草笔记不正当竞争；定义域治理膜与成本外部化 | **candidate**, source audit pending, not absorbed into main text |
+
 ## 使用说明
 
 正文中引用的案例/观察/假设均在此处保留完整记录。正文中如需引用案例或观察，将按白皮书叙事需要择要承接；并非所有材料都以公开链接方式进入主文。
