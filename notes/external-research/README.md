@@ -1,11 +1,7 @@
 # External Research Notes
 
-- This directory stores early-stage external research sidecars.
-- Materials that become whitepaper-level external references may be moved to whitepaper/references/.
-- Palantir-related external reference has been moved to whitepaper/references/.
-- External research should not be treated as FAO proof or directly absorbed into framework/whitepaper without review.
-
----
-
-*本目录存放早期外部研究 sidecar 笔记。*
-*升级至白皮书级外部参考的材料将被迁移至 whitepaper/references/。*
+- This directory is an early-stage landing zone for external research sidecars.
+- Materials here are not FAO proof and are not whitepaper content.
+- If an external research note becomes whitepaper-level reference material, it may be moved to whitepaper/references/.
+- Palantir-related material has already been moved to whitepaper/references/.
+- Keep this directory thin; do not use it as a general clipping folder.

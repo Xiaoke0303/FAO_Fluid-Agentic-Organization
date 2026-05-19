@@ -55,13 +55,14 @@ toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治
 4. [rhythm/HEARTBEAT.md](rhythm/HEARTBEAT.md) - 时间组织原则层
 5. [role/ROLE-CONTRACT.md](role/ROLE-CONTRACT.md) - 角色契约
 6. [runtime/OPERATING-RULES.md](runtime/OPERATING-RULES.md) - 运行母规则
-7. [runtime/PRE-FLIGHT-SEQUENCE.md](runtime/PRE-FLIGHT-SEQUENCE.md) - 前置检查序列
-8. [runtime/TERM-MAP.md](runtime/TERM-MAP.md) - 术语消歧入口
-9. [assurance/TRUTH-CONTRACT.md](assurance/TRUTH-CONTRACT.md) - 真实性合同
-10. [runtime/EXTERNAL-CALL-PROTOCOL.md](runtime/EXTERNAL-CALL-PROTOCOL.md) - 外部调用协议
-11. [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
-12. [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
-13. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
+7. [runtime/CONTEXT-BUDGET.md](runtime/CONTEXT-BUDGET.md) - runtime budget interface for compute footprint, tool calls, time, and human review attention; not an economic model
+8. [runtime/PRE-FLIGHT-SEQUENCE.md](runtime/PRE-FLIGHT-SEQUENCE.md) - 前置检查序列
+9. [runtime/TERM-MAP.md](runtime/TERM-MAP.md) - 术语消歧入口
+10. [assurance/TRUTH-CONTRACT.md](assurance/TRUTH-CONTRACT.md) - 真实性合同
+11. [runtime/EXTERNAL-CALL-PROTOCOL.md](runtime/EXTERNAL-CALL-PROTOCOL.md) - 外部调用协议
+12. [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
+13. [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
+14. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
 
 ---
 
