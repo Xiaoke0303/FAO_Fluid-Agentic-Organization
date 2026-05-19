@@ -134,7 +134,7 @@ It acknowledges:
 
 This note is triggered in part by the Human Attention and Regulation section of:
 
-> `notes/external-research/palantir-ontology-aip-as-definition-domain-engineering.md`
+> `whitepaper/references/palantir-ontology-aip-as-definition-domain-engineering.md`
 
 Palantir's sidecar reminds FAO:
 

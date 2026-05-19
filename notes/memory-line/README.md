@@ -297,10 +297,10 @@ Session 内是推理发生的现场，包含：
 
 ## 落盘建议
 
-**首选路径**：`notes/memory-line.md`
+**首选路径**：`notes/memory-line/`
 
 理由：
-- 与 `notes/cost-line.md` 对称，形成 FAO 框架的两条 working note 线
+- 与 `notes/cost-line/` 对称，形成 FAO 框架的两条 working note 线
 - 不写入 `framework/` 目录，避免在精修完成前污染框架骨架
 - 作为 sidecar note，承担"坐标系整理"功能，待精修完成后再决定是否升格为框架文件
 

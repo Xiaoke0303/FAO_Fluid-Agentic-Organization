@@ -1,5 +1,7 @@
 # 成本主线工作笔记（草案）
 
+> Status: cost-line sidecar. Not whitepaper main text. Not framework content unless explicitly absorbed later.
+
 ---
 
 ## 文档定位

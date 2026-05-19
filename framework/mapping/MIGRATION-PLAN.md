@@ -113,7 +113,7 @@
 | `toolkit/governance/templates/identity-cloud-node.md` | `framework/role/ROLE-CONTRACT.md` + `AGENTS.md` | 拆分迁移 | **partially superseded**；角色边界已承接，"Cloud Node"身份定位无一对一承接 |
 | `toolkit/governance/templates/user.md` | `USER.md`（bootstrap 层） | 映射承接 | **partially superseded / legacy retained**；定位不等价，保留为历史模板 |
 | `toolkit/governance/schemas/` | `framework/continuity/schemas/` | 映射承接 | `correction_record` 已迁移；其余 schema 保留为 legacy |
-| `notes/cost-line.md` | 待定（`CONTEXT-BUDGET.md` 或独立 `COST-PLANE.md`） | 后续整合 | 已记录，待融入框架 |
+| `notes/cost-line/` | 待定（`CONTEXT-BUDGET.md` 或独立 `COST-PLANE.md`） | 后续整合 | 已记录，待融入框架 |
 
 ---
 
@@ -197,7 +197,7 @@ toolkit/ 当前状态：
 - ~~方案 A / B~~ → 已执行混合方案
 - `OPERATING-RULES.md`：已对齐术语（模型推理资源 / 工具调用 / 人类审阅注意力），并补回查指向
 - 新建 `framework/runtime/CONTEXT-BUDGET.md`：承接运行时成本量化接口（预算对象、预算入口、默认动作、四方向接口映射）
-- `notes/cost-line.md` 继续作为输入素材，不直接升为主框架文件
+- `notes/cost-line/` 继续作为输入素材，不直接升为主框架文件
 - 组织级成本（岗位重组、生态位竞争、治理可持续性）仍留在白皮书论述，不写进 framework runtime
 
 **成本线最小闭环已形成**：
