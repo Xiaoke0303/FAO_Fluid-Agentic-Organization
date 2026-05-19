@@ -38,5 +38,5 @@ FAO（Fluid Agentic Organization，流态代理组织）是一种在人类主体
 - [cases/](cases/) —— 支撑材料与案例
   - [cases/legal/](cases/legal/)：法律案例、劳动争议、责任边界与合规观察。
   - [cases/observations/](cases/observations/)：非法律性质的组织观察样本，提供外部信号，不构成结构证明。
-- [references/](references/) —— 引用卡：概念邻近、外部理论参考、论文与项目材料；不放长篇原文。
+- [references/](references/) —— 白皮书外部参考材料：含结构化引用卡与较长外部研究笔记，用于比较、校准和未来吸收判断；不等于白皮书正文已吸收，也不是 FAO 证明。
 
