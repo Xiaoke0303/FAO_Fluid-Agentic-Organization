@@ -1,10 +1,14 @@
 # FAO (Fluid Agentic Organization)
 
-**任务可以流动，但责任未必能流动。**
+> **任务可以流动，但责任未必能流动。**
+>
+> **FAO 回答的是"谁负责"，不是"怎么跑"。**
 
-FAO（Fluid Agentic Organization，流态代理组织）关注人类主体与智能体主体共存时，任务如何在不同主体之间流转，以及这种流转对责任边界、真实性与治理结构提出的要求。
+FAO 是一套用于分析人类与智能体共同工作时，任务、判断、责任与成本如何分配的组织治理语言。它关注：当任务可以由智能体执行、判断可以由智能体生成、但责任仍要由组织承担时，组织应如何重新定义边界。
 
-FAO 不是又一个 agent 编排框架、业务自动化方案或某个 runtime 的配置模板。它不追求让 agent 跑得更快，而是追问：当任务流动时，责任如何保持可追溯，真实性如何保持可验证，边界如何不被模糊的"协作"掩盖。
+它不是又一个 agent 编排框架、业务自动化方案或某个 runtime 的配置模板。它不追求让 agent 跑得更快，而是追问：当任务流动时，责任如何保持可追溯，真实性如何保持可验证，边界如何不被模糊的"协作"掩盖。
+
+Here, "agentic" refers to the organizational condition created by intelligent agents, not to an agent orchestration stack.
 
 > **当前阶段**：FAO 是一个正在演化中的组织框架（evolving framework / working hypothesis）。它不是最终理论，也不是已成熟落地的商业产品。当前核心主张已初步成型，细节、案例、量化与跨 runtime 验证仍在持续补充。
 
