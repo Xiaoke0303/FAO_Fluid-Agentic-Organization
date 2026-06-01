@@ -2,6 +2,10 @@
 
 > 工作节点的最小结构定义，不与特定实现绑定。
 
+> 边界先于流动。
+>
+> 在讨论多节点如何协作之前，必须先让每个节点自身成为可治理的责任接口。没有 Constitution、Role Contract、Truth Contract、Correction Writeback 和 Heartbeat 的节点，即使被编排起来，也不是可靠的协作主体。本文件不是多 agent 编排方案，而是定义可治理工作节点的最小结构。
+
 ---
 
 ## 文档定位
