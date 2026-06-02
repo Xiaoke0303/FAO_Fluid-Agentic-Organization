@@ -48,6 +48,18 @@
 
 ---
 
+### Tool Call Relevance Check / 单次工具调用回查
+
+任何工具调用前，必须回查：
+
+1. **Target existence / 目标存在性** — 对 read / edit / move / delete 等文件操作，必须确认目标路径真实存在、来源可靠、权限足够。若不确定，先 list / verify，不得猜路径继续 edit。
+2. **Task relevance / 任务相关性** — 本次调用必须直接服务当前任务目标。不得因"能调用""顺手推进"或"为完整感"而调用无关工具。
+3. **Write-action confirmation / 写入动作确认** — 对 write / delete / commit / push / send 等有副作用动作，必须确认：在用户授权范围内；已声明副作用；如可能，已说明可回滚性或不可回滚性。
+
+> Before each tool call, the agent must be able to state why this tool, this target, and this action are necessary for the current task.
+
+---
+
 ## Post-Call Declaration
 
 外部调用后必须声明：
@@ -135,3 +147,5 @@
 本文件迁移并替代 `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md` 的当前运行时用途。
 
 toolkit 原文件保留为 legacy source，不再作为当前 runtime 入口。
+
+> Add tool-call lifecycle guard for relevance check, target existence check, repeated failure pause, and tool-mode drift.

@@ -72,7 +72,20 @@
 
 ---
 
-## Truth-State Requirements
+### Repeated Failure Rule / 连续失败暂停规则
+
+同一工具或同一目标连续失败 2 次后，禁止第 3 次盲目重试。
+
+必须执行：
+1. 将该失败标记为 `repeated_failure` 类型；
+2. 执行最小排查：路径是否存在、大小写是否正确、权限是否足够、是否有替代入口、是否目标本身不在授权范围内；
+3. 排查后仍失败 → 暂停并升级，不得继续硬冲。
+
+例外：若每次失败原因明显不同，且人类明确授权继续，可标记 `human_override` 后继续。
+
+> Two consecutive failures of the same tool class or target require pause, not another blind retry.
+
+---
 
 参照 [`framework/assurance/TRUTH-CONTRACT.md`](../../assurance/TRUTH-CONTRACT.md)。
 
@@ -147,3 +160,5 @@
 本文件迁移并替代 `toolkit/governance/FAILURE-REPORT-CHECKLIST.md` 的当前运行时用途。
 
 toolkit 原文件保留为 legacy source，不再作为当前 runtime 入口。
+
+> Add tool-call lifecycle guard for relevance check, target existence check, repeated failure pause, and tool-mode drift.
