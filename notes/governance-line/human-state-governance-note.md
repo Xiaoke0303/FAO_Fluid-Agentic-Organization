@@ -175,6 +175,30 @@ Draft formulations for future FAO writing:
 
 ---
 
+## 10. Context Assumption Drift / 上下文假设漂移
+
+**Definition**
+
+Context Assumption Drift refers to the failure mode where a model or agent fills missing present context with narrative priors, and then treats the inferred context as if it were factual.
+
+中文：上下文假设漂移，是指模型或智能体在当前上下文不足时，用叙事惯性补全现实状态，并把推断当成事实使用。
+
+**Relation to Temporal Anchoring**
+
+Temporal errors such as saying "tonight" when the current time is afternoon are only one manifestation. The broader issue is not retrieving the wrong past, but inventing the missing present.
+
+> Context anchoring is not only about retrieving the right past;
+> it is also about not inventing the missing present.
+
+中文：上下文锚定不只是找回正确的过去，
+也包括不虚构缺失的现在。
+
+**Scope Boundary**
+
+This is a candidate failure mode. Do not convert it into a new framework module yet. Do not modify whitepaper/. Do not modify framework/. Do not add new protocol files. Do not commit. Do not push.
+
+---
+
 *Generated: 2026-05-15*
 *Status: governance-line sidecar draft*
 *Not whitepaper content. Do not cite without further review.*
