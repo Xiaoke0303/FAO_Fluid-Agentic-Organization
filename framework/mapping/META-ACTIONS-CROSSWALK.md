@@ -1,5 +1,8 @@
 # FAO 元动作跨运行时对照表
 
+> **Truth-State**: mapping document only. no framework patch.  
+> **Scope**: 元动作对照 → 参见横向比较：`CROSS-RUNTIME-ADAPTER-MAP.md` / `RUNTIME-BACK-PRESSURE-REVIEW.md`
+
 > FAO 元动作与主流 agent/runtime 注入入口的 crosswalk。
 
 ---

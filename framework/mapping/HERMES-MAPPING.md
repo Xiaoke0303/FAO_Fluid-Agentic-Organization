@@ -1,5 +1,8 @@
 # Hermes Mapping
 
+> **Truth-State**: mapping document only. no framework patch. no external re-check.  
+> **Scope**: 单体映射 → 参见横向比较：`CROSS-RUNTIME-ADAPTER-MAP.md` / `RUNTIME-BACK-PRESSURE-REVIEW.md`
+
 > Hermes Agent 作为 FAO 框架运行时路由样本的映射参考。
 
 ---

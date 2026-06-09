@@ -1,5 +1,8 @@
 # OpenClaw 映射文档
 
+> **Truth-State**: mapping document only. no framework patch. no external re-check.  
+> **Scope**: 单体映射 → 参见横向比较：`CROSS-RUNTIME-ADAPTER-MAP.md` / `RUNTIME-BACK-PRESSURE-REVIEW.md`
+
 > 通用工作节点框架 → OpenClaw 当前公开结构的映射参考。
 
 ---
