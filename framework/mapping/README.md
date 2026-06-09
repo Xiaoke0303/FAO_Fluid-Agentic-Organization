@@ -22,6 +22,7 @@
 |------|------|------|
 | `OPENCLAW-MAPPING.md` | 单体映射 | OpenClaw 本地开放运行体映射 |
 | `HERMES-MAPPING.md` | 单体映射 | Hermes 技能记忆闭环运行体映射 |
+| `CODEX-MAPPING.md` | 单体映射 | Codex / Claude Code 专业编程智能体映射 |
 | `META-ACTIONS-CROSSWALK.md` | 元动作对照 | FAO 元动作与 harness 部件 crosswalk |
 | `MIGRATION-PLAN.md` | 迁移计划 | framework v1 骨架接管旧分类法的映射方案 |
 | `CROSS-RUNTIME-ADAPTER-MAP.md` | 横向比较 | OpenClaw / Hermes / Codex 三类运行体横向对比 |
