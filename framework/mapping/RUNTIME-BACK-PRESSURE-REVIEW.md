@@ -73,6 +73,11 @@
 
 如需更新，在 framework/mapping/ 内完成，不回合并 framework/core/ 或 framework/runtime/。
 
+
+## Hermes Local Test Note (2026-06-12)
+
+- Hermes local L4 AGENTS.md test supports the retained capability concern: Hermes refused delegation, memory persistence, and skill creation under project-scoped constraints. Memory / skill refusal boundaries are practical governance surfaces. **Do not convert this into a framework patch yet.**
+
 ---
 
-*版本：v1.0 | 基于 2026-06-09 验证结果*
+*版本：v1.0 | 基于 2026-06-09 验证结果 | 追加：2026-06-12*
