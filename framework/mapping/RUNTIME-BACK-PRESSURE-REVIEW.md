@@ -33,7 +33,24 @@
 | professional workspace responsibility | partially covered | 已有 EXTERNAL-CALL-PROTOCOL 副作用边界，但无显式命名 |
 | local body / remote host / permission boundary | partially covered | 已有目标存在性检查，但无 body boundary 概念 |
 
----
+### Cross-Runtime Execution Validation Gap
+
+> 来源：歸藏《万字长文：做了些爆款 Skills 以后，我对 Skills 的看法》（2026-06-14），外部观察材料，未验证为框架依据。
+
+Skill 实践中的外部观察：同一个 Skill 在一个模型或 Agent harness 下能正常工作，在另一个下可能失败——因为路由解释、版式约束、脚本调用、文件访问或工具调用行为在不同 runtime 之间存在差异。
+
+FAO mapping 存在同样的压力点。runtime 映射不能仅仅因为文档内部自洽就视为已验证。应仅在映射规则已在目标 runtime 环境中实际执行并复核后，才标记为执行验证通过。
+
+建议最小状态词汇：
+
+- **documented**：映射存在，但未执行验证
+- **partially exercised**：存在有限的本地测试，但覆盖不完整
+- **execution-verified**：代表性任务已在目标 runtime 中运行且结果已复核
+- **evidence pending**：声称存在兼容性，但尚未附上运行日志或收口记录
+
+治理含义：跨 runtime 兼容性应被视为验证对象，而非写作风格。Cross-Runtime Adapter Map 和 Runtime Back-Pressure Review 应区分「已文档化的兼容性」和「已执行的兼容性」。
+
+各 runtime 的当前证据状态应单独追踪，不做统一结论。
 
 ### Thin Harness, Fat Skills as Runtime Pressure Relief
 
