@@ -35,7 +35,24 @@
 
 ---
 
-## Do Not Move Back Into Framework
+### Thin Harness, Fat Skills as Runtime Pressure Relief
+
+> 来源：歸藏《万字长文：做了些爆款 Skills 以后，我对 Skills 的看法》（2026-06-14），外部观察材料，未验证为框架依据。
+
+歸藏提出一个 Skill 架构原则：harness 保持薄，只负责模型循环、文件读写、权限、安全边界和上下文管理；Skill 承载流程、领域知识、模板、scripts、eval、gotchas 和失败经验。这被概括为 **Thin Harness, Fat Skills**。
+
+从 runtime 压力角度，这一结构的价值是：
+
+- **降低 harness 复杂度**：harness 不膨胀为「大而全 Agent」，避免 context rot 和无限累积的治理负担
+- **隔离能力迭代**：Skill 的更新不触及 harness 核心，降低了能力迭代的回滚风险
+- **可分发、可审查、可替换**：Skill 作为独立单元，可被审计、被替换、被弃用，而不影响 harness 稳定性
+- **失败局部化**：单个 Skill 的失败（gotchas 失效、eval 漏过）可以被定位到该 Skill，而非扩散到整个 harness
+
+**与 FAO 的映射**：这对应「收窄」元动作在 runtime 层的具体实现。harness 保持薄 = 收窄后的通用角色；Skill 保持厚 = 专业能力的边界封装。能力可以被分发，但 harness 本身不承载能力分发后的责任追踪。
+
+**但有一个 governance 张力**：当 Skill 被分发到多个 harness 时，谁来维护 Skill 的 gotchas 和 eval？歸藏的建议是——人定义品味和边界，Agent 负责收集证据、提出改动、补充 eval 和维护长尾经验。这与 FAO 的「人保留判断，Agent 辅助验证」一致，但尚缺 case line 验证。
+
+**当前状态**：作为 framework 缺口观察记录，不进入主干。待至少 1 个 case line 吸收后，再评估是否进入 runtime 母规则。
 
 以下产品细节**不应**进入 framework 主干：
 
