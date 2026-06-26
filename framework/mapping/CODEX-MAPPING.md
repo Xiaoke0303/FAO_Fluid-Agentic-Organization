@@ -35,8 +35,8 @@ Codex 暴露的核心 governance 问题不是"代码写得好不好"，而是：
 | file edit | 运行时动作 / runtime action | 文件编辑是否等于"已批准"？ | diff 审查不等于治理批准 |
 | terminal / command execution | 副作用动作 / side-effect action | 命令执行是否有事前检查？ | 终端命令可能绕过 diff 纪律 |
 | git diff / staged changes | 审查面 / review surface | 谁审查、审查什么标准？ | 只审代码差异，不审治理意图 |
-| commit | 承诺动作 / commitment action | commit 是否构成对外承诺？ | 本地 commit 已改变仓库状态，是潜在承诺 |
-| push / PR | 发布动作 / external commitment | push 是否等于组织发布？ | 无显式 human checkpoint 前，push 是自动发布 |
+| commit | 本地承诺动作 / local commitment | commit 是否构成对外承诺？ | 本地 commit 已改变仓库状态，是潜在承诺；但 commit 授权 ≠ push 授权 |
+| push / PR | 发布动作 / external commitment | push 是否等于组织发布？ | 无显式 human checkpoint 前，push 是自动发布；push 应触发 External Write Gate |
 | issue / external collaboration | 外部协作面 / external surface | 对外评论、issue 创建是否代表组织发言？ | 无签名责任机制 |
 | instructions / AGENTS.md | 本地治理面 / local governance surface | 规则由谁写入、谁更新？ | 规则可保留，但责任不自动保留 |
 | memory / project context | 工作上下文 / working context | 项目记忆如何被注入、如何被标注 truth-state？ | 注入 vs recall 未区分 |
@@ -47,11 +47,16 @@ Codex 暴露的核心 governance 问题不是"代码写得好不好"，而是：
 
 | 动作 | 治理含义 | FAO 翻译 |
 |---|---|---|
-| **git commit** | 将修改写入仓库历史 | 每一次 commit 都是潜在的外部承诺，即使未 push |
-| **git push** | 将修改发布到远程仓库 | push 是发布动作，不是草稿；runtime 应区分 commit 与 push 的治理级别 |
+| **git diff** | 审查本地修改差异 | review surface；尚未构成承诺或发布 |
+| **git commit** | 将修改写入本地仓库历史 | local commitment；每一次 commit 都是潜在的外部承诺，即使未 push；commit 授权 ≠ push 授权 |
+| **git push** | 将修改发布到远程仓库 | external commitment / publication surface；push 是发布动作，不是草稿；应触发 External Write Gate；conditional push requires all stated conditions to be checked immediately before execution |
 | **code edit** | 修改 workspace 文件 | 编辑已改变本地状态，是 retained capability 的实例 |
 | **terminal command** | 执行 shell 命令 | 命令可能绕过 diff 审查，是 side-effect 高风险动作 |
 | **instructions (AGENTS.md)** | 定义行为规则 | 规则是本地治理面，但规则本身不能替代责任锚定 |
+
+> **Side-Effect Gradient**: diff / commit / push 是有助于理解副作用边界的动作梯度，但不是 conformance level 本身。不要把 diff=commit=push 直接映射成 L1/L2/L3。
+
+> **Codex push gate status**: Codex 是否强制 gate push → [unverified]，除非 repo 中已有证据。
 
 ---
 
@@ -87,6 +92,10 @@ Codex 暴露的核心 governance 问题不是"代码写得好不好"，而是：
 - 不修改 framework 主干。
 - 不修改 whitepaper。
 - 不新增 governance 模块。
+
+**Codex Runtime Conformance**: L0 Documented [verified]；L1–L5 [unverified]（无 runtime-specific 探针/负向测试证据）。
+
+**Codex External Write Gate**: diff/commit/push 副作用梯度已映射，但 Codex 是否强制 gate push → [unverified]。
 
 ---
 

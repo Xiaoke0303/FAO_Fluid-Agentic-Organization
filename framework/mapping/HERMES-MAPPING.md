@@ -62,6 +62,9 @@ FAO 需要明确区分两种路由：
 ### execution / boundary
 - Hermes 的 tool system、execution backends（local / Docker / SSH / Modal / Daytona）、以及 safety 层，对应的是执行边界。
 - 这些组件把"在哪里执行、以什么隔离级别执行、执行前要经过哪些安全检查"变成了结构问题。
+- **scheduler / gateway 触发任务时，可能产生 external write**（如自动部署、消息发送、API 调用）。
+- **safety scan ≠ external write authorization gate**：安全检查扫描的是代码/配置风险，不自动检查"是否有人类授权此次外部写入"。
+- **六后端扩张时，external write threat surface 同步扩张**：local → Docker → SSH → Modal → Daytona，每一步边界扩张都伴随潜在的副作用面扩张。
 - **启发**：边界不只是伦理边界或规则边界，也必须是执行架构中的硬边界。
 
 ---
@@ -95,6 +98,10 @@ FAO 需要明确区分两种路由：
 ## 6. 结论
 
 Hermes 值得作为 agent runtime 分层样本保留，但它不能替代 FAO 对组织路由、责任锚定与边界治理的讨论。runtime 的成熟只会让这些讨论变得更紧迫，而不是更不重要。
+
+**Hermes Runtime Conformance**: L0 Documented [verified]；L1–L5 [unverified]（无 runtime-specific 探针/负向测试证据）。
+
+**Hermes External Write Gate**: safety scan 存在，但 external write authorization gate 的 L2/L4 状态 [unverified]。
 
 ---
 

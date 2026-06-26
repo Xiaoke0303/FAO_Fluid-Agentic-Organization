@@ -1,6 +1,10 @@
 # FAO Cross-Runtime Adapter Map
 
 > **Truth-State**: analysis only. based on OpenClaw, Hermes, Codex / Claude Code public documentation. no external re-check performed unless explicitly stated. no framework patch implied.
+>
+> **Runtime Conformance**: This mapping does not claim any runtime has achieved L1–L5. L0 (Documented) is [verified] for all three; L1–L5 are [unverified] unless runtime-specific evidence is stated.
+>
+> **Runtime Conformance**: This mapping does not claim any runtime has achieved L1–L5. L0 (Documented) is [verified] for all three; L1–L5 are [unverified] unless runtime-specific evidence is stated.
 
 ---
 
@@ -48,6 +52,16 @@
 | Hermes | 技能自创建 + 记忆持久化 | 长期记忆 / 会话搜索 / 程序化记忆（三层） | 六后端（本地到远程） | 内置 scheduler + 安全扫描 | 技能-记忆闭环 runtime | 能力自动保留，责任不自动保留；远程执行后端扩大边界 |
 | Codex / Claude Code | 代码生成 + 本地 workspace 操作 | workspace 配置 + 会话上下文 + 文件系统状态 | 本地 IDE / 终端 | 交互式，无原生无人值守 | 专业编程智能体 | 本地 diff 纪律强，但对外 push / PR 无显式责任边界 |
 
+### Runtime Conformance Status
+
+| runtime | L0 Documented | L1 Loaded | L2 Gated | L3 Latched | L4 Verified | L5 Auditable |
+|---------|---------------|-----------|----------|------------|-------------|--------------|
+| OpenClaw | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
+| Hermes | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
+| Codex | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
+
+> L0 = framework files exist and are readable. L1–L5 = not yet evidenced by runtime-specific probe or negative test. Mapping layer does not claim conformance achievement.
+
 ---
 
 ## Shared Governance Pressure Points
@@ -57,6 +71,7 @@
 | **retained capability / skill retention** | 技能或配置在会话间保留，但责任边界不保留 | 能力可以保留，责任不能自动保留 |
 | **unattended execution / cron** | 调度器自动触发任务，人类不在场 | 无人值守执行必须分级，高风险动作必须有 human checkpoint |
 | **external commitment surface** | 消息发送、git commit / push、PR 创建、外部 API 写入 | 每一次外部输出都是潜在承诺，runtime 不区分草稿与发布 |
+| **external write authorization** | commit 授权被误认为包含 push 授权；本地写入被误认为等于远端发布授权 | commit ≠ push；local write ≠ remote write；conditional authorization must be checked immediately before execution |
 | **memory injection vs recall** | 系统注入的上下文被当作记忆，而非重新上下文化 | 注入是 re-contextualization，不是 retrieval；必须标注 truth-state |
 | **local body / remote host / workspace boundary** | 执行环境从本地扩展到远程 Docker / SSH / Modal / Daytona | 身体边界决定威胁面；边界扩张必须伴随 governance 扩张 |
 | **subagent delegation and verification** | 子代理或并行工作流执行后，父节点负责验证 | 父节点始终承担验证责任；verification 机制往往 underspecified |
@@ -77,6 +92,8 @@
 本文不修改 framework。不修改 whitepaper。不新增理论。
 
 如需更新，应在 framework/mapping/ 内完成，不合并回 framework/core/ 或 framework/runtime/。
+
+本文只做 runtime conformance translation。未经探针/负向测试验证，不得把 mapping 断言回流为 framework 结论。
 
 ---
 

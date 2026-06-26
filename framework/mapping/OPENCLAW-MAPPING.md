@@ -84,7 +84,7 @@
 | `TOOLS-SKILLS.md` | 工具入口 | `TOOLS.md` | 是 | 一对一对应 |
 | `CONTEXT-BUDGET.md` | 控本 | 当前无原生一对一文件 | 否 | OpenClaw 有 bootstrap 预算限制，但缺显式工作规则文件 |
 | `TRUTH-CONTRACT.md` | 求真 | 当前无原生同名 bootstrap 文件 | 否 | 应由通用框架/工具包承接，不伪装成 OpenClaw 原生文件 |
-| `EXTERNAL-CALL-PROTOCOL.md` | 验证 | 当前无原生同名文件 | 否 | 外部调用协议应由工具包承接 |
+| `EXTERNAL-CALL-PROTOCOL.md` | 验证 | `exec` 工具（可执行 git push 等） | 否 | 外部调用协议由工具包承接；exec 工具可承载外部写入，需触发 External Write Gate；OpenClaw 原生是否具备 push gate → [unverified] |
 | `FAILURE-PROTOCOL.md` | 失败暴露 | 当前无原生同名文件 | 否 | 失败协议应由工具包承接 |
 | `ENVIRONMENT-PRECONDITIONS.md` | 环境切分 | 当前缺口 | 否 | 环境前提检查缺失 |
 | `HEARTBEAT.md` | 代谢 | `HEARTBEAT.md` | 是 | 一对一对应 |
@@ -101,6 +101,8 @@
 - `CONTEXT-BUDGET.md`：虽有 bootstrap 预算限制，但缺显式工作规则文件
 - `TERM-MAP.md`：术语映射表缺失，消歧动作无原生承接
 - `ENVIRONMENT-PRECONDITIONS.md`：环境前提检查缺失，难以区分节点失败与环境失败
+- `EXTERNAL-CALL-PROTOCOL.md`：exec 工具可执行 git push 等外部写入，但 OpenClaw 是否原生触发 External Write Gate → [unverified]
+- **framework rule loaded ≠ exec behavior gated**：规则文件被注入不等于 exec 调用前自动执行门禁；需要 runtime-specific probe 才能标 L2/L4
 
 ---
 
@@ -109,6 +111,8 @@
 1. 本文只映射当前公开可确认的 OpenClaw 文件与默认规则
 2. hook 能扩展 bootstrap context，但不改变默认文件集合的公开定义
 3. 通用框架中的若干接口目前在 OpenClaw 中无原生一对一承接，这正是本框架的增量价值
+4. **OpenClaw Runtime Conformance**: L0 Documented [verified]；L1–L5 [unverified]（无 runtime-specific 探针/负向测试证据）
+5. **OpenClaw External Write Gate**: exec 工具可执行 git push，但 OpenClaw 是否原生具备 push gate / human checkpoint → [unverified]
 
 ---
 
