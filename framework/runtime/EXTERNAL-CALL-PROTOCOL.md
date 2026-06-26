@@ -60,6 +60,29 @@
 
 ---
 
+## Tool Schema Gate / 工具模式门禁
+
+工具存在不等于可调用。调用前必须通过 schema 验证门禁。
+
+### 调用前必须验证
+
+1. **Exact function name** — 工具名称与当前 schema 中定义的名称完全一致；不得基于记忆或旧经验推断名称。
+2. **Required fields** — 所有必填参数已确认存在且已赋值；不得遗漏 required 字段。
+3. **Parameter nesting** — 参数结构（嵌套层级、对象/数组类型）与 schema 一致；不得假设参数扁平化或可自动转换。
+4. **Action or subcommand support** — 对于支持多 action 的工具（如 `feishu_im_user_message` 的 `action: "send"`），确认当前 action 被 schema 支持。
+5. **Schema recency** — 当前激活的 schema 是否与历史记忆或过往示例一致；如不一致，以当前激活 schema 为准，不得盲试。
+
+### 门禁规则
+
+- 若 schema 无法验证，**调用必须停止**，不得盲试。
+- 若 required field 缺失，**调用必须停止**，不得用默认值或空值填充后盲试。
+- 若参数嵌套结构不明，**调用必须停止**，不得假设结构后盲试。
+- 若 action 不被当前 schema 支持，**调用必须停止**。
+
+> Schema 不明时停止，不是建议，是门禁。
+
+---
+
 ## Post-Call Declaration
 
 外部调用后必须声明：
