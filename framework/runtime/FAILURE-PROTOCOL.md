@@ -144,6 +144,8 @@
 | 时机 | 失败后立即 | 失败后决定是否继续 |
 | 结果 | 信息透明 | 行为受限 |
 
+- 当 side-effect action 的前提条件未满足时，agent 必须停止并报告 `[blocked]`；不得继续执行到 side-effect 步骤。
+
 ---
 
 ## Writeback Boundary

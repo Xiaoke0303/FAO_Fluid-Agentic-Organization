@@ -126,6 +126,13 @@ Done = file written + runtime loaded + behavior verified
 | reload requirement | 文件更新后是否需要重启/ reload |
 | last verified | 上次验证时间 |
 
+### 7.1 External Write Authorization
+
+- external write（push、deploy、POST、send 等）**需要单独授权**，与本地 commit / 文件写入授权分离
+- conditional authorization（条件性授权）要求**所有声明条件在执行前立即验证**
+- 任一条件不满足或不可验证，action 必须 [blocked]
+- file written / committed / verified locally **不等于** remote publication 授权
+
 ---
 
 ## 8. Relationship to Existing Runtime Protocols

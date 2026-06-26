@@ -145,6 +145,38 @@
 
 ---
 
+## External Write Gate / 外部写入门禁
+
+外部写入不是内部状态的延伸。以下等式不成立：
+
+- commit 授权 ≠ push 授权
+- 本地文件修改 ≠ 远端更新授权
+- 条件性 push 授权 ≠ 无条件 push 执行
+
+### 门禁规则
+
+执行任何外部写入前必须声明：
+
+| 声明项 | 内容 |
+|--------|------|
+| action | 具体要执行什么（push / deploy / POST / send） |
+| target | 目标 remote / URL / 接收方 |
+| expected side effect | 远端状态将被如何改变 |
+| human authorization source | 哪一条用户指令明确授权了此次外部写入 |
+| blocking condition | 哪些条件必须满足才能执行；任一条件不满足则 [blocked] |
+
+### 必须 [blocked] 的情况
+
+- commit 授权已给出，但 push 授权未单独给出
+- 条件性授权的条件未满足或无法验证
+- 本地修改已完成，但远端发布未获明确授权
+- 同一类外部写入已连续失败 2 次
+- schema 未验证时尝试外部写入
+
+> 外部写入前必须声明授权来源和阻断条件。条件不满足时，执行 [blocked]，不得继续。
+
+---
+
 ## Failure Handling
 
 如果外部调用失败、超时、权限不足、结果为空、证据不足，应转入：
