@@ -390,17 +390,17 @@
 
 ## 附录：通用文件名速查
 
-| 文件名 | 所属模块 | 作用 |
-|--------|----------|------|
-| `CONSTITUTION.md` | Constitution | 核心约束与方向 |
-| `IDENTITY.md` | Role | 节点本体身份 |
-| `USER.md` | Role | 协作者信息 |
-| `ROLE-CONTRACT.md` | Role | 当前任务契约 |
-| `MEMORY-INDEX.md` | Continuity | 记忆主索引 |
-| `judgment-cards/` | Continuity | 判断模板目录 |
-| `CORRECTION-WRITEBACK.md` | Continuity | 修正写回记录 |
-| `TERM-MAP.md` | Runtime | 术语映射 |
-| `OPERATING-RULES.md` | Runtime | 操作规则 |
+| 文件名 | 所属模块 | 作用 | 状态 |
+|--------|----------|------|------|
+| `CONSTITUTION.md` | Constitution | 核心约束与方向 | |
+| `IDENTITY.md` | Role | 节点本体身份 | |
+| `USER.md` | Role | 协作者信息 | |
+| `ROLE-CONTRACT.md` | Role | 当前任务契约 | |
+| `MEMORY-INDEX.md` | Continuity | 记忆主索引 | |
+| `judgment-cards/` | Continuity | 判断模板目录 | |
+| `CORRECTION-WRITEBACK.md` | Continuity | 修正写回记录 | |
+| `TERM-MAP.md` | Runtime | 术语映射 | |
+| `OPERATING-RULES.md` | Runtime | 操作规则 | |
 | `STATE.md` | Runtime | 运行状态 | placeholder / not instantiated |
 | `PRE-FLIGHT-SEQUENCE.md` | Runtime | 前置检查序列 | |
 | `TOOLS-SKILLS.md` | Runtime | 工具技能注册表 | placeholder / not instantiated |
@@ -408,10 +408,10 @@
 | `TRUTH-CONTRACT.md` | Assurance | 真实性协议 | |
 | `EXTERNAL-CALL-PROTOCOL.md` | Assurance | 外部调用协议 | |
 | `FAILURE-PROTOCOL.md` | Assurance | 失败报告协议 | |
-| `RETROSPECTIVE-PROTOCOL.md` | Assurance | 回溯协议 | |
-| `RUNTIME-CONFORMANCE-PROTOCOL.md` | Assurance | 运行时一致性协议 | |
+| `RETROSPECTIVE-PROTOCOL.md` | Runtime | 回溯协议 | |
+| `RUNTIME-CONFORMANCE-PROTOCOL.md` | Runtime | 运行时一致性协议 | |
 | `ENVIRONMENT-PRECONDITIONS.md` | Rhythm | 环境前置条件 | enhancement layer / not yet written |
-| `HEARTBEAT.md` | Rhythm | 节律任务 | |
+| `HEARTBEAT.md` | Rhythm | 时间组织原则 | |
 
 ---
 

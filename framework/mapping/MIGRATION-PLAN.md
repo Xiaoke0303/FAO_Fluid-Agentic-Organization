@@ -7,6 +7,8 @@
 
 ## 文档定位
 
+> This file is a historical migration ledger, not the current framework index. For current structure, see [framework/README.md](../README.md); for mapping boundary, see [framework/mapping/README.md](README.md).
+
 - `framework/` 已形成新的上位骨架候选
 - 本文用于说明新骨架如何逐步接管旧的 `minimal-core / governance` 分类法
 - 旧目录在迁移期内先保留，不自动作废
@@ -236,7 +238,7 @@ toolkit/ 当前状态：
 - ❌ 暂不把所有旧内容一次性改写进新框架
 - ❌ 暂不修改旧 README 和说明文案（阶段 2 已部分启动，本轮继续推进）
 - ❌ 暂不改动 `toolkit/minimal-core/`、`toolkit/governance/` 正文（阶段 3 待启动）
-- ❌ **AGENTS.md / cron 调整 / scripts 的推送已另开分支处理**（PR #25 已关闭，待独立决策是否合并）
+- ❌ **AGENTS.md / cron 调整 / scripts 的推送已另开分支处理**（PR #25 closed; historical branch only; not part of current mainline plan）
 
 ---
 

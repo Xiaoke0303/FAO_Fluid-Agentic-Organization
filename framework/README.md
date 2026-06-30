@@ -80,10 +80,7 @@ mapping/ is a horizontal alignment and translation layer.
 It is used when tracing concept mappings, legacy transitions, domain cases, runtime comparisons, or external references.
 It is not part of the core reading path.
 
-- [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射
-- [mapping/HERMES-MAPPING.md](mapping/HERMES-MAPPING.md) - Hermes 运行时路由样本映射
-- [mapping/META-ACTIONS-CROSSWALK.md](mapping/META-ACTIONS-CROSSWALK.md) - 元动作跨运行时对照表
-- [mapping/MIGRATION-PLAN.md](mapping/MIGRATION-PLAN.md) - 迁移计划
+For the full mapping file list, see the **mapping/ 迁移与映射（横向参考层）** section below.
 
 ---
 
