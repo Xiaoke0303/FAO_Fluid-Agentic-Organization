@@ -66,7 +66,7 @@
 | `AGENTS.md` (workspace) | Runtime+Assurance+Role | ✅ 已本地重写 | 按 framework v1 四线重编 |
 
 **本地新增强项（历史记录，部分已推送至 feature 分支）**：
-- `AGENTS.md`：已按 Identity/Memory/Judgment/Failure 四线 + Truth Contract + Operating Rules + Pre-flight 重编为中文运行入口（当前在 add-top5-agent-mappings 分支，PR #25 已关闭，待独立处理）
+- `AGENTS.md`：已按 Identity/Memory/Judgment/Failure 四线 + Truth Contract + Operating Rules + Pre-flight 重编为中文运行入口（当前在 add-top5-agent-mappings 分支，PR #25 已关闭，未进入主干）
 - `scripts/github_fao_patrol_stage1.py` + `scripts/openclaw_observer_stage1.py`：两段式数据获取脚本（当前在 add-top5-agent-mappings 分支）
 - `cron/jobs.json`：周期任务改为每日，外部交互任务采用两段式模式（当前在 add-top5-agent-mappings 分支）
 - `memory/zhuangzi-daily.md`：新增（已在 main 通过其他路径落实）

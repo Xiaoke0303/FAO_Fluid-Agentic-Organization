@@ -48,6 +48,12 @@
 - mapping 中的产品细节**不进入** whitepaper 正文。
 - 只有经过至少 3 个独立 runtime 验证 + 1 个 case line 吸收后，mapping 结论才考虑进入 framework 主干讨论。
 
+### 样本冻结声明
+
+Mapping layer is not an agent product catalog. Current runtime samples are frozen to three families: **OpenClaw**, **Hermes**, and **Codex / Claude Code**.
+
+Additional runtimes should not be added as standalone mappings unless they expose a governance pressure type not already represented by these three families. Observations from other runtimes may be recorded as sidecar notes, but do not enter the framework backbone as new mapping files.
+
 ---
 
 *索引文件。非理论文档。非操作手册。*
