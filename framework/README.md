@@ -103,6 +103,8 @@ It is not part of the core reading path.
 - [runtime/TERM-MAP.md](runtime/TERM-MAP.md) - 术语消歧入口
 - [runtime/EXTERNAL-CALL-PROTOCOL.md](runtime/EXTERNAL-CALL-PROTOCOL.md) - 外部调用协议
 - [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
+- [runtime/RETROSPECTIVE-PROTOCOL.md](runtime/RETROSPECTIVE-PROTOCOL.md) - 回溯协议
+- [runtime/RUNTIME-CONFORMANCE-PROTOCOL.md](runtime/RUNTIME-CONFORMANCE-PROTOCOL.md) - 运行时一致性协议
 - [runtime/CONTEXT-BUDGET.md](runtime/CONTEXT-BUDGET.md) - 上下文预算
 
 ### assurance/ 真实性保障
@@ -112,6 +114,7 @@ It is not part of the core reading path.
 - [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
 - [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
 - [continuity/judgment-cards/README.md](continuity/judgment-cards/README.md) - 判断卡片接口
+- [continuity/judgment-cards/REGISTRY.md](continuity/judgment-cards/REGISTRY.md) - 判断卡片注册表
 - [continuity/schemas/correction_record.schema.json](continuity/schemas/correction_record.schema.json) - 纠错记录 Schema
 
 ### rhythm/ 节律层

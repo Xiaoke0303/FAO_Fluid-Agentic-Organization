@@ -210,13 +210,13 @@
 
 #### 通用文件
 
-| 文件 | 作用 |
-|------|------|
-| `STATE.md` | 当前运行状态 |
-| `TERM-MAP.md` | 术语映射表 |
-| `OPERATING-RULES.md` | 当前任务的操作规则 |
-| `TOOLS-SKILLS.md` | 可用工具与技能注册表 |
-| `CONTEXT-BUDGET.md` | 上下文预算与分配策略 |
+| 文件 | 作用 | 状态 |
+|------|------|------|
+| `STATE.md` | 当前运行状态 | placeholder / not instantiated |
+| `TERM-MAP.md` | 术语映射表 | |
+| `OPERATING-RULES.md` | 当前任务的操作规则 | |
+| `TOOLS-SKILLS.md` | 可用工具与技能注册表 | placeholder / not instantiated |
+| `CONTEXT-BUDGET.md` | 上下文预算与分配策略 | |
 
 #### 最小内容
 ```markdown
@@ -306,10 +306,10 @@
 
 #### 通用文件
 
-| 文件 | 作用 |
-|------|------|
-| `HEARTBEAT.md` | 节律任务清单 |
-| `ENVIRONMENT-PRECONDITIONS.md` | 环境前置条件检查 |
+| 文件 | 作用 | 状态 |
+|------|------|------|
+| `HEARTBEAT.md` | 节律任务清单 | |
+| `ENVIRONMENT-PRECONDITIONS.md` | 环境前置条件检查 | enhancement layer / not yet written |
 
 #### 最小内容
 ```markdown
@@ -401,15 +401,17 @@
 | `CORRECTION-WRITEBACK.md` | Continuity | 修正写回记录 |
 | `TERM-MAP.md` | Runtime | 术语映射 |
 | `OPERATING-RULES.md` | Runtime | 操作规则 |
-| `STATE.md` | Runtime | 运行状态 |
-| `PRE-FLIGHT-SEQUENCE.md` | Runtime | 前置检查序列 |
-| `TOOLS-SKILLS.md` | Runtime | 工具技能注册表 |
-| `CONTEXT-BUDGET.md` | Runtime | 上下文预算 |
-| `TRUTH-CONTRACT.md` | Assurance | 真实性协议 |
-| `EXTERNAL-CALL-PROTOCOL.md` | Assurance | 外部调用协议 |
-| `FAILURE-PROTOCOL.md` | Assurance | 失败报告协议 |
-| `ENVIRONMENT-PRECONDITIONS.md` | Rhythm | 环境前置条件 |
-| `HEARTBEAT.md` | Rhythm | 节律任务 |
+| `STATE.md` | Runtime | 运行状态 | placeholder / not instantiated |
+| `PRE-FLIGHT-SEQUENCE.md` | Runtime | 前置检查序列 | |
+| `TOOLS-SKILLS.md` | Runtime | 工具技能注册表 | placeholder / not instantiated |
+| `CONTEXT-BUDGET.md` | Runtime | 上下文预算 | |
+| `TRUTH-CONTRACT.md` | Assurance | 真实性协议 | |
+| `EXTERNAL-CALL-PROTOCOL.md` | Assurance | 外部调用协议 | |
+| `FAILURE-PROTOCOL.md` | Assurance | 失败报告协议 | |
+| `RETROSPECTIVE-PROTOCOL.md` | Assurance | 回溯协议 | |
+| `RUNTIME-CONFORMANCE-PROTOCOL.md` | Assurance | 运行时一致性协议 | |
+| `ENVIRONMENT-PRECONDITIONS.md` | Rhythm | 环境前置条件 | enhancement layer / not yet written |
+| `HEARTBEAT.md` | Rhythm | 节律任务 | |
 
 ---
 
