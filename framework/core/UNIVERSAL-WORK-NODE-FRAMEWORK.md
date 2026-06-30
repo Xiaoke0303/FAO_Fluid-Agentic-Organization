@@ -308,7 +308,7 @@
 
 | 文件 | 作用 | 状态 |
 |------|------|------|
-| `HEARTBEAT.md` | 节律任务清单 | |
+| `HEARTBEAT.md` | 时间组织原则 | |
 | `ENVIRONMENT-PRECONDITIONS.md` | 环境前置条件检查 | enhancement layer / not yet written |
 
 #### 最小内容
