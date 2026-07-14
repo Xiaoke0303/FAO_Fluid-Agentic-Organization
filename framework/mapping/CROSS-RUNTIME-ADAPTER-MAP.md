@@ -34,13 +34,15 @@
 - 内置 scheduler 与 gateway 支持无人值守
 - 支持 local / Docker / SSH / Modal / Daytona 六种执行后端
 
-### Codex / Claude Code: professional coding agent / 专业编程智能体
+### Codex / Claude Code: professional workspace execution agent / 专业工作空间执行智能体
 
-- 本地 workspace 直接操作，diff-first 工作流
-- 区分 staged / unstaged / untracked，commit 前强制人工确认
-- 不执行未经 diff 审查的写入
-- 单智能体模式，无原生多智能体编排
-- 能力通过 workspace 配置保留，但责任边界由 IDE 插件隐式管理
+- 以本地 workspace 为执行核心，diff-first review discipline
+- Multiple Codex agents can run in parallel across projects or worktrees [verified]；general-purpose multi-agent orchestration and cross-runtime coordination remain [unverified]
+- 支持 interactive 与 scheduled / non-interactive workflows，取决于 mode 和 environment [verified]；availability and unattended behavior across CLI, IDE extension, cloud and other surfaces remain [unverified]
+- **client / access surface**：desktop app（现为 unified ChatGPT desktop app 中的 dedicated mode）、CLI、IDE extension、cloud、mobile steering
+- **execution environment**：local workspace、remote host、cloud sandbox
+- 能力通过 workspace 配置与技能（skills）保留，但责任边界由 IDE 插件或应用隐式管理 [inferred]
+- **命名说明**："professional workspace execution agent" 仍用于维持横向映射稳定，但 "coding" 或 "workspace" 不再穷尽 Codex 的全部能力边界；是否改名留待更多跨 runtime 验证后再讨论
 
 ---
 
@@ -50,7 +52,7 @@
 |---|---|---|---|---|---|---|
 | OpenClaw | 多通道消息网关 + 本地工具链 | 文件注入 bootstrap + 会话上下文 | 本地 VM + 插件系统 | cron + 事件触发 | 多通道 agent runtime | 无人值守执行缺乏分级；外部承诺无显式检查 |
 | Hermes | 技能自创建 + 记忆持久化 | 长期记忆 / 会话搜索 / 程序化记忆（三层） | 六后端（本地到远程） | 内置 scheduler + 安全扫描 | 技能-记忆闭环 runtime | 能力自动保留，责任不自动保留；远程执行后端扩大边界 |
-| Codex / Claude Code | 代码生成 + 本地 workspace 操作 | workspace 配置 + 会话上下文 + 文件系统状态 | 本地 IDE / 终端 | 交互式，无原生无人值守 | 专业编程智能体 | 本地 diff 纪律强，但对外 push / PR 无显式责任边界 |
+| Codex / Claude Code | 代码生成 + 本地 workspace 操作 | workspace 配置 + 会话上下文 + 文件系统状态 + 技能 + Memories [verified; availability and controls vary by surface] | 本地 IDE / 终端 + desktop app + remote host | interactive + scheduled / non-interactive workflows [verified]；availability across surfaces [unverified] | 专业工作空间执行智能体 | 本地 diff 纪律强，但对外 push / PR 无显式责任边界；multi-agent 协调责任未显式锚定 |
 
 ### Runtime Conformance Status
 
