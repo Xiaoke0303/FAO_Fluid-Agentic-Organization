@@ -15,6 +15,7 @@
 |------|------|------|
 | `conceptual-neighbors.md` | FAO 的概念邻近参考卡（思想背景、命名来源、外部理论邻近，不承担主论证功能） | unabsorbed |
 | `palantir-ontology-aip-as-definition-domain-engineering.md` | Palantir Ontology 与 AIP 的外部工程参考（本体、定义域工程、企业 AI action surfaces） | unabsorbed / external engineering reference |
+| `mukherjee-chang-fluid-agency-functional-equivalence.md` | Mukherjee & Chang, "Fluid Agency in AI Systems" (WJLTA, 2026; arXiv:2601.02633) —— fluid agency, attribution unmappability, functional equivalence proposal | unabsorbed / legal theory reference |
 
 ---
 
