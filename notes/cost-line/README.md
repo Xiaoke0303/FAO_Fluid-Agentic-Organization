@@ -1,6 +1,13 @@
 # 成本主线工作笔记（草案）
 
-> Status: cost-line sidecar. Not whitepaper main text. Not framework content unless explicitly absorbed later.
+> **Status: 孵化中（Incubating）**
+>
+> 当前作为 FAO 成本线的**唯一工作底稿**保留。
+> 用于后续白皮书第二轮整合时的来源材料。
+> 不是当前白皮书正式章节。
+> 不是 framework 内容，除非经明确吸收。
+>
+> **当前缺口**：有理论框架，无 FAO 自身测量数据。所有成本数据来自外部论文引用。
 
 ---
 

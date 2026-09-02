@@ -81,18 +81,18 @@
 
 | 元动作 | Framework v1 文件 | 旧工具集来源 | 映射方式 | 迁移说明 |
 |--------|-------------------|--------------|----------|----------|
-| 定向 | `CONSTITUTION.md` | `toolkit/minimal-core/soul.md` | 概念迁移 | ✅ `soul.md` 的价值观内容已迁移为根目录 `SOUL.md` + `AGENTS.md` 定向约束 + `framework/core/CONSTITUTION.md` |
-| 收窄 | `ROLE-CONTRACT.md` | `toolkit/governance/templates/identity-cloud-node.md` | 拆分迁移 | ✅ 角色边界已承接；"Cloud Node"身份定位无一对一承接，**partially superseded** |
-| 择记 | `MEMORY-INDEX.md` | `toolkit/minimal-core/memory.md` | 扩展迁移 | ✅ `memory.md` 的薄存储原则已迁移为 `MEMORY-INDEX.md` + `memory/` 目录 |
-| 判断 | `judgment-cards/` | `toolkit/governance/templates/`（部分） | 新建映射 | 旧模板只有零散判断提示，无显式 judgment-cards 目录；需新建 |
-| 纠错 / 写回 | `CORRECTION-WRITEBACK.md` | `toolkit/governance/FAILURE-REPORT-CHECKLIST.md` | 拆分迁移 | ✅ 失败报告行为已由 `FAILURE-PROTOCOL.md` 承接；纠错后的"写回"机制由 `CORRECTION-WRITEBACK.md` 承接 |
+| 定向 | `CONSTITUTION.md` | `archives/toolkit-legacy/minimal-core/soul.md` | 概念迁移 | ✅ `soul.md` 的价值观内容已迁移为根目录 `SOUL.md` + `AGENTS.md` 定向约束 + `framework/core/CONSTITUTION.md` |
+| 收窄 | `ROLE-CONTRACT.md` | `archives/toolkit-legacy/governance/templates/identity-cloud-node.md` | 拆分迁移 | ✅ 角色边界已承接；"Cloud Node"身份定位无一对一承接，**partially superseded** |
+| 择记 | `MEMORY-INDEX.md` | `archives/toolkit-legacy/minimal-core/memory.md` | 扩展迁移 | ✅ `memory.md` 的薄存储原则已迁移为 `MEMORY-INDEX.md` + `memory/` 目录 |
+| 判断 | `judgment-cards/` | `archives/toolkit-legacy/governance/templates/`（部分） | 新建映射 | 旧模板只有零散判断提示，无显式 judgment-cards 目录；需新建 |
+| 纠错 / 写回 | `CORRECTION-WRITEBACK.md` | `archives/toolkit-legacy/governance/FAILURE-REPORT-CHECKLIST.md` | 拆分迁移 | ✅ 失败报告行为已由 `FAILURE-PROTOCOL.md` 承接；纠错后的"写回"机制由 `CORRECTION-WRITEBACK.md` 承接 |
 | 状态锚定 | `STATE.md` | 无直接旧文件 | 新建 | 旧结构缺少显式状态锚定文件，由各 prompt 片段隐式承担 |
-| 统筹 | `OPERATING-RULES.md` | `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md`（外部调用统筹部分） | 扩展迁移 | 旧 checklist 只覆盖外部调用，新文件扩展为全局运行母规则 |
+| 统筹 | `OPERATING-RULES.md` | `archives/toolkit-legacy/governance/EXTERNAL-CALL-CHECKLIST.md`（外部调用统筹部分） | 扩展迁移 | 旧 checklist 只覆盖外部调用，新文件扩展为全局运行母规则 |
 | 控本 | `CONTEXT-BUDGET.md` + `OPERATING-RULES.md` | 无直接旧文件 | 新建 | 旧结构缺少显式成本控制文件，仅依赖 provider 额度限制 |
-| 求真 | `TRUTH-CONTRACT.md` | `toolkit/governance/TRUTH-CONTRACT-v1.md` | 直接替代 | 旧 truth contract 被新版本直接替代；真实性约束同时写入 `AGENTS.md` |
-| 验证 | `EXTERNAL-CALL-PROTOCOL.md` | `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md` | 拆分迁移 | ✅ **已迁移** |
-| 代谢 | `HEARTBEAT.md` | `toolkit/minimal-core/heartbeat.md` | 直接映射 | ✅ 一对一对应，功能一致；已由根目录 `HEARTBEAT.md` + `framework/rhythm/HEARTBEAT.md` 承接 |
-| 消歧 | `TERM-MAP.md` | `toolkit/governance/SHARED-TRUTHFULNESS-BLOCK.md`（局部） | 扩展迁移 | ✅ 旧 shared block 已 legacy 化；消歧由 TERM-MAP.md 承担 |
+| 求真 | `TRUTH-CONTRACT.md` | `archives/toolkit-legacy/governance/TRUTH-CONTRACT-v1.md` | 直接替代 | 旧 truth contract 被新版本直接替代；真实性约束同时写入 `AGENTS.md` |
+| 验证 | `EXTERNAL-CALL-PROTOCOL.md` | `archives/toolkit-legacy/governance/EXTERNAL-CALL-CHECKLIST.md` | 拆分迁移 | ✅ **已迁移** |
+| 代谢 | `HEARTBEAT.md` | `archives/toolkit-legacy/minimal-core/heartbeat.md` | 直接映射 | ✅ 一对一对应，功能一致；已由根目录 `HEARTBEAT.md` + `framework/rhythm/HEARTBEAT.md` 承接 |
+| 消歧 | `TERM-MAP.md` | `archives/toolkit-legacy/governance/SHARED-TRUTHFULNESS-BLOCK.md`（局部） | 扩展迁移 | ✅ 旧 shared block 已 legacy 化；消歧由 TERM-MAP.md 承担 |
 | 环境切分 | `ENVIRONMENT-PRECONDITIONS.md` | 无直接旧文件 | 新建 | 旧结构完全缺失环境切分层 |
 
 **迁移复杂度评估**：
@@ -106,15 +106,15 @@
 
 | 旧分组 / 旧文件 | 在新框架中的位置 | 迁移方式 | 当前状态 |
 |-----------------|------------------|----------|----------|
-| `toolkit/minimal-core/soul.md` | `IDENTITY.md` / `SOUL.md`（bootstrap 层）+ `framework/core/CONSTITUTION.md` | 映射承接 | **已承接；保留为 historical orientation** |
-| `toolkit/minimal-core/memory.md` | `framework/continuity/MEMORY-INDEX.md` + `memory/` 目录 | 映射承接 | **已承接；保留为 historical orientation** |
-| `toolkit/minimal-core/heartbeat.md` | `HEARTBEAT.md`（bootstrap 层）+ `framework/rhythm/HEARTBEAT.md` | 映射承接 | **已承接；保留为 historical orientation** |
-| `toolkit/governance/TRUTH-CONTRACT-v1.md` | `framework/assurance/TRUTH-CONTRACT.md` | 映射承接 | **已替代，legacy 化完成** |
-| `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md` | `framework/runtime/EXTERNAL-CALL-PROTOCOL.md` | 拆分迁移 | **已迁移** |
-| `toolkit/governance/FAILURE-REPORT-CHECKLIST.md` | `framework/runtime/FAILURE-PROTOCOL.md` | 拆分迁移 | **已迁移** |
-| `toolkit/governance/templates/identity-cloud-node.md` | `framework/role/ROLE-CONTRACT.md` + `AGENTS.md` | 拆分迁移 | **partially superseded**；角色边界已承接，"Cloud Node"身份定位无一对一承接 |
-| `toolkit/governance/templates/user.md` | `USER.md`（bootstrap 层） | 映射承接 | **partially superseded / legacy retained**；定位不等价，保留为历史模板 |
-| `toolkit/governance/schemas/` | `framework/continuity/schemas/` | 映射承接 | `correction_record` 已迁移；其余 schema 保留为 legacy |
+| `archives/toolkit-legacy/minimal-core/soul.md` | `IDENTITY.md` / `SOUL.md`（bootstrap 层）+ `framework/core/CONSTITUTION.md` | 映射承接 | **已承接；保留为 historical orientation** |
+| `archives/toolkit-legacy/minimal-core/memory.md` | `framework/continuity/MEMORY-INDEX.md` + `memory/` 目录 | 映射承接 | **已承接；保留为 historical orientation** |
+| `archives/toolkit-legacy/minimal-core/heartbeat.md` | `HEARTBEAT.md`（bootstrap 层）+ `framework/rhythm/HEARTBEAT.md` | 映射承接 | **已承接；保留为 historical orientation** |
+| `archives/toolkit-legacy/governance/TRUTH-CONTRACT-v1.md` | `framework/assurance/TRUTH-CONTRACT.md` | 映射承接 | **已替代，legacy 化完成** |
+| `archives/toolkit-legacy/governance/EXTERNAL-CALL-CHECKLIST.md` | `framework/runtime/EXTERNAL-CALL-PROTOCOL.md` | 拆分迁移 | **已迁移** |
+| `archives/toolkit-legacy/governance/FAILURE-REPORT-CHECKLIST.md` | `framework/runtime/FAILURE-PROTOCOL.md` | 拆分迁移 | **已迁移** |
+| `archives/toolkit-legacy/governance/templates/identity-cloud-node.md` | `framework/role/ROLE-CONTRACT.md` + `AGENTS.md` | 拆分迁移 | **partially superseded**；角色边界已承接，"Cloud Node"身份定位无一对一承接 |
+| `archives/toolkit-legacy/governance/templates/user.md` | `USER.md`（bootstrap 层） | 映射承接 | **partially superseded / legacy retained**；定位不等价，保留为历史模板 |
+| `archives/toolkit-legacy/governance/schemas/` | `framework/continuity/schemas/` | 映射承接 | `correction_record` 已迁移；其余 schema 保留为 legacy |
 | `notes/cost-line/` | 待定（`CONTEXT-BUDGET.md` 或独立 `COST-PLANE.md`） | 后续整合 | 已记录，待融入框架 |
 
 ---
@@ -146,13 +146,13 @@
 - 只有当新骨架经验证稳定
 - 旧 README 已完成退位说明
 - 主要旧文件已有明确归宿
-- 才决定是否正式重构 `toolkit/` 目录结构
+- 才决定是否正式重构 `archives/toolkit-legacy/` 目录结构
 
 ---
 
 ## 当前迁移状态（阶段进展登记）
 
-当前已完成对 `toolkit/minimal-core/` 与 `toolkit/governance/` 的 README 级迁移状态标注。
+当前已完成对 `archives/toolkit-legacy/minimal-core/` 与 `archives/toolkit-legacy/governance/` 的 README 级迁移状态标注。
 
 本轮迁移以旧结构归宿确认与状态标注为主，尚未进入旧正文删除阶段。
 
@@ -163,7 +163,7 @@
 
 因此，当前只能视为"toolkit active entry 已关闭，但 archival / full retirement 尚未完成"。
 
-toolkit/ 当前状态：
+archives/toolkit-legacy/ 当前状态：
 - **active runtime entry**: closed（已由 framework/ 承接）
 - **active governance entry**: closed（已由 framework/runtime/ 与 framework/assurance/ 承接）
 - **active orientation entry**: closed（已由根目录 bootstrap 文件 + framework/ 承接）
@@ -237,7 +237,7 @@ toolkit/ 当前状态：
 - ❌ 暂不直接删除旧目录
 - ❌ 暂不把所有旧内容一次性改写进新框架
 - ❌ 暂不修改旧 README 和说明文案（阶段 2 已部分启动，本轮继续推进）
-- ❌ 暂不改动 `toolkit/minimal-core/`、`toolkit/governance/` 正文（阶段 3 待启动）
+- ❌ 暂不改动 `archives/toolkit-legacy/minimal-core/`、`archives/toolkit-legacy/governance/` 正文（阶段 3 待启动）
 - ❌ **AGENTS.md / cron 调整 / scripts 的推送已另开分支处理**（PR #25 closed; historical branch only; not part of current mainline plan）
 
 ---
@@ -251,19 +251,19 @@ toolkit/ 当前状态：
 
 ## 阶段 2：README 级退位
 - [x] 修改 `README.md`，在显著位置声明 `framework/` 为上位骨架
-- [x] 修改 `toolkit/README.md`，声明 `minimal-core/` 和 `governance/` 为 legacy grouping / non-active legacy reference
+- [x] 修改 `archives/toolkit-legacy/README.md`，声明 `minimal-core/` 和 `governance/` 为 legacy grouping / non-active legacy reference
 - [x] 更新 `whitepaper/README.md` 中的框架入口说明（本轮未修改，whitepaper/ 保持独立）
 - [x] 核对所有 README 中的链接是否可点击
 
 ## 阶段 3：内容级映射
-- [x] 在 `toolkit/minimal-core/soul.md` 头部添加legacy说明和指向 `SOUL.md`/`IDENTITY.md` 的链接（README 级已定性，正文保留 historical orientation）
-- [x] 在 `toolkit/minimal-core/memory.md` 头部添加legacy说明和指向 `framework/continuity/MEMORY-INDEX.md` 的链接（README 级已定性）
-- [x] 在 `toolkit/minimal-core/heartbeat.md` 头部添加legacy说明和指向 `HEARTBEAT.md` 的链接（README 级已定性）
-- [x] 在 `toolkit/governance/TRUTH-CONTRACT-v1.md` 头部添加 deprecated 说明和指向 `framework/assurance/TRUTH-CONTRACT.md` 的链接（已 legacy 化）
-- [x] 在 `toolkit/governance/SHARED-TRUTHFULNESS-BLOCK.md` 头部添加 legacy 说明
+- [x] 在 `archives/toolkit-legacy/minimal-core/soul.md` 头部添加legacy说明和指向 `SOUL.md`/`IDENTITY.md` 的链接（README 级已定性，正文保留 historical orientation）
+- [x] 在 `archives/toolkit-legacy/minimal-core/memory.md` 头部添加legacy说明和指向 `framework/continuity/MEMORY-INDEX.md` 的链接（README 级已定性）
+- [x] 在 `archives/toolkit-legacy/minimal-core/heartbeat.md` 头部添加legacy说明和指向 `HEARTBEAT.md` 的链接（README 级已定性）
+- [x] 在 `archives/toolkit-legacy/governance/TRUTH-CONTRACT-v1.md` 头部添加 deprecated 说明和指向 `framework/assurance/TRUTH-CONTRACT.md` 的链接（已 legacy 化）
+- [x] 在 `archives/toolkit-legacy/governance/SHARED-TRUTHFULNESS-BLOCK.md` 头部添加 legacy 说明
 - [x] 评估 `EXTERNAL-CALL-CHECKLIST.md` 内容，迁移到 `framework/runtime/EXTERNAL-CALL-PROTOCOL.md`（已迁移；toolkit 副本保留为 legacy source）
 - [x] 评估 `FAILURE-REPORT-CHECKLIST.md` 内容，迁移到 `framework/runtime/FAILURE-PROTOCOL.md`（已迁移；toolkit 副本保留为 legacy source）
-- [x] 更新 `toolkit/governance/templates/` 的 README，说明模板与新 `ROLE-CONTRACT.md` 的关系（已更新，标记为 legacy templates / partially superseded）
+- [x] 更新 `archives/toolkit-legacy/governance/templates/` 的 README，说明模板与新 `ROLE-CONTRACT.md` 的关系（已更新，标记为 legacy templates / partially superseded）
 
 ## 阶段 4：成本主线决策
 - [ ] 决策：控本规则进入 `OPERATING-RULES.md` 还是新建 `CONTEXT-BUDGET.md`
@@ -274,8 +274,8 @@ toolkit/ 当前状态：
 - [ ] 确认新骨架已稳定运行至少 2 周无结构回退
 - [ ] 确认旧 README 退位说明已生效 ✅ 已满足
 - [ ] 确认旧文件头部 legacy 说明已覆盖 80% 以上内容 ✅ 已满足（README 级已全覆盖）
-- [ ] 确认 toolkit/ 不再被任何活跃文件引用
-- [ ] 才考虑是否正式重命名/合并 `toolkit/` 子目录
+- [ ] 确认 archives/toolkit-legacy/ 不再被任何活跃文件引用
+- [ ] 才考虑是否正式重命名/合并 `archives/toolkit-legacy/` 子目录
 ```
 
 ---
@@ -299,12 +299,12 @@ toolkit/ 当前状态：
 
 ### 2. toolkit 退位已完成
 
-toolkit/ 已不再作为 active runtime / governance / orientation entry：
+archives/toolkit-legacy/ 已不再作为 active runtime / governance / orientation entry：
 - runtime：由 framework/runtime/ 完整承接
 - governance：由 framework/assurance/ 与 framework/runtime/ 完整承接
 - orientation：由根目录 bootstrap 文件 + framework/core/ 承接
 
-toolkit/ 保留为 **non-active legacy reference**：
+archives/toolkit-legacy/ 保留为 **non-active legacy reference**：
 - 历史追踪（minimal-core、governance 早期实验）
 - legacy schemas
 - partially superseded templates（Cloud Node 身份定位未完全承接、user 模板不等价）
@@ -319,7 +319,7 @@ toolkit/ 保留为 **non-active legacy reference**：
 - `ROLE-CONTRACT` 在旧位置的残留引用已清理
 - `PRE-FLIGHT` 对 `ENVIRONMENT-PRECONDITIONS` 的虚假依赖已拆解
 - `framework/README.md` 入口与阅读顺序已修复
-- toolkit/ 已明确为 non-active legacy reference
+- archives/toolkit-legacy/ 已明确为 non-active legacy reference
 
 ### 4. 剩余为可接受的明确缺口
 
@@ -329,7 +329,7 @@ toolkit/ 保留为 **non-active legacy reference**：
 - `ENVIRONMENT-PRECONDITIONS.md`：暂不新建
 - `IDENTITY.md` / `USER.md` / `STATE.md` / `TOOLS-SKILLS.md` 等 bootstrap 增强层：由云端节点本地 `AGENTS.md` 承接，不另行复刻为 framework 文件
 - `TERM-MAP.md`：当前覆盖核心术语对，不继续扩写为完整词汇表
-- toolkit/ templates 中 "Cloud Node" 身份定位：无 framework 一对一正式承接，保留为 legacy
+- archives/toolkit-legacy/ templates 中 "Cloud Node" 身份定位：无 framework 一对一正式承接，保留为 legacy
 
 ---
 

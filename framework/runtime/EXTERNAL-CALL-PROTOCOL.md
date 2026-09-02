@@ -1,8 +1,8 @@
 # External Call Protocol
 
-> Status: framework-native runtime protocol  
-> Source: migrated from `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md`  
-> Scope: web, file, API, exec, and other external operations  
+> Status: framework-native runtime protocol
+> Source: migrated from `archives/toolkit-legacy/governance/EXTERNAL-CALL-CHECKLIST.md`
+> Scope: web, file, API, exec, and other external operations
 > Migration status: migrated; toolkit copy retained as legacy source
 
 ---
@@ -199,7 +199,7 @@
 
 ## Migration Boundary
 
-本文件迁移并替代 `toolkit/governance/EXTERNAL-CALL-CHECKLIST.md` 的当前运行时用途。
+本文件迁移并替代 `archives/toolkit-legacy/governance/EXTERNAL-CALL-CHECKLIST.md` 的当前运行时用途。
 
 toolkit 原文件保留为 legacy source，不再作为当前 runtime 入口。
 

@@ -25,7 +25,7 @@ FAO 是一种在人类主体与智能体主体共存条件下，围绕任务路�
 | **[whitepaper/](whitepaper/)** | 思想主干。`FAO-Whitepaper.md` 是唯一主文。[cases/](whitepaper/cases/) 为案例支撑，[references/](whitepaper/references/) 为引用卡。不再维护 `chapters/` 拆分稿。 |
 | **[framework/](framework/)** | 工程化框架。承载边界、责任、运行时约束、角色、连续性等结构。与白皮书并行，不是白皮书的附属实现。 |
 | **[notes/](notes/)** | 仅保留尚未吸收的横向旁枝。[cost-line](notes/cost-line/) 与 [memory-line](notes/memory-line/) 未来可能被吸收进 `whitepaper/` 或 `framework/`。 |
-| **[toolkit/](toolkit/)** | 不再作为当前运行时、治理或定向入口；仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。当前正式运行接口以 [framework/](framework/) 为准。 |
+| **[archives/toolkit-legacy/](archives/toolkit-legacy/)** | 已归档的早期最小工具集与治理实验。不再作为当前运行时、治理或定向入口；仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。当前正式运行接口以 [framework/](framework/) 为准。 |
 
 ---
 
@@ -33,14 +33,18 @@ FAO 是一种在人类主体与智能体主体共存条件下，围绕任务路�
 
 1. **[whitepaper/FAO-Whitepaper.md](whitepaper/FAO-Whitepaper.md)** —— 思想主干与组织分析主文
 2. **[framework/README.md](framework/README.md)** —— 工程化框架目录与全部文件索引
-3. **[notes/cost-line/](notes/cost-line/)** —— 成本线（未吸收旁枝）：人力成本、token 成本、组织成本结构、算法套利与生态位
-4. **[notes/memory-line/](notes/memory-line/)** —— 记忆线（未吸收旁枝）：薄记忆、纠错写回、判断卡、长期连续性与跨节点沉淀
+3. **[notes/cost-line/](notes/cost-line/)** —— 成本线（未吸收旁枝）
+4. **[notes/memory-line/](notes/memory-line/)** —— 记忆线（未吸收旁枝）
 
 ---
 
-## toolkit 退位说明
+## toolkit 归档说明
 
-`toolkit/minimal-core/` 与 `toolkit/governance/` 继续保留，主要作为旧分组的历史记录、实现来源与参考。当前不直接删除，不宣布作废。后续以 `framework/mapping/MIGRATION-PLAN.md` 为准，逐步完成内容级映射。
+`toolkit/` 已于 2026-09-03 归档至 `archives/toolkit-legacy/`。
+
+原 `toolkit/minimal-core/` 与 `toolkit/governance/` 中的内容已由 `framework/` 各模块承接或替代。归档目录仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。后续如需追溯历史设计意图，请查阅 `archives/toolkit-legacy/`。
+
+当前正式运行接口以 [framework/](framework/) 为准。
 
 ---
 

@@ -22,7 +22,7 @@
 
 | 元动作 | framework 定义 | OpenClaw 实际承接 | 本次运行观察 | 映射结论 |
 |--------|---------------|-------------------|--------------|----------|
-| 定向 | `CONSTITUTION.md` / `UNIVERSAL-WORK-NODE-FRAMEWORK.md`：框架按模块划分功能，role/ 承接角色层，continuity/ 承接连续性层 | OpenClaw 启动注入层 / 系统提示层 / 本地节点配置中的方向约束 + 用户明确指令 | 本次归位以 framework 模块定义（role/ 管角色、continuity/ 管连续性）为方向依据，未偏离到 toolkit/ 或其他目录 | 成立 |
+| 定向 | `CONSTITUTION.md` / `UNIVERSAL-WORK-NODE-FRAMEWORK.md`：框架按模块划分功能，role/ 承接角色层，continuity/ 承接连续性层 | OpenClaw 启动注入层 / 系统提示层 / 本地节点配置中的方向约束 + 用户明确指令 | 本次归位以 framework 模块定义（role/ 管角色、continuity/ 管连续性）为方向依据，未偏离到 archives/toolkit-legacy/ 或其他目录 | 成立 |
 | 收窄 | `ROLE-CONTRACT.md`：把泛化身份压缩成专业角色，明确职责边界 | OpenClaw 启动注入层 / 系统提示层 / 本地节点配置中的角色边界约束 + 用户指令中的范围限定 | 任务明确区分 `role/`（角色契约）与 `continuity/`（判断卡片与连续性索引）的职责边界，未混淆两模块 | 成立 |
 | 状态锚定 | `META-ACTIONS.md` / `OPERATING-RULES.md`：状态锚定元动作当前无独立 STATE.md 文件承接；本次以任务阶段、文件树状态与版本控制状态作为对账依据 | 文件系统工具提供的文件树状态 + `git status` / `git diff` 等版本控制状态 | commit 前确认了 `runtime/ROLE-CONTRACT.md` 与 `runtime/judgment-cards/` 的存在及目标位置 `role/` / `continuity/` 的状态 | 成立 |
 | 统筹 | `OPERATING-RULES.md`：拆解、路由、收敛——先分后合 | 用户指令中的任务拆分 + 工具链执行顺序编排 | 两个移动操作（ROLE-CONTRACT + judgment-cards）被组织为一次连贯提交，未拆成无关联的多条 commit | 成立 |
@@ -30,7 +30,7 @@
 | 验证 | `TRUTH-CONTRACT.md` / `OPERATING-RULES.md`：结果校验、证据链保全、收敛前强制检查 | `git` 版本控制提供的文件移动证据 | commit 证明文件移动已发生；引用一致性检查范围需人工确认 | 需确认 |
 | 消歧 | `TERM-MAP.md`（事后回查）：区分术语别名、常见混淆和误指 | 按当前 `TERM-MAP.md` 对本次任务作事后消歧 | 任务明确区分了"目录错位"（文件放错位置）与"文件内容缺陷"（内容有问题）是两个独立问题，未混为一谈 | 成立 |
 | 控本 | `OPERATING-RULES.md`：权衡成本，不因可继续而继续 | 用户指令中的范围限制 + 运行时的收敛判断 | 任务只做目录归位，README 链接修正和残留引用清理明确留到后续处理（见 commit 324ffbf），未顺手扩张 | 成立 |
-| 收敛 | `OPERATING-RULES.md`：已达足够判断时停止扩张，及时收口 | 用户指令中的"完成归位即停止" + 运行时的完成判断 | commit 仅包含目录移动，未扩展到 toolkit/ 清理或其他结构重组 | 成立 |
+| 收敛 | `OPERATING-RULES.md`：已达足够判断时停止扩张，及时收口 | 用户指令中的"完成归位即停止" + 运行时的完成判断 | commit 仅包含目录移动，未扩展到 archives/toolkit-legacy/ 清理或其他结构重组 | 成立 |
 
 ---
 

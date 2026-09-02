@@ -2,7 +2,7 @@
 
 > 旧治理实现分组 / 历史实现来源
 
-toolkit/governance/ 继续保留，主要作为旧治理实现来源、历史分组与迁移来源之一。当前理解仓库整体结构的首选入口应是 [framework/](../framework/)。
+当前理解仓库整体结构的首选入口应是 [framework/](../framework/)。
 
 ---
 
@@ -55,4 +55,4 @@ toolkit/governance/ 更接近**旧治理实现分组**，主要承接真实性�
 
 1. 先看 [framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
 2. 再看 [framework/TRUTH-CONTRACT.md](../framework/TRUTH-CONTRACT.md)、[framework/OPENCLAW-MAPPING.md](../framework/OPENCLAW-MAPPING.md) 理解 Assurance 层
-3. 最后回看 [toolkit/governance/](./)，理解其作为历史分组和实现来源的意义
+3. 最后回看 `archives/toolkit-legacy/governance/`，理解其作为历史分组和实现来源的意义
