@@ -67,3 +67,6 @@ docs/
 notes/dreaming-mapping.md
 notes/harness-engineering-insights.md
 notes/kimi-node-observation.md
+
+# Output artifacts (generated, not source)
+outputs/
