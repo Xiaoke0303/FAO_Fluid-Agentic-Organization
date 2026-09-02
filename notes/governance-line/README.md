@@ -1,22 +1,24 @@
 # Governance Line Notes
 
-This directory stores governance-line sidecars.
-
-These notes are not framework content and not whitepaper content.
-
-Human-state governance is currently a mainline candidate in pre-absorption status.
-
-Existing files may record candidate interfaces, but do not by themselves modify framework or whitepaper.
-
-Any absorption into framework or whitepaper requires explicit review and authorization.
-
-Current known candidate direction: PRE-FLIGHT human-state readiness check remains draft-only unless promoted later.
+> **状态：活跃旁枝（Active Sidecar）**
+>
+> 本目录存放治理线 sidecar 笔记。
+> 不是框架内容，不是白皮书内容。
+> 入主线需经明确审核与授权。
 
 ---
 
-*本目录存放治理线 sidecar 笔记。*
-*不是框架内容，不是白皮书内容。*
-*入主线需经明确审核与授权。*
+## 文件状态速查
+
+| 文件 | 状态 |
+|------|------|
+| `codex-vs-fao-constraint-comparison-note.md` | 旁枝观察（Sidecar Observation） |
+| `consensus-not-evidence-aggregation.md` | **冻结（Frozen）** — Multi-Agent 证据不足 |
+| `dingtalk-one-workplace-governance-incident-note.md` | 案例候选（Case Candidate） |
+| `external-write-gate-maturity-note.md` | 治理线旁枝 — 工程审计记录 |
+| `human-state-governance-note.md` | 草案（Draft） |
+| `human-state-pre-absorption.md` | 旁枝（Sidecar） |
+| `runtime-guard-candidate.md` | **冻结（Frozen）** — 基础设施未就绪 |
 
 ---
 

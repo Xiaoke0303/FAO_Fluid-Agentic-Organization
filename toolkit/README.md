@@ -8,7 +8,7 @@
 
 **Status: non-active legacy reference**
 
-toolkit/ 不再作为当前运行时、治理或定向入口。它保留为历史参考，用于：
+`archives/toolkit-legacy/` 不再作为当前运行时、治理或定向入口。它保留为历史参考，用于：
 
 - **historical traceability**：追溯 FAO 早期最小工具集与治理实验的设计意图
 - **legacy schemas**：保留旧版 schema 文件（evidence_record、execution_record、failure_object）
@@ -25,15 +25,15 @@ toolkit/ 不再作为当前运行时、治理或定向入口。它保留为历�
 
 ## 如何阅读
 
-仅在追溯历史设计意图、早期治理语言或最小核心实验时回看 toolkit/。
+仅在追溯历史设计意图、早期治理语言或最小核心实验时回看 `archives/toolkit-legacy/`。
 
 涉及当前执行、路由、成本、角色与纠错接口时，请以 framework/ 为准。
 
 ## 与 framework/ 的关系
 
 - [framework/](../framework/) 是当前正式的运行时与接口层
-- toolkit/ 中的内容可作为历史分组、实现来源或迁移对象
-- **当 toolkit/ 与 framework/ 存在冲突时，framework/ 优先**
+- `archives/toolkit-legacy/` 中的内容可作为历史分组、实现来源或迁移对象
+- **当 `archives/toolkit-legacy/` 与 framework/ 存在冲突时，framework/ 优先**
 - 后续迁移以 [framework/mapping/MIGRATION-PLAN.md](../framework/mapping/MIGRATION-PLAN.md) 为准
 
 ---

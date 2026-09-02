@@ -2,7 +2,7 @@
 
 > 旧分组 / 历史实现来源
 
-toolkit/minimal-core/ 继续保留，主要作为旧分组、历史实现来源与迁移来源之一。当前理解仓库整体结构的首选入口应是 [framework/](../framework/)。
+当前理解仓库整体结构的首选入口应是 [framework/](../framework/)。
 
 ---
 
@@ -50,7 +50,7 @@ minimal-core 更接近**旧版稳定内核分组**，主要承接方向、薄记
 ## 阅读建议
 
 1. 先看 [framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
-2. 再回看 [toolkit/minimal-core/](./)，理解其作为历史分组和实现来源的意义
+2. 再回看 `archives/toolkit-legacy/minimal-core/`，理解其作为历史分组和实现来源的意义
 
 ---
 

@@ -1,7 +1,7 @@
 # Failure Protocol
 
 > Status: framework-native runtime protocol  
-> Source: migrated from `toolkit/governance/FAILURE-REPORT-CHECKLIST.md`  
+> Source: migrated from `archives/toolkit-legacy/governance/FAILURE-REPORT-CHECKLIST.md`  
 > Scope: failed, blocked, incomplete, unverifiable, or partially executed operations  
 > Migration status: migrated; toolkit copy retained as legacy source
 
@@ -197,7 +197,7 @@
 
 ## Migration Boundary
 
-本文件迁移并替代 `toolkit/governance/FAILURE-REPORT-CHECKLIST.md` 的当前运行时用途。
+本文件迁移并替代 `archives/toolkit-legacy/governance/FAILURE-REPORT-CHECKLIST.md` 的当前运行时用途。
 
 toolkit 原文件保留为 legacy source，不再作为当前 runtime 入口。
 

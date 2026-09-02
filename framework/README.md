@@ -26,12 +26,12 @@ whitepaper/ 提供组织分析语言与论证。
 framework/ 提供运行接口与操作约束。
 两者并行,互不替代。
 
-## 与 toolkit/ 的关系
+## 与 archives/toolkit-legacy/ 的关系
 
-toolkit/ 保留为早期最小工具集与治理实验的历史参考。
-当 framework/ 与 toolkit/ 存在冲突时，**framework/ 优先**。
+`archives/toolkit-legacy/` 保留为早期最小工具集与治理实验的历史参考。
+当 framework/ 与 `archives/toolkit-legacy/` 存在冲突时，**framework/ 优先**。
 
-toolkit/ 当前为 **non-active legacy reference**：不再作为运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy 来源。
+`archives/toolkit-legacy/` 当前为 **non-active legacy reference**：不再作为运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy 来源。
 
 ---
 ---
