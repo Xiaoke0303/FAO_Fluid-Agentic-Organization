@@ -8,9 +8,14 @@
 #   "Push only after the human explicitly says push." (PUBLIC-PUSH-GATE.md)
 #
 # This script reads a machine-readable authorization state and deterministically
-# allows or blocks a git push. It is called by .git/hooks/pre-push, which is a
-# machine-level enforcement point that the agent cannot bypass by "forgetting"
-# or "not loading" FAO Markdown rules.
+# allows or blocks a git push. It is called by .git/hooks/pre-push.
+#
+# v0 Status: collaborative guardrail (deterministic but co-located with agent)
+# Not an independent enforcement boundary — agent can bypass via:
+#   --no-verify, fresh clone, GitHub API direct write, credential extraction
+# v0.1 requires: GitHub remote policy + independent agent identity
+#
+# See: notes/governance-line/external-write-gate-maturity-note.md
 
 set -euo pipefail
 
