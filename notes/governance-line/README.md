@@ -12,13 +12,14 @@
 
 | 文件 | 状态 |
 |------|------|
+| `2026-09-14-judgment-card-drill-record.md` | 旁枝记录 — 判断卡引导演练脱敏记录 |
 | `codex-vs-fao-constraint-comparison-note.md` | 旁枝观察（Sidecar Observation） |
-| `consensus-not-evidence-aggregation.md` | **冻结（Frozen）** — Multi-Agent 证据不足 |
 | `dingtalk-one-workplace-governance-incident-note.md` | 案例候选（Case Candidate） |
 | `external-write-gate-maturity-note.md` | 治理线旁枝 — 工程审计记录 |
 | `human-state-governance-note.md` | 草案（Draft） |
 | `human-state-pre-absorption.md` | 旁枝（Sidecar） |
-| `runtime-guard-candidate.md` | **冻结（Frozen）** — 基础设施未就绪 |
+
+> 历史条目说明：`consensus-not-evidence-aggregation.md` 与 `runtime-guard-candidate.md` 曾为冻结条目，文件已不在本目录，冻结状态不再重复登记。
 
 ---
 
