@@ -67,7 +67,9 @@
 
 ### 0. 时间上下文检查（Temporal Context Check）
 
-**Temporal Anchoring is not a separate runtime entity. It is the first gate of pre-flight: before checking scope, boundary, permission, cost or truth-state, the system must first anchor the task in time.**
+时间锚定不是独立的 runtime 实体，而是前置检查的第一道门：在检查范围、边界、权限、成本或真实性状态之前，系统必须先把任务锚定在时间中。
+
+> Temporal Anchoring is not a separate runtime entity. It is the first gate of pre-flight: before checking scope, boundary, permission, cost or truth-state, the system must first anchor the task in time.
 
 检查项：
 
@@ -87,24 +89,24 @@
 - 分支对话、跨日期任务、涉及外部调用或写入动作时，必须先做时间上下文检查；
 - 没有时间上下文的状态，不得自动视为当前有效。
 
-> **[draft] Step 0.5 Human-State Readiness Check**
+> **[draft] Step 0.5 人类状态就绪检查（Human-State Readiness Check）**
 >
-> This step is a draft signal, not a finalized framework requirement.
+> 本步骤是草案信号，不是正式框架要求。
 >
-> Before relying on a human node for responsibility-bearing judgment, check whether current task conditions may visibly impair judgment quality.
+> 在依赖人类节点承担带责任的判断之前，检查当前任务条件是否可能明显损害判断质量。
 >
-> **Minimal signals:**
-> - attention is contested by multiple tasks, dashboards, agent outputs, customers, regulators, or KPIs;
-> - external authority, deadline, or performance pressure is pushing premature closure;
-> - the human operator declares that current judgment capacity is limited.
+> **最小信号：**
+> - 注意力被多个任务、仪表盘、智能体输出、客户、监管方或 KPI 争夺；
+> - 外部权威、截止时间或绩效压力推动过早收口；
+> - 人类操作者声明当前判断能力受限。
 >
-> **Possible exits:**
-> - continue to Step 1;
-> - pause or defer the task;
-> - escalate to another qualified responsibility-bearing subject.
+> **可能出口：**
+> - 继续 Step 1；
+> - 暂停或延后任务；
+> - 升级至其他合格责任主体。
 >
-> **Boundary:**
-> This check does not diagnose the person, does not remove human responsibility, and does not replace ROLE-CONTRACT, TRUTH-CONTRACT, or OPERATING-RULES.
+> **边界：**
+> 本检查不诊断个人，不解除人类责任，不替代 ROLE-CONTRACT、TRUTH-CONTRACT 或 OPERATING-RULES。
 >
 > 本步骤仅为草案信号，不是正式框架要求。它检查的不是"人是否有问题"，而是当前任务条件是否可能影响责任性判断质量。若注意力被争夺、外部压力推动过早收口，或操作者声明当前判断能力受限，则可继续、暂停/延后，或升级至其他合格责任主体。
 
