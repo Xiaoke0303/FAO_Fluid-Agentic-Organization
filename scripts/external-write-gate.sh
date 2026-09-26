@@ -4,8 +4,8 @@
 # Target action class: git remote push
 #
 # Governance rule enforced:
-#   "commit 授权 ≠ push 授权" (EXTERNAL-CALL-PROTOCOL.md §External Write Gate)
-#   "Push only after the human explicitly says push." (framework/runtime/PUBLIC-PUSH-GATE.md)
+#   "commit 授权 ≠ push 授权" (framework/runtime/EXTERNAL-CALL-PROTOCOL.md §External Write Gate)
+#   "Push only after the human explicitly says push." (同上节：外部写入需单独授权，条件不满足则 [blocked])
 #
 # This script reads a machine-readable authorization state and deterministically
 # allows or blocks a git push. It is called by .git/hooks/pre-push.

@@ -55,4 +55,4 @@ toolkit/governance/ 更接近**旧治理实现分组**，主要承接真实性�
 
 1. 先看 [framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../../framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
 2. 再看 [framework/assurance/TRUTH-CONTRACT.md](../../framework/assurance/TRUTH-CONTRACT.md)、[framework/mapping/OPENCLAW-MAPPING.md](../../framework/mapping/OPENCLAW-MAPPING.md) 理解 Assurance 层
-3. 最后回看 `archives/toolkit-legacy/governance/`，理解其作为历史分组和实现来源的意义
+3. 最后回看 `toolkit/governance/`，理解其作为历史分组和实现来源的意义

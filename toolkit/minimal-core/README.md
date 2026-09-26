@@ -50,7 +50,7 @@ minimal-core 更接近**旧版稳定内核分组**，主要承接方向、薄记
 ## 阅读建议
 
 1. 先看 [framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../../framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
-2. 再回看 `archives/toolkit-legacy/minimal-core/`，理解其作为历史分组和实现来源的意义
+2. 再回看 `toolkit/minimal-core/`，理解其作为历史分组和实现来源的意义
 
 ---
 

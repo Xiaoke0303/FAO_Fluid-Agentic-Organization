@@ -110,8 +110,6 @@ Done = file written + runtime loaded + behavior verified
 - 未验证效果时必须标注 `[not_completed]`
 - 允许 runtime 处于不同等级（如 L2 Gated 但 L1 Loaded）
 
-**等级语义澄清**：L0–L5 是**分别取证的维度**，不是严格逐级晋升的台阶。各等级独立举证、独立声明：一个 runtime 可以在某一维度达到 L2 的同时，另一维度仍处于 L0。上表按 L0→L5 排列仅为取证深度递进参考，不构成 "必须先证明 L1 才能声称 L2" 的顺序约束。
-
 ---
 
 ## 7. Required Declarations
