@@ -323,7 +323,7 @@ FAO框架识别三类不能随任务自动流动的边界：
 
 路由在组织分析上是"分配、升级、收口"，在节点实现层会进一步表现为若干运行接口。当前 framework 中相关接口至少包括：
 
-- `framework/runtime/ROLE-CONTRACT.md` —— 角色契约，收窄 identity 为专业工作角色
+- `framework/role/ROLE-CONTRACT.md` —— 角色契约，收窄 identity 为专业工作角色
 - `framework/runtime/PRE-FLIGHT-SEQUENCE.md` —— 前置检查序列，任务开始前的最小检查
 - `framework/runtime/OPERATING-RULES.md` —— 运行母规则，任务推进与收敛的最小规则
 
