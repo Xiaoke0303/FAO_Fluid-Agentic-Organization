@@ -61,7 +61,7 @@
 | `MEMORY-INDEX.md` | Continuity | ✅ v1.0 | 长期连续性薄索引 |
 | `CORRECTION-WRITEBACK.md` | Continuity | ✅ v1.0 | 纠错写回协议 |
 | `judgment-cards/README.md` | Continuity | ✅ v1.0 | 判断卡片接口 |
-| `judgment-cards/GUARANTEE-STRUCTURE-DISAMBIGUATION.md` | Continuity | ✅ v1.0 | 第一张具体判断卡片（**状态更新**：该文件已于 2026-04-24 随保函域撤回，判断卡接口现由 `judgment-cards/` 目录的 README/REGISTRY 与两张草稿卡承接） |
+| `judgment-cards/GUARANTEE-STRUCTURE-DISAMBIGUATION.md` | Continuity | ✅ v1.0 | 第一张具体判断卡片（**状态更新**：该文件已于 2026-04-24 随保函域撤回；判断卡的目录接口（README/REGISTRY）仍存在，但已撤回的保函结构消歧内容在现有两张草稿卡中没有等价承接证据） |
 | `schemas/correction_record.schema.json` | Continuity | ✅ v1.0 | 纠错记录 Schema |
 | `OPENCLAW-MAPPING.md` | **Mapping (horizontal alignment / translation layer)** | ✅ v1.1 | OpenClaw 映射文档（含 Hermes 样本）。**Not a core functional module; kept outside the backbone discussion.** |
 | `HERMES-MAPPING.md` | **Mapping (horizontal alignment / translation layer)** | ✅ v1.0 | Hermes 运行时样本映射。**Not a core functional module; kept outside the backbone discussion.** |
