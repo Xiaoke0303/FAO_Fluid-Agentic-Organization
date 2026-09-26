@@ -9,26 +9,12 @@
 
 set -euo pipefail
 
-# === 前提 A：本仓库已安装门禁 hook（零副作用检查，trap 注册之前）===
-HOOK=".git/hooks/pre-push"
-if [[ ! -f "$HOOK" ]]; then
-    echo "SKIP: pre-push hook not installed at $HOOK"
-    echo "      这是测试前提未满足，不是门禁逻辑失败，也不是测试通过。"
-    echo "      本地安装（仅写入本仓库 .git/，不改全局 Git 配置），在仓库根执行："
-    echo '        printf "%s\n" "#!/usr/bin/env bash" "exec \"$(git rev-parse --show-toplevel)/scripts/external-write-gate.sh\" \"\$1\"" > .git/hooks/pre-push && chmod +x .git/hooks/pre-push'
-    echo "      退出码 77 = 跳过（autoconf 惯例）：0 仅表示真正通过。"
-    exit 77
-fi
-
-# === 前提 B：不触碰用户既有的授权文件（防御层；本测试不读写它）===
-if [[ -f ".fao-gate-auth.json" ]]; then
-    echo "FAIL: .fao-gate-auth.json already exists in repo root."
-    echo "      本测试不会读写用户授权文件，但为避免任何歧义，请先消费或移除后再运行。"
-    exit 1
-fi
+# === 定位被测脚本所在的仓库根（仅用于拷贝门禁脚本，不做任何 Git 写操作）===
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 # === 自建隔离环境 ===
-REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# 本测试不使用原仓库的 origin、分支、工作区或授权文件。
+# 所有 Git 操作（init / hook / 授权 / push）只发生在 mktemp 隔离目录内。
 ISOLATE_DIR=$(mktemp -d /tmp/fao-gate-test.XXXXXXXX)
 WORK="$ISOLATE_DIR/work"
 BARE="$ISOLATE_DIR/origin.git"
@@ -118,8 +104,9 @@ cat > "$WORK/.fao-gate-auth.json" << EOF
   "expires_at": "$EXPIRES"
 }
 EOF
-# 说明：本授权为 5/10 分钟有效的短期授权，写入隔离工作区，随 cleanup 删除。
-# 当前门禁不消费授权文件、也不比对 target_ref 与实际推送 ref，该范围仅为声明。
+# 10 分钟短期授权，写入隔离工作区，随 cleanup 删除。
+# 限定：当前门禁不消费授权文件，也不比对实际推送 ref 与 target_ref，
+# 故 target_ref 的范围仅为声明，不能称“一次性”或“强制限分支”。
 
 set +e
 PUSH_OUT=$(git push origin "$TEST_BRANCH" 2>&1)
