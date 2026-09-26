@@ -10,6 +10,11 @@
 # This script reads a machine-readable authorization state and deterministically
 # allows or blocks a git push. It is called by .git/hooks/pre-push.
 #
+# Checks: action type / state+expiry / target_remote match / target_ref match
+# (every pre-push stdin ref must equal target_ref; deletions, tags, malformed
+# records and empty stdin are blocked). authorized_commit is parsed but NOT
+# enforced (declaration, not constraint).
+#
 # v0 Status: collaborative guardrail (deterministic but co-located with agent)
 # Not an independent enforcement boundary — agent can bypass via:
 #   --no-verify, fresh clone, GitHub API direct write, credential extraction
@@ -84,6 +89,46 @@ if [[ -n "$AUTH_REMOTE" && "$AUTH_REMOTE" != "$REMOTE" ]]; then
     exit 1
 fi
 
+# --- Ref scope check (pre-push stdin) ---
+# pre-push hook 的标准输入为每行 4 列：
+#   <local ref> <local sha> <remote ref> <remote sha>
+# 远端 sha 全零表示删除该 ref。
+# hook 通过 exec 启动本脚本，stdin 继承，此处直接读取。
+# 每条记录的 remote ref 必须与授权的 target_ref 精确一致，任一不符整体阻断。
+
+if [[ -z "$AUTH_REF" ]]; then
+    log "[blocked] Authorization has no target_ref; push scope cannot be verified"
+    exit 1
+fi
+
+REF_LINES=0
+while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
+    REF_LINES=$((REF_LINES + 1))
+
+    # 畸形行（非 4 列）
+    if [[ -z "$LOCAL_REF" || -z "$LOCAL_SHA" || -z "$REMOTE_REF" || -z "$REMOTE_SHA" ]]; then
+        log "[blocked] Unparseable push record (line $REF_LINES); cannot verify scope"
+        exit 1
+    fi
+
+    # 删除 ref：local sha 全零（remote sha 全零仅表示远端无此 ref，即新建）
+    if [[ "$LOCAL_SHA" == "0000000000000000000000000000000000000000" ]]; then
+        log "[blocked] Ref deletion is not covered by authorization: $REMOTE_REF"
+        exit 1
+    fi
+
+    if [[ "$REMOTE_REF" != "$AUTH_REF" ]]; then
+        log "[blocked] Ref mismatch. Authorized: $AUTH_REF, attempted: $REMOTE_REF"
+        exit 1
+    fi
+done
+
+# 空输入：无法确认推送目标（含通配推送等场景），默认阻断
+if [[ $REF_LINES -eq 0 ]]; then
+    log "[blocked] No push records on stdin; scope cannot be verified (wildcard push or non-hook invocation)"
+    exit 1
+fi
+
 # --- Allow ---
-log "[allowed] Push authorized. remote=$REMOTE ref=$AUTH_REF expires=$EXPIRES"
+log "[allowed] Push authorized. remote=$REMOTE ref=$AUTH_REF lines=$REF_LINES expires=$EXPIRES"
 exit 0

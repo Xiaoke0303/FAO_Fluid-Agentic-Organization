@@ -98,7 +98,7 @@ cat > "$WORK/.fao-gate-auth.json" << EOF
   "state": "authorized",
   "action_type": "git-push",
   "target_remote": "origin",
-  "target_ref": "$TEST_BRANCH",
+  "target_ref": "refs/heads/$TEST_BRANCH",
   "authorized_commit": "$LOCAL_SHA",
   "granted_at": "$NOW",
   "expires_at": "$EXPIRES"
@@ -142,7 +142,7 @@ cat > "$WORK/.fao-gate-auth.json" << EOF
   "state": "authorized",
   "action_type": "git-push",
   "target_remote": "origin",
-  "target_ref": "$TEST_BRANCH",
+  "target_ref": "refs/heads/$TEST_BRANCH",
   "authorized_commit": "$LOCAL_SHA",
   "granted_at": "$EXPIRED",
   "expires_at": "$EXPIRED"
@@ -162,6 +162,114 @@ elif ! echo "$PUSH_OUT" | grep -q "\[blocked\]"; then
     FAILURES=$((FAILURES + 1))
 else
     echo "PASS: blocked with expired authorization"
+fi
+
+echo ""
+echo "=== TEST 4: ref scope — authorization bound to specific refs ==="
+
+# 4a: 授权 main，推其他分支 → blocked
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+EXPIRES=$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
+cat > "$WORK/.fao-gate-auth.json" << EOF
+{
+  "state": "authorized",
+  "action_type": "git-push",
+  "target_remote": "origin",
+  "target_ref": "refs/heads/main",
+  "authorized_commit": "$LOCAL_SHA",
+  "granted_at": "$NOW",
+  "expires_at": "$EXPIRES"
+}
+EOF
+git checkout -q -b "gate-scope-a-$$"
+echo "a" > "scope-a-$$.md" && git add "scope-a-$$.md" && git commit -q -m "scope-a"
+set +e
+PUSH_OUT=$(git push origin "gate-scope-a-$$" 2>&1)
+PUSH_STATUS=$?
+set -e
+if [[ $PUSH_STATUS -eq 0 ]]; then
+    echo "FAIL: push to non-authorized ref succeeded"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "Ref mismatch"; then
+    echo "FAIL: blocked but without ref-mismatch reason"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4a blocked — authorized main, attempted other branch"
+fi
+
+# 4b: 混合推送（一次推多个 ref，任一不符即整体阻断）
+git checkout -q main
+git checkout -q -b "gate-scope-b1-$$"
+echo "b1" > "scope-b1-$$.md" && git add "scope-b1-$$.md" && git commit -q -m "scope-b1"
+git checkout -q main
+git checkout -q -b "gate-scope-b2-$$"
+echo "b2" > "scope-b2-$$.md" && git add "scope-b2-$$.md" && git commit -q -m "scope-b2"
+set +e
+PUSH_OUT=$(git push origin "gate-scope-b1-$$" "gate-scope-b2-$$" 2>&1)
+PUSH_STATUS=$?
+set -e
+if [[ $PUSH_STATUS -eq 0 ]]; then
+    echo "FAIL: mixed-ref push succeeded"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "Ref mismatch"; then
+    echo "FAIL: mixed push blocked without ref-mismatch reason"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4b blocked — multi-ref push with unauthorized refs"
+fi
+
+# 4c: 删除远端已存在的 ref → blocked
+# TEST_BRANCH 已在 TEST 2 推送到远端，此处删除它
+git checkout -q main
+set +e
+PUSH_OUT=$(git push origin --delete "$TEST_BRANCH" 2>&1)
+PUSH_STATUS=$?
+set -e
+if [[ $PUSH_STATUS -eq 0 ]]; then
+    echo "FAIL: ref deletion succeeded"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "deletion"; then
+    echo "FAIL: deletion blocked without deletion reason"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4c blocked — ref deletion not covered"
+fi
+
+# 4d: tag → blocked
+git checkout -q main
+git tag "gate-tag-$$"
+set +e
+PUSH_OUT=$(git push origin "gate-tag-$$" 2>&1)
+PUSH_STATUS=$?
+set -e
+if [[ $PUSH_STATUS -eq 0 ]]; then
+    echo "FAIL: tag push succeeded"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "Ref mismatch"; then
+    echo "FAIL: tag push blocked without ref-mismatch reason"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4d blocked — tag ref not covered"
+fi
+
+# 4e: 无 stdin 输入（非 hook 调用或通配推送）→ blocked
+set +e
+GATE_OUT=$(bash scripts/external-write-gate.sh origin < /dev/null 2>&1)
+GATE_STATUS=$?
+set -e
+if [[ $GATE_STATUS -eq 0 ]]; then
+    echo "FAIL: gate allowed invocation without push records"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$GATE_OUT" | grep -q "No push records"; then
+    echo "FAIL: empty-stdin blocked without reason"
+    echo "$GATE_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4e blocked — empty stdin, scope unverifiable"
 fi
 
 echo ""

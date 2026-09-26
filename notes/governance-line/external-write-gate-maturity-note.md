@@ -22,6 +22,19 @@
 
 - A **collaborative guardrail** that reminds the agent to seek explicit authorization before push
 - A **deterministic check** that reads `.fao-gate-auth.json` and blocks/allows based on stated rules
+
+Current check set (2026-09-26):
+
+1. action type must be `git-push`;
+2. authorization state must be `authorized` and unexpired;
+3. remote alias must match `target_remote` (if specified);
+4. **every ref on the pre-push stdin must exactly equal `target_ref`** — ref mismatch, ref deletion, tags, unparseable records, and empty stdin (wildcard push / non-hook invocation) are all blocked;
+5. `authorized_commit` is parsed but **not enforced** — it is a declaration, not a constraint.
+
+Note: check 4 closes the previously reported "target_ref not compared" gap
+*within this co-located guardrail*. It does not change the maturity level:
+the gate remains bypassable via `--no-verify`, fresh clone, GitHub API, etc.
+(see "Audit-Proven Bypass Paths" below).
 - A **local hook** that runs before git push when installed in `.git/hooks/pre-push`
 
 ## What v0 Is Not
