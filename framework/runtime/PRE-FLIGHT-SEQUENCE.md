@@ -172,7 +172,7 @@
 **如何弥补当前测试中暴露出的 runtime 空位**：
 - 复测显示：assurance 层已有 `TRUTH-CONTRACT.md` 支撑
 - 但"进入任务前应先检查什么"的规则表述当时尚为空位，原有空位由本文承接
-- Pre-flight Sequence 显式定义最小检查顺序，使该空位有文可依（文档成文不等于规则已在运行时加载或生效）
+- Pre-flight Sequence 显式定义最小检查顺序，使该空位有文可依
 
 **为什么当前阶段应优先补它，而不是先补 context budget**：
 - Context Budget 是资源约束（token、工具、注意力）

@@ -140,7 +140,7 @@
 **如何补上当前 Continuity 层的主干空位**：
 - Judgment Card 和 Correction Writeback 已落成
 - 但"什么值得进入长期索引"的择记规则表述当时尚为空位，原有空位由本文承接
-- Memory Index 显式定义择记规则，使 Continuity 层形成完整链条：纠错 → 分流 → 索引（文档成文不等于规则已在运行时加载或生效）
+- Memory Index 显式定义择记规则，使 Continuity 层形成完整链条：纠错 → 分流 → 索引
 
 **为什么它不是知识库，而是薄索引**：
 - 知识库追求全面，薄索引追求精准

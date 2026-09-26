@@ -170,7 +170,7 @@ Draft formulations for future FAO writing:
 2. How to measure human attention cost in AI-enabled organizations?
 3. How to detect human state drift before it causes errors?
 4. Which traditional human-regulation mechanisms should be preserved, and which should be redesigned, when AI Agents enter organizations?
-5. How should maker-checker separation in guarantee operations be redesigned after AI 介入？
+5. AI 介入后，保函业务的经办与复核分离应如何重新设计？
 6. What is the boundary between healthy organizational protection and unhealthy control over human agency?
 
 ---
