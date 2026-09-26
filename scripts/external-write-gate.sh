@@ -92,9 +92,11 @@ fi
 # --- Ref scope check (pre-push stdin) ---
 # pre-push hook 的标准输入为每行 4 列：
 #   <local ref> <local sha> <remote ref> <remote sha>
-# 远端 sha 全零表示删除该 ref。
+# 删除 ref 的判定依据是 local sha 全零；remote sha 全零仅表示远端尚无该 ref（新建）。
+# 全零判定用正则 ^0+$，兼容任意对象 ID 长度（SHA-1 40 位 / SHA-256 64 位等）。
 # hook 通过 exec 启动本脚本，stdin 继承，此处直接读取。
 # 每条记录的 remote ref 必须与授权的 target_ref 精确一致，任一不符整体阻断。
+# 输入文本只做拆分与字符串比较，不执行。
 
 if [[ -z "$AUTH_REF" ]]; then
     log "[blocked] Authorization has no target_ref; push scope cannot be verified"
@@ -102,17 +104,35 @@ if [[ -z "$AUTH_REF" ]]; then
 fi
 
 REF_LINES=0
-while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
+while IFS= read -r RAW_LINE || [[ -n "$RAW_LINE" ]]; do
     REF_LINES=$((REF_LINES + 1))
 
-    # 畸形行（非 4 列）
-    if [[ -z "$LOCAL_REF" || -z "$LOCAL_SHA" || -z "$REMOTE_REF" || -z "$REMOTE_SHA" ]]; then
-        log "[blocked] Unparseable push record (line $REF_LINES); cannot verify scope"
+    # 空白行
+    if [[ -z "$RAW_LINE" ]]; then
+        log "[blocked] Blank line in push records (line $REF_LINES); cannot verify scope"
         exit 1
     fi
 
-    # 删除 ref：local sha 全零（remote sha 全零仅表示远端无此 ref，即新建）
-    if [[ "$LOCAL_SHA" == "0000000000000000000000000000000000000000" ]]; then
+    # 严格四列校验：read 会把第 5 列及以后并入最后一个变量，
+    # 故用 REST 捕获多余列；任一字段为空即缺列。
+    read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA REST <<< "$RAW_LINE"
+    if [[ -z "$LOCAL_REF" || -z "$LOCAL_SHA" || -z "$REMOTE_REF" || -z "$REMOTE_SHA" ]]; then
+        log "[blocked] Malformed push record: fewer than 4 columns (line $REF_LINES); cannot verify scope"
+        exit 1
+    fi
+    if [[ -n "$REST" ]]; then
+        log "[blocked] Malformed push record: more than 4 columns (line $REF_LINES); cannot verify scope"
+        exit 1
+    fi
+
+    # tag 一律阻断：即使授权文件的 target_ref 恰好就是该 tag
+    if [[ "$REMOTE_REF" == refs/tags/* ]]; then
+        log "[blocked] Tag push is not covered by authorization: $REMOTE_REF"
+        exit 1
+    fi
+
+    # 删除 ref：local sha 全零
+    if [[ "$LOCAL_SHA" =~ ^0+$ ]]; then
         log "[blocked] Ref deletion is not covered by authorization: $REMOTE_REF"
         exit 1
     fi
@@ -123,9 +143,9 @@ while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
     fi
 done
 
-# 空输入：无法确认推送目标（含通配推送等场景），默认阻断
+# 空输入：无法确认推送目标，默认阻断
 if [[ $REF_LINES -eq 0 ]]; then
-    log "[blocked] No push records on stdin; scope cannot be verified (wildcard push or non-hook invocation)"
+    log "[blocked] No push records on stdin; push target cannot be confirmed"
     exit 1
 fi
 

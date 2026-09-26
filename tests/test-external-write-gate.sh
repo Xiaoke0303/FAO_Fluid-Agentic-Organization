@@ -130,6 +130,7 @@ else
         echo "FAIL: SHA mismatch remote=$REMOTE_SHA local=$LOCAL_SHA"
         FAILURES=$((FAILURES + 1))
     else
+        ALLOWED_SHA="$REMOTE_SHA"
         echo "PASS: allowed; execution receipt verified (remote=$REMOTE_SHA)"
     fi
 fi
@@ -198,26 +199,47 @@ else
     echo "PASS: 4a blocked — authorized main, attempted other branch"
 fi
 
-# 4b: 混合推送（一次推多个 ref，任一不符即整体阻断）
+# 4b: 一次 push 同时含获授权 ref 与未授权 ref → 整体阻断，且远端两者均无新增
+# 授权 target_ref = TEST_BRANCH（远端已存在，远端 SHA 为 ALLOWED_SHA）
+git checkout -q "$TEST_BRANCH"
+echo "mix" > "mix-$$.md" && git add "mix-$$.md" && git commit -q -m "mix-update"
 git checkout -q main
-git checkout -q -b "gate-scope-b1-$$"
-echo "b1" > "scope-b1-$$.md" && git add "scope-b1-$$.md" && git commit -q -m "scope-b1"
-git checkout -q main
-git checkout -q -b "gate-scope-b2-$$"
-echo "b2" > "scope-b2-$$.md" && git add "scope-b2-$$.md" && git commit -q -m "scope-b2"
+git checkout -q -b "gate-mix-b1-$$"
+echo "b1" > "mix-b1-$$.md" && git add "mix-b1-$$.md" && git commit -q -m "mix-b1"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+EXPIRES=$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
+cat > "$WORK/.fao-gate-auth.json" << EOF
+{
+  "state": "authorized",
+  "action_type": "git-push",
+  "target_remote": "origin",
+  "target_ref": "refs/heads/$TEST_BRANCH",
+  "authorized_commit": "mix",
+  "granted_at": "$NOW",
+  "expires_at": "$EXPIRES"
+}
+EOF
 set +e
-PUSH_OUT=$(git push origin "gate-scope-b1-$$" "gate-scope-b2-$$" 2>&1)
+PUSH_OUT=$(git push origin "$TEST_BRANCH" "gate-mix-b1-$$" 2>&1)
 PUSH_STATUS=$?
 set -e
+REMOTE_TEST_SHA=$(git ls-remote origin "refs/heads/$TEST_BRANCH" | awk '{print $1}')
+REMOTE_B1=$(git ls-remote origin "refs/heads/gate-mix-b1-$$" | awk '{print $1}')
 if [[ $PUSH_STATUS -eq 0 ]]; then
-    echo "FAIL: mixed-ref push succeeded"
+    echo "FAIL: mixed push (authorized + unauthorized ref) succeeded"
     FAILURES=$((FAILURES + 1))
 elif ! echo "$PUSH_OUT" | grep -q "Ref mismatch"; then
     echo "FAIL: mixed push blocked without ref-mismatch reason"
     echo "$PUSH_OUT"
     FAILURES=$((FAILURES + 1))
+elif [[ "$REMOTE_TEST_SHA" != "$ALLOWED_SHA" ]]; then
+    echo "FAIL: authorized ref advanced on remote despite overall block (remote=$REMOTE_TEST_SHA expected=$ALLOWED_SHA)"
+    FAILURES=$((FAILURES + 1))
+elif [[ -n "$REMOTE_B1" ]]; then
+    echo "FAIL: unauthorized ref created on remote despite overall block"
+    FAILURES=$((FAILURES + 1))
 else
-    echo "PASS: 4b blocked — multi-ref push with unauthorized refs"
+    echo "PASS: 4b blocked — mixed push rolled back entirely; remote unchanged"
 fi
 
 # 4c: 删除远端已存在的 ref → blocked
@@ -248,8 +270,8 @@ set -e
 if [[ $PUSH_STATUS -eq 0 ]]; then
     echo "FAIL: tag push succeeded"
     FAILURES=$((FAILURES + 1))
-elif ! echo "$PUSH_OUT" | grep -q "Ref mismatch"; then
-    echo "FAIL: tag push blocked without ref-mismatch reason"
+elif ! echo "$PUSH_OUT" | grep -q "Tag push is not covered"; then
+    echo "FAIL: tag push blocked without tag-specific reason"
     echo "$PUSH_OUT"
     FAILURES=$((FAILURES + 1))
 else
@@ -270,6 +292,102 @@ elif ! echo "$GATE_OUT" | grep -q "No push records"; then
     FAILURES=$((FAILURES + 1))
 else
     echo "PASS: 4e blocked — empty stdin, scope unverifiable"
+fi
+
+# 4f: 授权 target_ref 恰好就是该 tag，仍阻断
+git checkout -q main
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+EXPIRES=$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
+cat > "$WORK/.fao-gate-auth.json" << EOF
+{
+  "state": "authorized",
+  "action_type": "git-push",
+  "target_remote": "origin",
+  "target_ref": "refs/tags/gate-tag-$$",
+  "authorized_commit": "tag",
+  "granted_at": "$NOW",
+  "expires_at": "$EXPIRES"
+}
+EOF
+set +e
+PUSH_OUT=$(git push origin "gate-tag-$$" 2>&1)
+PUSH_STATUS=$?
+set -e
+if [[ $PUSH_STATUS -eq 0 ]]; then
+    echo "FAIL: tag push succeeded even with matching target_ref"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "Tag push is not covered"; then
+    echo "FAIL: tag push blocked without tag-specific reason"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 4f blocked — tag refused even when authorized target_ref is that tag"
+fi
+
+echo ""
+echo "=== TEST 5: malformed stdin records ==="
+
+# 5a: 三列
+set +e
+GATE_OUT=$(printf 'a b c\n' | bash scripts/external-write-gate.sh origin 2>&1)
+GATE_STATUS=$?
+set -e
+if [[ $GATE_STATUS -eq 0 ]]; then
+    echo "FAIL: 3-column record allowed"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$GATE_OUT" | grep -q "fewer than 4 columns"; then
+    echo "FAIL: 3-column record blocked without reason"; echo "$GATE_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 5a blocked — fewer than 4 columns"
+fi
+
+# 5b: 五列（第 5 列不得被并入第 4 列而漏检）
+set +e
+GATE_OUT=$(printf 'a b c d e\n' | bash scripts/external-write-gate.sh origin 2>&1)
+GATE_STATUS=$?
+set -e
+if [[ $GATE_STATUS -eq 0 ]]; then
+    echo "FAIL: 5-column record allowed"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$GATE_OUT" | grep -q "more than 4 columns"; then
+    echo "FAIL: 5-column record blocked without reason"; echo "$GATE_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 5b blocked — more than 4 columns"
+fi
+
+# 5c: 最后一行无结尾换行——该行必须被处理（不得静默跳过）
+set +e
+GATE_OUT=$(printf 'refs/heads/x 1111111111111111111111111111111111111111 refs/heads/x 0000000000000000000000000000000000000000' | bash scripts/external-write-gate.sh origin 2>&1)
+GATE_STATUS=$?
+set -e
+if [[ $GATE_STATUS -eq 0 ]]; then
+    echo "FAIL: unterminated last line allowed"
+    FAILURES=$((FAILURES + 1))
+elif echo "$GATE_OUT" | grep -q "No push records"; then
+    echo "FAIL: unterminated last line was silently skipped (treated as empty input)"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$GATE_OUT" | grep -q "blocked"; then
+    echo "FAIL: unterminated last line not blocked"; echo "$GATE_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 5c blocked — unterminated last line processed, not skipped"
+fi
+
+# 5d: 空白行
+set +e
+GATE_OUT=$(printf '\n' | bash scripts/external-write-gate.sh origin 2>&1)
+GATE_STATUS=$?
+set -e
+if [[ $GATE_STATUS -eq 0 ]]; then
+    echo "FAIL: blank line allowed"
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$GATE_OUT" | grep -q "Blank line"; then
+    echo "FAIL: blank line blocked without reason"; echo "$GATE_OUT"
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: 5d blocked — blank line rejected"
 fi
 
 echo ""
