@@ -32,10 +32,10 @@
 - Truth Contract 是事前约束
 - 不能等错误发生后再纠正，必须先约束表达
 
-**当前框架在 assurance 层仍有短板**：
+**当前框架在 assurance 层仍有需要本文承接的空位**：
 - 复测显示：judgment 层已有卡片支撑
-- 但"未验证不说已确认"的强制检查仍为占位状态
-- Truth Contract 是 assurance 层的最短木板
+- 但"未验证不说已确认"的强制检查表述当时尚为空位，原有空位由本文承接
+- Truth Contract 是 assurance 层该空位的承接文件（文档成文不等于规则已在运行时加载或生效）
 
 ---
 
@@ -154,10 +154,10 @@
 
 ## 八、在框架中的作用
 
-**如何弥补当前测试中暴露出的 assurance 短板**：
-- 复测显示：judgment 层已有 `GUARANTEE-STRUCTURE-DISAMBIGUATION.md` 支撑
-- 但"未验证不说已确认"的强制检查仍为占位状态
-- Truth Contract 显式定义真实性约束，使 assurance 层从占位变为可执行
+**如何弥补当前测试中暴露出的 assurance 空位**：
+- 复测显示：judgment 层已有判断接口支撑（原 `GUARANTEE-STRUCTURE-DISAMBIGUATION.md` 已随保函域撤回，现由 `judgment-cards/` 目录承接）
+- 但"未验证不说已确认"的强制检查表述当时尚为空位，原有空位由本文承接
+- Truth Contract 显式定义真实性约束，使该空位有文可依（文档成文不等于规则已在运行时加载或生效）
 
 **为什么当前阶段应优先补它，而不是先补 pre-flight 或 context budget**：
 - Pre-flight 是前置检查序列，Context Budget 是资源约束

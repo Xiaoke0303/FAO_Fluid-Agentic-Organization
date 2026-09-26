@@ -92,7 +92,7 @@ Organizational theory has always regulated humans. Traditional mechanisms are no
 | Authorization hierarchy / 授权分级 | Limits individual action radius |
 | Documentation / 留痕 | Enables retrospective accountability |
 | Escalation / 升级 | Acknowledges frontline judgment boundaries |
-| Rotation / 轮岗 | Reduces path dependency and relationship固化 |
+| Rotation / 轮岗 | Reduces path dependency and 关系固化 |
 | Segregation of duties / 岗位分离 | Prevents conflict of interest and single-point overload |
 
 > **Traditional organizations have always regulated humans, not only tasks.**
@@ -170,7 +170,7 @@ Draft formulations for future FAO writing:
 2. How to measure human attention cost in AI-enabled organizations?
 3. How to detect human state drift before it causes errors?
 4. Which traditional human-regulation mechanisms should be preserved, and which should be redesigned, when AI Agents enter organizations?
-5. How should maker-checker separation in guarantee operations be redesigned after AI介入?
+5. How should maker-checker separation in guarantee operations be redesigned after AI 介入？
 6. What is the boundary between healthy organizational protection and unhealthy control over human agency?
 
 ---

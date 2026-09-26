@@ -185,7 +185,9 @@ Human attention contested by:
 | Human responsibility pressure | 人类责任压力 |
 | Organizational political pressure | 组织政治压力 |
 
-**Note**: `notes/governance-line/human-state-governance-note.md` does not exist. This sidecar records the issue as a **first-pass articulation**, pending future governance-line development.
+**Note** (2026-05-15): at the time of writing, `notes/governance-line/human-state-governance-note.md` did not exist, and this sidecar recorded the issue as a **first-pass articulation** pending future governance-line development.
+
+**Current status** (2026-09-26): `notes/governance-line/human-state-governance-note.md` now exists as a governance-line sidecar draft, and PRE-FLIGHT Step 0.5 carries the human-state readiness check as a [draft] signal.
 
 ### 8.5 Compressed Formulation
 

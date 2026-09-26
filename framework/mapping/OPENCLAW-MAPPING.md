@@ -94,6 +94,8 @@
 
 ## 当前最关键的 OpenClaw 承接缺口
 
+> 口径说明：以下"缺口"均指 **OpenClaw 原生侧**的承接缺口——即 OpenClaw 默认环境中没有与该 FAO 接口一一对应的原生文件或机制；**不表示 FAO framework 缺少对应文件**（framework 侧各接口文件均已存在）。文档成文也不等于规则已在运行时加载或生效，各接口的加载与生效等级以 RUNTIME-CONFORMANCE-PROTOCOL.md 及相应 mapping 的符合性声明为准。
+
 - `ROLE-CONTRACT.md`：Role 层缺少显式契约文件，收窄动作无原生承接
 - `judgment-cards/`：缺少可复用判断模板目录，判断动作无结构化承接
 - `CORRECTION-WRITEBACK.md`：纠错与写回链路不完整，经验难以累积
