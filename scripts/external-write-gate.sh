@@ -5,7 +5,7 @@
 #
 # Governance rule enforced:
 #   "commit 授权 ≠ push 授权" (EXTERNAL-CALL-PROTOCOL.md §External Write Gate)
-#   "Push only after the human explicitly says push." (PUBLIC-PUSH-GATE.md)
+#   "Push only after the human explicitly says push." (framework/runtime/PUBLIC-PUSH-GATE.md)
 #
 # This script reads a machine-readable authorization state and deterministically
 # allows or blocks a git push. It is called by .git/hooks/pre-push.

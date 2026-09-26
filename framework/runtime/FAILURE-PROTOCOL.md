@@ -87,7 +87,7 @@
 
 ---
 
-参照 [`framework/assurance/TRUTH-CONTRACT.md`](../../assurance/TRUTH-CONTRACT.md)。
+参照 [`framework/assurance/TRUTH-CONTRACT.md`](../assurance/TRUTH-CONTRACT.md)。
 
 **清楚区分以下状态，不得互混：**
 
@@ -152,7 +152,7 @@
 
 如果失败与纠错、记忆或审计有关，应引用：
 
-[`framework/continuity/CORRECTION-WRITEBACK.md`](../../continuity/CORRECTION-WRITEBACK.md)
+[`framework/continuity/CORRECTION-WRITEBACK.md`](../continuity/CORRECTION-WRITEBACK.md)
 
 **失败报告不等于自动写回。**
 
@@ -190,8 +190,8 @@
 | [`OPERATING-RULES.md`](OPERATING-RULES.md) | 运行母规则提供全局收敛与暂停规则；本协议聚焦失败后的具体报告方式 |
 | [`EXTERNAL-CALL-PROTOCOL.md`](EXTERNAL-CALL-PROTOCOL.md) | 外部调用协议在调用失败时转入本协议 |
 | [`CONTEXT-BUDGET.md`](CONTEXT-BUDGET.md) | 成本约束决定是否继续排查或暂停；本协议负责报告预算耗尽时的状态 |
-| [`TRUTH-CONTRACT.md`](../../assurance/TRUTH-CONTRACT.md) | 真实性合同提供标记规则；本协议负责执行失败时的诚实声明 |
-| [`CORRECTION-WRITEBACK.md`](../../continuity/CORRECTION-WRITEBACK.md) | 纠错写回机制决定是否将失败沉淀为约束更新；本协议只负责报告 |
+| [`TRUTH-CONTRACT.md`](../assurance/TRUTH-CONTRACT.md) | 真实性合同提供标记规则；本协议负责执行失败时的诚实声明 |
+| [`CORRECTION-WRITEBACK.md`](../continuity/CORRECTION-WRITEBACK.md) | 纠错写回机制决定是否将失败沉淀为约束更新；本协议只负责报告 |
 
 ---
 

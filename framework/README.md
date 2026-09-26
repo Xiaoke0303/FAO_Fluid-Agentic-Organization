@@ -26,12 +26,12 @@ whitepaper/ 提供组织分析语言与论证。
 framework/ 提供运行接口与操作约束。
 两者并行,互不替代。
 
-## 与 archives/toolkit-legacy/ 的关系
+## 与 toolkit/ 的关系
 
-`archives/toolkit-legacy/` 保留为早期最小工具集与治理实验的历史参考。
-当 framework/ 与 `archives/toolkit-legacy/` 存在冲突时，**framework/ 优先**。
+`toolkit/` 保留在原位，作为早期最小工具集与治理实验的非活跃历史参考。此前文档曾表述其已移至 `archives/toolkit-legacy/`，该移动并未实际执行；本文档按现状修正。
+当 framework/ 与 `toolkit/` 存在冲突时，**framework/ 优先**。
 
-`archives/toolkit-legacy/` 当前为 **non-active legacy reference**：不再作为运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy 来源。
+`toolkit/` 当前为 **non-active legacy reference**：不再作为运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy 来源。
 
 ---
 ---
@@ -63,7 +63,7 @@ framework/ 提供运行接口与操作约束。
 4. [rhythm/HEARTBEAT.md](rhythm/HEARTBEAT.md) - 时间组织原则层
 5. [role/ROLE-CONTRACT.md](role/ROLE-CONTRACT.md) - 角色契约
 6. [runtime/OPERATING-RULES.md](runtime/OPERATING-RULES.md) - 运行母规则
-7. [runtime/CONTEXT-BUDGET.md](runtime/CONTEXT-BUDGET.md) - runtime budget interface for compute footprint, tool calls, time, and human review attention; not an economic model
+7. [runtime/CONTEXT-BUDGET.md](runtime/CONTEXT-BUDGET.md) - 运行时预算接口（计算占用、工具调用、时间与人类审查注意力；非经济模型）
 8. [runtime/PRE-FLIGHT-SEQUENCE.md](runtime/PRE-FLIGHT-SEQUENCE.md) - 前置检查序列
 9. [runtime/TERM-MAP.md](runtime/TERM-MAP.md) - 术语消歧入口
 10. [assurance/TRUTH-CONTRACT.md](assurance/TRUTH-CONTRACT.md) - 真实性合同
@@ -71,6 +71,9 @@ framework/ 提供运行接口与操作约束。
 12. [runtime/FAILURE-PROTOCOL.md](runtime/FAILURE-PROTOCOL.md) - 失败协议
 13. [continuity/MEMORY-INDEX.md](continuity/MEMORY-INDEX.md) - 长期连续性薄索引
 14. [continuity/CORRECTION-WRITEBACK.md](continuity/CORRECTION-WRITEBACK.md) - 纠错写回协议
+15. [runtime/RETROSPECTIVE-PROTOCOL.md](runtime/RETROSPECTIVE-PROTOCOL.md) - 回溯协议
+16. [runtime/RUNTIME-CONFORMANCE-PROTOCOL.md](runtime/RUNTIME-CONFORMANCE-PROTOCOL.md) - 运行时一致性协议
+17. [continuity/judgment-cards/README.md](continuity/judgment-cards/README.md) - 判断卡片接口（判断卡的触发索引见 [REGISTRY.md](continuity/judgment-cards/REGISTRY.md)）
 
 ---
 

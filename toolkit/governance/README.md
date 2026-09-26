@@ -2,7 +2,7 @@
 
 > 旧治理实现分组 / 历史实现来源
 
-当前理解仓库整体结构的首选入口应是 [framework/](../framework/)。
+当前理解仓库整体结构的首选入口应是 [framework/](../../framework/)。
 
 ---
 
@@ -19,9 +19,9 @@ toolkit/governance/ 更接近**旧治理实现分组**，主要承接真实性�
 
 ## 与 framework 的关系
 
-- [framework/](../framework/) 是当前新的上位骨架候选
+- [framework/](../../framework/) 是当前新的上位骨架候选
 - [governance/](./) 中的内容可作为新框架 Assurance 模块的来源、映射对象或历史实现参考
-- 后续以 [framework/MIGRATION-PLAN.md](../framework/MIGRATION-PLAN.md) 为准逐步迁移
+- 后续以 [framework/mapping/MIGRATION-PLAN.md](../../framework/mapping/MIGRATION-PLAN.md) 为准逐步迁移
 
 ---
 
@@ -53,6 +53,6 @@ toolkit/governance/ 更接近**旧治理实现分组**，主要承接真实性�
 
 ## 阅读建议
 
-1. 先看 [framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../framework/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
-2. 再看 [framework/TRUTH-CONTRACT.md](../framework/TRUTH-CONTRACT.md)、[framework/OPENCLAW-MAPPING.md](../framework/OPENCLAW-MAPPING.md) 理解 Assurance 层
+1. 先看 [framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md](../../framework/core/UNIVERSAL-WORK-NODE-FRAMEWORK.md) 理解新骨架
+2. 再看 [framework/assurance/TRUTH-CONTRACT.md](../../framework/assurance/TRUTH-CONTRACT.md)、[framework/mapping/OPENCLAW-MAPPING.md](../../framework/mapping/OPENCLAW-MAPPING.md) 理解 Assurance 层
 3. 最后回看 `archives/toolkit-legacy/governance/`，理解其作为历史分组和实现来源的意义

@@ -25,7 +25,7 @@ FAO 是一种在人类主体与智能体主体共存条件下，围绕任务路�
 | **[whitepaper/](whitepaper/)** | 思想主干。`FAO-Whitepaper.md` 是唯一主文。[cases/](whitepaper/cases/) 为案例支撑，[references/](whitepaper/references/) 为引用卡。不再维护 `chapters/` 拆分稿。 |
 | **[framework/](framework/)** | 工程化框架。承载边界、责任、运行时约束、角色、连续性等结构。与白皮书并行，不是白皮书的附属实现。 |
 | **[notes/](notes/)** | 仅保留尚未吸收的横向旁枝。[cost-line](notes/cost-line/) 与 [memory-line](notes/memory-line/) 未来可能被吸收进 `whitepaper/` 或 `framework/`。 |
-| **[archives/toolkit-legacy/](archives/toolkit-legacy/)** | 已归档的早期最小工具集与治理实验。不再作为当前运行时、治理或定向入口；仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。当前正式运行接口以 [framework/](framework/) 为准。 |
+| **[toolkit/](toolkit/)** | 早期最小工具集与治理实验。保留在原位，作为非活跃历史参考（legacy reference）：不再作为当前运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy 来源。当前正式运行接口以 [framework/](framework/) 为准。 |
 
 ---
 
@@ -38,11 +38,13 @@ FAO 是一种在人类主体与智能体主体共存条件下，围绕任务路�
 
 ---
 
-## toolkit 归档说明
+## toolkit 现状说明
 
-`toolkit/` 已于 2026-09-03 归档至 `archives/toolkit-legacy/`。
+`toolkit/` 保留在原位，作为非活跃历史参考。此前文档曾表述其"已归档至 `archives/toolkit-legacy/`"，该移动并未实际执行，`archives/toolkit-legacy/` 目录不存在；本文档已按现状修正。
 
-原 `toolkit/minimal-core/` 与 `toolkit/governance/` 中的内容已由 `framework/` 各模块承接或替代。归档目录仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。后续如需追溯历史设计意图，请查阅 `archives/toolkit-legacy/`。
+原 `toolkit/minimal-core/` 与 `toolkit/governance/` 中的内容已由 `framework/` 各模块承接或替代。`toolkit/` 不再作为当前运行时、治理或定向入口，仅保留为历史追踪、旧 schema 与部分未完全承接模板的 legacy reference。后续如需追溯历史设计意图，请查阅 `toolkit/`。
+
+当 `toolkit/` 与 `framework/` 存在冲突时，**framework/ 优先**。
 
 当前正式运行接口以 [framework/](framework/) 为准。
 

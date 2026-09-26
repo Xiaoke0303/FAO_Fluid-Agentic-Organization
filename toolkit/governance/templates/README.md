@@ -17,7 +17,7 @@
 
 `templates/` 作为**历史模板层（legacy templates）**保留，不再是当前角色或身份的正式入口：
 
-- `identity-cloud-node.md` — 保留为 legacy template。角色边界已由 [`framework/role/ROLE-CONTRACT.md`](../../framework/role/ROLE-CONTRACT.md) 承接，真实性约束已由 [`framework/assurance/TRUTH-CONTRACT.md`](../../framework/assurance/TRUTH-CONTRACT.md) 承接。但 "Cloud Node / 组织节点" 身份定位尚无 framework 内一对一正式承接，**不应视为完整迁移**。
+- `identity-cloud-node.md` — 保留为 legacy template。角色边界已由 [`framework/role/ROLE-CONTRACT.md`](../../../framework/role/ROLE-CONTRACT.md) 承接，真实性约束已由 [`framework/assurance/TRUTH-CONTRACT.md`](../../../framework/assurance/TRUTH-CONTRACT.md) 承接。但 "Cloud Node / 组织节点" 身份定位尚无 framework 内一对一正式承接，**不应视为完整迁移**。
 - `user.md` — 保留为 legacy template。与根目录 `USER.md` 定位不等价，不做正式迁移判断。
 
 ---

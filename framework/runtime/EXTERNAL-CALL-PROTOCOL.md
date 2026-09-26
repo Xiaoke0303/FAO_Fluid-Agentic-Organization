@@ -101,7 +101,7 @@
 
 ## Truth-State Requirements
 
-参照 [`framework/assurance/TRUTH-CONTRACT.md`](../../assurance/TRUTH-CONTRACT.md)。
+参照 [`framework/assurance/TRUTH-CONTRACT.md`](../assurance/TRUTH-CONTRACT.md)。
 
 **不得把以下状态互混：**
 
@@ -192,7 +192,7 @@
 | [`OPERATING-RULES.md`](OPERATING-RULES.md) | 运行母规则提供全局推进、展开、收敛与暂停规则；本协议聚焦外部调用具体约束 |
 | [`PRE-FLIGHT-SEQUENCE.md`](PRE-FLIGHT-SEQUENCE.md) | 前置检查序列决定"是否应进入任务"；本协议约束"进入后如何执行外部调用" |
 | [`CONTEXT-BUDGET.md`](CONTEXT-BUDGET.md) | 成本约束决定验证深度与广度；本协议决定验证标准与证据格式 |
-| [`TRUTH-CONTRACT.md`](../../assurance/TRUTH-CONTRACT.md) | 真实性合同提供标记规则与证据标准；本协议负责执行外部调用时的具体检查与声明 |
+| [`TRUTH-CONTRACT.md`](../assurance/TRUTH-CONTRACT.md) | 真实性合同提供标记规则与证据标准；本协议负责执行外部调用时的具体检查与声明 |
 | [`FAILURE-PROTOCOL.md`](FAILURE-PROTOCOL.md) | 本协议在调用失败时转入失败协议 |
 
 ---
