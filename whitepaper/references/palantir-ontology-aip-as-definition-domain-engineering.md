@@ -113,7 +113,7 @@ Palantir trains engineers in improvisational theater techniques (*Impro* by Keit
 | **Audit / lineage** | Truth-State / Source Audit | strong | verified |
 | **FDE embedded** | Human-in-the-Loop / Knowledge Translation | medium | partially verified |
 | **Security at Ontology level** | Governed Capability | strong | verified |
-| **Three-layer stack**（本文分析简化，见 §3.3；官方为 data/logic/action/security 四重整合） | Pre-Flight / Task Routing | medium | FAO 推论性映射（Palantir 侧描述见 §3.3 源注） |
+| **Three-layer stack**（本文分析简化，见 §3.3；官方为 data/logic/action/security 四重整合） | Pre-Flight / Task Routing | medium | [inferred]（本文"三段业务流"是对官方四者整合的分析简化，与 FAO 的对应亦为推论） |
 
 > 状态说明：本表 Truth-State 标记的是 **Palantir 官方资料中该产品描述的来源核实状态**（即"供应商如此描述"是否可核对）；**"Palantir 元素 → FAO 概念"的映射本身是 FAO 的事后分析判断**，除单独注明外不构成行为验证，也不等于 FAO 概念成立。官方文档只支持产品描述层，不构成客户环境中的执行验证。
 
@@ -301,7 +301,7 @@ Draft formulations for future FAO writing:
 |------|--------|-----|-------------|
 | T1 | Palantir AIP Architecture | https://palantir.com/docs/foundry/architecture-center/aip-architecture/ | verified |
 | T1 | Palantir Ontology System | https://palantir.com/docs/foundry/architecture-center/ontology-system/ | verified |
-| T2 | ISG Provider Lens 2026 | https://isg-one.com/docs/... | partially verified（**时间说明**：该行引入于 2026-05-15（commit b3ac7009），当时 ISG Provider Lens Palantir Ecosystem Partners 报告本体尚未发布（ISG 2026-02-20 仅发布评估预告，报告本体 2026-07 发布）；现可核对的版本为 2026-07 发布的 ISG Provider Lens Palantir Ecosystem Partners 报告） |
+| T2 | ISG Provider Lens 2026 | https://ir.isg-one.com/news-market-information/press-releases/news-details/2026/Palantir-Platforms-Help-Enterprises-Extend-AI-Into-Operations/default.aspx | partially verified（**时间说明**：该行引入于 2026-05-15（commit b3ac7009），当时报告本体尚未发布（ISG 2026-02-20 仅有评估预告）；ISG 官方公告证实 2026 ISG Provider Lens global Palantir Ecosystem Partners 报告于 2026-07-08 发布（见本行 URL，公告含报告要点与引语）；**报告正文未核查**（订阅可得，直链待补）。PwC 2026-07-16 公告（pwc.com）仅作为补充公告与部分引语来源，不作为报告全文已读的证据） |
 | T2 | 广发证券 research | https://pdf.dfcfw.com/... | partially verified |
 | T2 | 36氪 analysis | https://36kr.com/... | partially verified |
 | T4 | 博客园 blog | https://www.cnblogs.com/... | inferred |
