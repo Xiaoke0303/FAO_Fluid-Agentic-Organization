@@ -67,10 +67,12 @@ Launched in 2023, AIP integrates LLMs and agents into the Ontology.
 
 **Foundry**: commercial platform. **Apollo**: deployment layer across cloud, on-premise, and edge.
 
-Three-layer decision stack:
+本文按业务流将其分析简化为 Data / Logic / Action 三段：
 - **Data**: source databases, ETL
 - **Logic**: AI models, knowledge graphs, Ontology processes
 - **Action**: business processes, decision orchestration, writeback
+
+注意：Palantir 官方对 Ontology 的描述是 **data / logic / action / security 的四重整合**（four-fold integration），security 不是可遗漏的治理条件，本文仅在 §3.5 单独展开。三段简化只是本文的分析视角，不替代官方四层表述。
 
 Closed-loop: data → logic → action → feedback → data.
 
@@ -111,7 +113,9 @@ Palantir trains engineers in improvisational theater techniques (*Impro* by Keit
 | **Audit / lineage** | Truth-State / Source Audit | strong | verified |
 | **FDE embedded** | Human-in-the-Loop / Knowledge Translation | medium | partially verified |
 | **Security at Ontology level** | Governed Capability | strong | verified |
-| **Three-layer stack** | Pre-Flight / Task Routing | medium | verified |
+| **Three-layer stack**（本文分析简化，见 §3.3；官方为 data/logic/action/security 四重整合） | Pre-Flight / Task Routing | medium | FAO 推论性映射（Palantir 侧描述见 §3.3 源注） |
+
+> 状态说明：本表 Truth-State 标记的是 **Palantir 官方资料中该产品描述的来源核实状态**（即"供应商如此描述"是否可核对）；**"Palantir 元素 → FAO 概念"的映射本身是 FAO 的事后分析判断**，除单独注明外不构成行为验证，也不等于 FAO 概念成立。官方文档只支持产品描述层，不构成客户环境中的执行验证。
 
 ---
 
@@ -124,7 +128,7 @@ Palantir’s Ontology illustrates that a **narrowed definition domain can become
 - Defines what traces must remain
 - Defines who can do what (RBAC/ABAC at semantic level)
 
-This is an engineering implementation of FAO’s principle: **"When the water changes, responsibility must be re-anchored."**
+从 FAO 视角看，Ontology 收窄定义域的做法是一条**可参考的平行工程实践**：它面对与 FAO 原则相同的治理问题（当运行环境变化时，治理条件必须被重新锚定），且工程实现早于 FAO 概念成形。这是事后的分析比较，不是历史影响或正式实施关系。
 
 ---
 
@@ -145,9 +149,13 @@ Palantir’s observability suggests:
 
 > **Truth-State is not only an ethical marker; it is an operational trace requirement.**
 
+以下为本文根据官方 observability 描述整理的分析示例 [inferred]，而非官方文档已证明的统一工作流：
+
 Agent recommends → human approves/overrides → both logged → decision traced to source data, model version, logic path.
 
-This operationalizes: **"Unverified cannot pose as verified"** becomes **"Untraced cannot be treated as accountable."**
+其中"human approves/overrides"的显式审批节点与"model version"级追溯颗粒度为本文补全，官方文档直接支持的是"全动作日志 + 执行链追踪 + provenance-tracking"。
+
+这一工程实践在问题上与 FAO 的真实性约束**相呼应**（而非 Palantir 按 FAO 原则建造）：**"Unverified cannot pose as verified"** 与 **"Untraced cannot be treated as accountable"** 面对同一治理问题。
 
 ---
 
@@ -293,7 +301,7 @@ Draft formulations for future FAO writing:
 |------|--------|-----|-------------|
 | T1 | Palantir AIP Architecture | https://palantir.com/docs/foundry/architecture-center/aip-architecture/ | verified |
 | T1 | Palantir Ontology System | https://palantir.com/docs/foundry/architecture-center/ontology-system/ | verified |
-| T2 | ISG Provider Lens 2026 | https://isg-one.com/docs/... | partially verified |
+| T2 | ISG Provider Lens 2026 | https://isg-one.com/docs/... | partially verified（**时间说明**：该行引入于 2026-05-15（commit b3ac7009），当时 ISG Provider Lens Palantir Ecosystem Partners 报告本体尚未发布（ISG 2026-02-20 仅发布评估预告，报告本体 2026-07 发布）；现可核对的版本为 2026-07 发布的 ISG Provider Lens Palantir Ecosystem Partners 报告） |
 | T2 | 广发证券 research | https://pdf.dfcfw.com/... | partially verified |
 | T2 | 36氪 analysis | https://36kr.com/... | partially verified |
 | T4 | 博客园 blog | https://www.cnblogs.com/... | inferred |
