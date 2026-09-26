@@ -29,7 +29,7 @@ Current check set (2026-09-26):
 2. authorization state must be `authorized` and unexpired;
 3. remote alias must match `target_remote` (if specified);
 4. **every ref on the pre-push stdin must exactly equal `target_ref`** — ref mismatch, ref deletion, tags, unparseable records, and empty stdin (wildcard push / non-hook invocation) are all blocked;
-5. `authorized_commit` is parsed but **not enforced** — it is a declaration, not a constraint.
+5. `authorized_commit` is **not parsed and not enforced** — it exists only as a declaration field in the authorization file and is invisible to this script.
 
 Note: check 4 closes the previously reported "target_ref not compared" gap
 *within this co-located guardrail*. It does not change the maturity level:

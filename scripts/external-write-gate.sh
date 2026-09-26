@@ -12,8 +12,8 @@
 #
 # Checks: action type / state+expiry / target_remote match / target_ref match
 # (every pre-push stdin ref must equal target_ref; deletions, tags, malformed
-# records and empty stdin are blocked). authorized_commit is parsed but NOT
-# enforced (declaration, not constraint).
+# records and empty stdin are blocked). authorized_commit 未解析、未执行
+# —— 它只是授权文件中的声明字段，对本脚本不可见。
 #
 # v0 Status: collaborative guardrail (deterministic but co-located with agent)
 # Not an independent enforcement boundary — agent can bypass via:
