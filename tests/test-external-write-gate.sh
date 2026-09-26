@@ -1,103 +1,113 @@
 #!/usr/bin/env bash
 # tests/test-external-write-gate.sh
 # Test suite for FAO External Write Gate — Minimal Vertical Slice
+#
+# 隔离模型：本测试自建临时本地工作仓库 + 本地 bare remote，
+# 完全不使用当前仓库的 origin、分支、工作区文件。
+# 所有测试产物位于 mktemp 目录内，cleanup 删除整个目录。
+# 退出码约定：0 = 全部通过；1 = 失败；77 = 跳过（前提未满足）。
 
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-cd "$REPO_ROOT"
-
-AUTH_FILE=".fao-gate-auth.json"
-TEST_BRANCH="test/external-write-gate-$$"
-DUMMY_FILE="test-gate-dummy-$$.md"
-
-# --- 前提检查（在注册任何清理钩子、创建任何文件或分支之前）---
+# === 前提 A：本仓库已安装门禁 hook（零副作用检查，trap 注册之前）===
 HOOK=".git/hooks/pre-push"
 if [[ ! -f "$HOOK" ]]; then
     echo "SKIP: pre-push hook not installed at $HOOK"
     echo "      这是测试前提未满足，不是门禁逻辑失败，也不是测试通过。"
     echo "      本地安装（仅写入本仓库 .git/，不改全局 Git 配置），在仓库根执行："
     echo '        printf "%s\n" "#!/usr/bin/env bash" "exec \"$(git rev-parse --show-toplevel)/scripts/external-write-gate.sh\" \"\$1\"" > .git/hooks/pre-push && chmod +x .git/hooks/pre-push'
-    echo "      安装后重新运行本测试。退出码 77 = 跳过（autoconf 惯例）：0 仅表示真正通过。"
+    echo "      退出码 77 = 跳过（autoconf 惯例）：0 仅表示真正通过。"
     exit 77
 fi
 
-if [[ -f "$AUTH_FILE" ]]; then
-    echo "FAIL: $AUTH_FILE already exists."
-    echo "      测试不会删除用户既有的授权文件。请先消费或手动移除后再运行测试。"
+# === 前提 B：不触碰用户既有的授权文件（防御层；本测试不读写它）===
+if [[ -f ".fao-gate-auth.json" ]]; then
+    echo "FAIL: .fao-gate-auth.json already exists in repo root."
+    echo "      本测试不会读写用户授权文件，但为避免任何歧义，请先消费或移除后再运行。"
     exit 1
 fi
 
-# --- 副作用标志：cleanup 只清理本次运行实际创建的资源 ---
-DUMMY_CREATED=0
-BRANCH_CREATED=0
-REMOTE_BRANCH_CREATED=0
-AUTH_WRITTEN=0
+# === 自建隔离环境 ===
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ISOLATE_DIR=$(mktemp -d /tmp/fao-gate-test.XXXXXXXX)
+WORK="$ISOLATE_DIR/work"
+BARE="$ISOLATE_DIR/origin.git"
+TEST_BRANCH="test/gate-$$"
+FAILURES=0
 
 cleanup() {
-    if [[ "$DUMMY_CREATED" -eq 1 ]]; then
-        rm -f "$DUMMY_FILE"
-    fi
-    if [[ "$BRANCH_CREATED" -eq 1 ]]; then
-        git checkout -q main 2>/dev/null || git checkout -q - 2>/dev/null || true
-        git branch -D "$TEST_BRANCH" 2>/dev/null || true
-    fi
-    if [[ "$REMOTE_BRANCH_CREATED" -eq 1 ]]; then
-        # 清理专用的临时授权：仅允许删除本测试分支，用完即删。
-        # 否则门禁会拦下删除（无授权或过期授权均 blocked），导致远端测试分支残留。
-        NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-        EXPIRES=$(date -u -d '+5 minutes' +%Y-%m-%dT%H:%M:%SZ)
-        cat > "$AUTH_FILE" << EOF
-{
-  "state": "authorized",
-  "action_type": "git-push",
-  "target_remote": "origin",
-  "target_ref": "$TEST_BRANCH",
-  "authorized_commit": "cleanup",
-  "granted_at": "$NOW",
-  "expires_at": "$EXPIRES"
-}
-EOF
-        git push origin --delete "$TEST_BRANCH" 2>/dev/null || echo "WARN: remote test branch cleanup failed: $TEST_BRANCH"
-    fi
-    if [[ "$AUTH_WRITTEN" -eq 1 || "$REMOTE_BRANCH_CREATED" -eq 1 ]]; then
-        rm -f "$AUTH_FILE"
+    if ! rm -rf "$ISOLATE_DIR" 2>/dev/null; then
+        echo "CLEANUP-FAIL: $ISOLATE_DIR" >&2
     fi
 }
 trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 
-git checkout -b "$TEST_BRANCH"
-BRANCH_CREATED=1
-echo "# test" > "$DUMMY_FILE"
-DUMMY_CREATED=1
-git add "$DUMMY_FILE"
-git commit -q -m "test: external write gate dummy"
+echo "隔离环境: $ISOLATE_DIR"
+echo "bare origin: $BARE（本地路径，与任何网络远端无连接）"
+
+git init --bare -q "$BARE"
+git init -q -b main "$WORK"
+cd "$WORK"
+git config user.email "gate-test@local"
+git config user.name "Gate Test"
+git remote add origin "$BARE"
+
+# 防改写断言：origin 必须是本测试自建的本地 bare 路径
+if [[ "$(git remote get-url origin)" != "$BARE" ]]; then
+    echo "FAIL: origin URL mismatch. expected local bare: $BARE"
+    exit 1
+fi
+
+# hook 安装前完成 main 初始化（避免被被测门禁拦截）
+git commit -q --allow-empty -m "init: main"
+git push -q origin main
+
+# 安装被测 hook 与门禁脚本
+mkdir -p scripts
+cp "$REPO_ROOT/scripts/external-write-gate.sh" scripts/
+printf '%s\n' "#!/usr/bin/env bash" "exec \"$(pwd)/scripts/external-write-gate.sh\" \"\$1\"" > .git/hooks/pre-push
+chmod +x .git/hooks/pre-push
+
+echo ""
+echo "=== 前置状态 ==="
+echo "本地分支: $(git branch --format='%(refname:short)' | tr '\n' ' ')"
+echo "远端分支: $(git --git-dir="$BARE" branch --format='%(refname:short)' | tr '\n' ' ')"
+
+git checkout -q -b "$TEST_BRANCH"
+echo "# test" > "dummy-$$.md"
+git add "dummy-$$.md"
+git commit -q -m "test: gate dummy"
 LOCAL_SHA=$(git rev-parse HEAD)
 
 echo ""
 echo "=== TEST 1: NEGATIVE — no authorization ==="
-rm -f "$AUTH_FILE"
-
 set +e
 PUSH_OUT=$(git push origin "$TEST_BRANCH" 2>&1)
 PUSH_STATUS=$?
 set -e
 
 if [[ $PUSH_STATUS -eq 0 ]]; then
-    echo "FAIL: push should have been blocked"
-    exit 1
+    echo "FAIL: gate failed to block unauthorized push; remote branch was created"
+    echo "$PUSH_OUT"
+    FAILURES=$((FAILURES + 1))
+    # 远端分支由本次测试创建，cleanup 将随隔离目录整体删除；保留失败状态
+else
+    if ! echo "$PUSH_OUT" | grep -q "\[blocked\]"; then
+        echo "FAIL: push failed but no [blocked] marker (gate may not be the cause)"
+        echo "$PUSH_OUT"
+        FAILURES=$((FAILURES + 1))
+    else
+        echo "PASS: blocked without authorization"
+    fi
 fi
-if ! echo "$PUSH_OUT" | grep -q "\[blocked\]"; then
-    echo "FAIL: no [blocked] marker"
-    exit 1
-fi
-echo "PASS: blocked without authorization"
 
 echo ""
-echo "=== TEST 2: POSITIVE — valid authorization ==="
+echo "=== TEST 2: POSITIVE — valid authorization + execution receipt ==="
 NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 EXPIRES=$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
-cat > "$AUTH_FILE" << EOF
+cat > "$WORK/.fao-gate-auth.json" << EOF
 {
   "state": "authorized",
   "action_type": "git-push",
@@ -108,7 +118,8 @@ cat > "$AUTH_FILE" << EOF
   "expires_at": "$EXPIRES"
 }
 EOF
-AUTH_WRITTEN=1
+# 说明：本授权为 5/10 分钟有效的短期授权，写入隔离工作区，随 cleanup 删除。
+# 当前门禁不消费授权文件、也不比对 target_ref 与实际推送 ref，该范围仅为声明。
 
 set +e
 PUSH_OUT=$(git push origin "$TEST_BRANCH" 2>&1)
@@ -118,19 +129,28 @@ set -e
 if [[ $PUSH_STATUS -ne 0 ]]; then
     echo "FAIL: push should have been allowed"
     echo "$PUSH_OUT"
-    exit 1
-fi
-if ! echo "$PUSH_OUT" | grep -q "\[allowed\]"; then
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "\[allowed\]"; then
     echo "FAIL: no [allowed] marker"
-    exit 1
+    FAILURES=$((FAILURES + 1))
+else
+    # 执行回读：只读比对远端 ref 与本地 SHA，不凭退出码判定成功
+    REMOTE_SHA=$(git ls-remote origin "refs/heads/$TEST_BRANCH" | awk '{print $1}')
+    if [[ -z "$REMOTE_SHA" ]]; then
+        echo "FAIL: remote ref missing after allowed push"
+        FAILURES=$((FAILURES + 1))
+    elif [[ "$REMOTE_SHA" != "$LOCAL_SHA" ]]; then
+        echo "FAIL: SHA mismatch remote=$REMOTE_SHA local=$LOCAL_SHA"
+        FAILURES=$((FAILURES + 1))
+    else
+        echo "PASS: allowed; execution receipt verified (remote=$REMOTE_SHA)"
+    fi
 fi
-REMOTE_BRANCH_CREATED=1
-echo "PASS: allowed with valid authorization"
 
 echo ""
 echo "=== TEST 3: NEGATIVE — expired authorization ==="
 EXPIRED=$(date -u -d '-1 hour' +%Y-%m-%dT%H:%M:%SZ)
-cat > "$AUTH_FILE" << EOF
+cat > "$WORK/.fao-gate-auth.json" << EOF
 {
   "state": "authorized",
   "action_type": "git-push",
@@ -149,13 +169,23 @@ set -e
 
 if [[ $PUSH_STATUS -eq 0 ]]; then
     echo "FAIL: push should have been blocked (expired)"
-    exit 1
-fi
-if ! echo "$PUSH_OUT" | grep -q "\[blocked\]"; then
+    FAILURES=$((FAILURES + 1))
+elif ! echo "$PUSH_OUT" | grep -q "\[blocked\]"; then
     echo "FAIL: no [blocked] marker for expired auth"
-    exit 1
+    FAILURES=$((FAILURES + 1))
+else
+    echo "PASS: blocked with expired authorization"
 fi
-echo "PASS: blocked with expired authorization"
 
 echo ""
-echo "ALL TESTS PASSED"
+echo "=== 后置状态（cleanup 前）==="
+echo "本地分支: $(git branch --format='%(refname:short)' | tr '\n' ' ')"
+echo "远端分支: $(git --git-dir="$BARE" branch --format='%(refname:short)' | tr '\n' ' ')"
+
+if [[ $FAILURES -gt 0 ]]; then
+    echo ""
+    echo "RESULT: FAIL ($FAILURES failure(s))"
+    exit 1
+fi
+echo ""
+echo "RESULT: ALL TESTS PASSED"
