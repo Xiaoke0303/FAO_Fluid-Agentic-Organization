@@ -2,7 +2,7 @@
 
 > **Truth-State**: analysis only. based on OpenClaw, Hermes, Codex / Claude Code public documentation. no external re-check performed unless explicitly stated. no framework patch implied.
 >
-> **Runtime Conformance**: This mapping does not claim any runtime has achieved L1–L5. L0 (Documented) is [verified] for all three; L1–L5 are [unverified] unless runtime-specific evidence is stated. 注：本文将 Codex 与 Claude Code 合并为一类样本统计；单项状态见 [CODEX-MAPPING.md](CODEX-MAPPING.md)（仅覆盖 Codex）。
+> **Runtime Conformance**: 本文的符合性声明只覆盖三个已单独取证的运行体：**OpenClaw、Hermes、Codex**。其中 L0 (Documented) 为 [verified]，L1–L5 均为 [unverified]（除非文中给出特定证据）。**Claude Code 与 Codex 同属工作空间智能体，仅参与对照讨论，尚无单独的符合性取证结论**，不计入上述声明。单项状态见 [CODEX-MAPPING.md](CODEX-MAPPING.md)（仅覆盖 Codex）。
 
 ---
 
@@ -59,6 +59,8 @@
 | OpenClaw | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
 | Hermes | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
 | Codex | [verified] | [unverified] | [unverified] | [unverified] | [unverified] | [unverified] |
+
+注：本表仅含已单独取证的运行体。Claude Code 与 Codex 同属工作空间智能体，仅参与对照讨论（见上文 "Three Runtime Families"），尚无单独符合性取证结论，故不在本表声明等级。
 
 > L0 = framework files exist and are readable. L1–L5 = not yet evidenced by runtime-specific probe or negative test. Mapping layer does not claim conformance achievement.
 
