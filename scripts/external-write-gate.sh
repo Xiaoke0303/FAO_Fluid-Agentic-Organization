@@ -104,6 +104,8 @@ if [[ -z "$AUTH_REF" ]]; then
 fi
 
 REF_LINES=0
+# || [[ -n "$RAW_LINE" ]]：最后一行无结尾换行时仍进入循环被处理（不静默跳过），
+# 并受同样的四列与授权检查；校验通过即视为普通记录。
 while IFS= read -r RAW_LINE || [[ -n "$RAW_LINE" ]]; do
     REF_LINES=$((REF_LINES + 1))
 

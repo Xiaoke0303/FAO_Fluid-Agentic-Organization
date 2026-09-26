@@ -28,7 +28,7 @@ Current check set (2026-09-26, revised same day):
 1. action type must be `git-push`;
 2. authorization state must be `authorized` and unexpired;
 3. remote alias must match `target_remote` (if specified);
-4. **every ref on the pre-push stdin must exactly equal `target_ref`** — each input line must parse as exactly 4 columns (blank lines, short/long lines, and unterminated final lines are rejected); tag pushes (`refs/tags/*`) are refused unconditionally, even when the authorized `target_ref` is that tag; ref deletions (local object ID all-zero, any length: SHA-1/SHA-256) and empty stdin (push target unconfirmable) are blocked;
+4. **every ref on the pre-push stdin must exactly equal `target_ref`** — each input line must parse as exactly 4 columns (blank lines and short/long lines are rejected); an unterminated final line is not silently skipped and receives the same 4-column and authorization checks; tag pushes (`refs/tags/*`) are refused unconditionally, even when the authorized `target_ref` is that tag; ref deletions (local object ID all-zero, any length: SHA-1/SHA-256) and empty stdin (push target unconfirmable) are blocked;
 5. `authorized_commit` is **not parsed and not enforced** — it exists only as a declaration field in the authorization file and is invisible to this script.
 
 Note: check 4 closes the previously reported "target_ref not compared" gap
