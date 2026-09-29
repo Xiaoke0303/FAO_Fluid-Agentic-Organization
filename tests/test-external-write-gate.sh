@@ -482,6 +482,56 @@ run_cal_case "7e valid leap day"  "2028-02-29T00:00:00Z" yes
 run_cal_case "7f valid future"    "2030-01-01T00:00:00Z" yes
 
 echo ""
+echo "=== TEST 8: deterministic clock injection (equal-second boundary) ==="
+# 通过 PATH 注入 fake date（仅测试环境；生产代码无时钟开关）。
+# fake date：含 -d 的调用委托真 date（日历解析校验路径不受影响），否则输出 $FAKE_NOW。
+mkdir -p "$WORK/fakebin"
+cat > "$WORK/fakebin/date" << 'FAKE'
+#!/usr/bin/env bash
+for a in "$@"; do
+  if [[ "$a" == "-d" ]]; then exec /usr/bin/date "$@"; fi
+done
+printf '%s\n' "$FAKE_NOW"
+FAKE
+chmod +x "$WORK/fakebin/date"
+TEST8_REF="refs/heads/test8-$$"
+VALID_LINE8="$TEST8_REF aaaaa1111111111111111111111111111111111 $TEST8_REF 0000000000000000000000000000000000000000"
+T8_EXPIRES="2030-06-15T12:00:00Z"
+
+run_clock_case() {
+    local name="$1" fake_now="$2" expect="$3"
+    cat > "$WORK/.fao-gate-auth.json" << EOF
+{"state":"authorized","action_type":"git-push","target_remote":"origin","target_ref":"$TEST8_REF","expires_at":"$T8_EXPIRES"}
+EOF
+    set +e
+    GATE_OUT=$(printf '%s\n' "$VALID_LINE8" | PATH="$WORK/fakebin:$PATH" FAKE_NOW="$fake_now" bash scripts/external-write-gate.sh origin 2>&1)
+    GATE_STATUS=$?
+    set -e
+    if [[ "$expect" == "allow" ]]; then
+        if [[ $GATE_STATUS -eq 0 ]] && echo "$GATE_OUT" | grep -q "\[allowed\]"; then
+            echo "PASS: $name"
+        else
+            echo "FAIL: $name should be allowed"; echo "$GATE_OUT"
+            FAILURES=$((FAILURES + 1))
+        fi
+    else
+        if [[ $GATE_STATUS -eq 0 ]]; then
+            echo "FAIL: $name should be blocked"
+            FAILURES=$((FAILURES + 1))
+        elif ! echo "$GATE_OUT" | grep -q "expired"; then
+            echo "FAIL: $name blocked without expired reason"; echo "$GATE_OUT"
+            FAILURES=$((FAILURES + 1))
+        else
+            echo "PASS: $name"
+        fi
+    fi
+}
+
+run_clock_case "8a second before expiry allowed" "2030-06-15T11:59:59Z" allow
+run_clock_case "8b equal second blocked"         "2030-06-15T12:00:00Z" block
+run_clock_case "8c second after expiry blocked"  "2030-06-15T12:00:01Z" block
+
+echo ""
 echo "=== 后置状态（cleanup 前）==="
 echo "本地分支: $(git branch --format='%(refname:short)' | tr '\n' ' ')"
 echo "远端分支: $(git --git-dir="$BARE" branch --format='%(refname:short)' | tr '\n' ' ')"
