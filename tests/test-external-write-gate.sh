@@ -105,8 +105,7 @@ cat > "$WORK/.fao-gate-auth.json" << EOF
 }
 EOF
 # 10 分钟短期授权，写入隔离工作区，随 cleanup 删除。
-# 限定：当前门禁不消费授权文件，也不比对实际推送 ref 与 target_ref，
-# 故 target_ref 的范围仅为声明，不能称“一次性”或“强制限分支”。
+# 限定：门禁不删除授权文件（用后由本测试自行清理）；target_ref 比对为 gate 现行行为（见 scripts/external-write-gate.sh）。
 
 set +e
 PUSH_OUT=$(git push origin "$TEST_BRANCH" 2>&1)
@@ -389,6 +388,47 @@ elif ! echo "$GATE_OUT" | grep -q "Blank line"; then
 else
     echo "PASS: 5d blocked — blank line rejected"
 fi
+
+echo ""
+echo "=== TEST 6: expires_at robustness (missing / empty / malformed) ==="
+# 过期用例已由 TEST 3 覆盖；此处覆盖 fail-closed 缺口。
+# 输入为合法的 4 列 pre-push 记录（feed gate 直接调用）。
+git checkout -q main
+TEST6_REF="refs/heads/test6-$$"
+VALID_LINE="$TEST6_REF aaaaa1111111111111111111111111111111111 $TEST6_REF 0000000000000000000000000000000000000000"
+
+run_expires_case() {
+    local name="$1" expires_json="$2" expect_reason="$3"
+    cat > "$WORK/.fao-gate-auth.json" << EOF
+{
+  "state": "authorized",
+  "action_type": "git-push",
+  "target_remote": "origin",
+  "target_ref": "$TEST6_REF"${expires_json}
+}
+EOF
+    set +e
+    GATE_OUT=$(printf '%s\n' "$VALID_LINE" | bash scripts/external-write-gate.sh origin 2>&1)
+    GATE_STATUS=$?
+    set -e
+    if [[ $GATE_STATUS -eq 0 ]]; then
+        echo "FAIL: $name allowed"
+        FAILURES=$((FAILURES + 1))
+    elif ! echo "$GATE_OUT" | grep -q "$expect_reason"; then
+        echo "FAIL: $name blocked without expected reason"
+        echo "$GATE_OUT"
+        FAILURES=$((FAILURES + 1))
+    else
+        echo "PASS: $name blocked"
+    fi
+}
+
+# 6a: 缺失 expires_at 字段
+run_expires_case "6a missing expires_at" "" "missing, empty or malformed"
+# 6b: 空值
+run_expires_case "6b empty expires_at" ', "expires_at": ""' "missing, empty or malformed"
+# 6c: 畸形值（字典序陷阱：NOW > "not-a-date" 为假，旧逻辑会放行）
+run_expires_case "6c malformed expires_at" ', "expires_at": "not-a-date"' "missing, empty or malformed"
 
 echo ""
 echo "=== 后置状态（cleanup 前）==="

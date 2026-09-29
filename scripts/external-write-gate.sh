@@ -71,8 +71,15 @@ if [[ "$ACTION_TYPE" != "git-push" ]]; then
 fi
 
 # --- Expiry check ---
+# 时间格式：UTC ISO-8601 严格格式 YYYY-MM-DDTHH:MM:SSZ（Z 表示 UTC）。
+# 缺失、空值或格式错误的 expires_at 一律默认阻断（fail-closed）：
+# 不依赖字典序比较未校验的输入。
 NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-if [[ -n "$EXPIRES" && "$NOW" > "$EXPIRES" ]]; then
+if [[ ! "$EXPIRES" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$ ]]; then
+    log "[blocked] Authorization expires_at missing, empty or malformed (expected UTC ISO-8601: YYYY-MM-DDTHH:MM:SSZ)"
+    exit 1
+fi
+if [[ "$NOW" > "$EXPIRES" ]]; then
     log "[blocked] Authorization expired at $EXPIRES (now: $NOW)"
     exit 1
 fi
@@ -84,6 +91,8 @@ if [[ "$STATE" != "authorized" ]]; then
 fi
 
 # --- Remote match (if specified) ---
+# 现行协议口径：target_remote 为空时不校验 remote 别名（视为不限定），
+# 非空时必须精确匹配。此行为本次不变更；如需强制限定 remote，属授权协议扩展，另行评审。
 if [[ -n "$AUTH_REMOTE" && "$AUTH_REMOTE" != "$REMOTE" ]]; then
     log "[blocked] Remote mismatch. Authorized: $AUTH_REMOTE, attempted: $REMOTE"
     exit 1

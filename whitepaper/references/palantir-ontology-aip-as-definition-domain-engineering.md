@@ -98,7 +98,7 @@ Palantir trains engineers in improvisational theater techniques (*Impro* by Keit
 - RBAC/ABAC at Ontology level
 - Auditability: decisions backtracked to source data and logic
 
-**Source**: Palantir security docs; ISG Provider Lens 2026
+**Source 分层**：Palantir 官方安全/可观测性文档（产品能力宣称层，T1，"供应商如此描述"）；ISG Provider Lens 2026 的**发布时点与部分引语**已经 ISG 官方 2026-07-08 公告核实（见 §13）；**报告正文未核查**，不构成客户环境执行证据。本节可观测性/可审计性主张的证明力以 Palantir 官方文档为限。
 
 ---
 
