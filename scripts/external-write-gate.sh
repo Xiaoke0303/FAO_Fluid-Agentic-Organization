@@ -72,14 +72,23 @@ fi
 
 # --- Expiry check ---
 # 时间格式：UTC ISO-8601 严格格式 YYYY-MM-DDTHH:MM:SSZ（Z 表示 UTC）。
-# 缺失、空值或格式错误的 expires_at 一律默认阻断（fail-closed）：
-# 不依赖字典序比较未校验的输入。
+# 两道校验：
+#  1) 字形正则：排除缺失、空值与格式错误（fail-closed，不比较未校验输入）。
+#  2) 日历有效性：GNU date 解析并要求回显与输入完全一致（防止字形合法但
+#     不存在的日历时间，如 2026-13-01、2026-02-30、T25:61:61、非闰年 02-29
+#     被字典序比较任意放行）。解析失败一律 [blocked]。
+# 过期语义：expires_at 为失效时刻，NOW >= EXPIRES 即视为已过期
+# （等于当前秒的瞬时授权不再放行，消除等于秒歧义）。
 NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 if [[ ! "$EXPIRES" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$ ]]; then
     log "[blocked] Authorization expires_at missing, empty or malformed (expected UTC ISO-8601: YYYY-MM-DDTHH:MM:SSZ)"
     exit 1
 fi
-if [[ "$NOW" > "$EXPIRES" ]]; then
+if ! PARSED=$(date -u -d "$EXPIRES" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null) || [[ "$PARSED" != "$EXPIRES" ]]; then
+    log "[blocked] Authorization expires_at is not a real calendar time: $EXPIRES"
+    exit 1
+fi
+if [[ ! "$NOW" < "$EXPIRES" ]]; then
     log "[blocked] Authorization expired at $EXPIRES (now: $NOW)"
     exit 1
 fi

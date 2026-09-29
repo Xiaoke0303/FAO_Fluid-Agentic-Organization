@@ -431,6 +431,57 @@ run_expires_case "6b empty expires_at" ', "expires_at": ""' "missing, empty or m
 run_expires_case "6c malformed expires_at" ', "expires_at": "not-a-date"' "missing, empty or malformed"
 
 echo ""
+echo "=== TEST 7: calendar validity (real-time check) ==="
+# 字形合法但不存在的日历时间必须 blocked；有效时间（含闰日）不得误阻断。
+git checkout -q main 2>/dev/null || true
+TEST7_REF="refs/heads/test7-$$"
+VALID_LINE7="$TEST7_REF aaaaa1111111111111111111111111111111111 $TEST7_REF 0000000000000000000000000000000000000000"
+
+run_cal_case() {
+    local name="$1" expires_val="$2" expect_allowed="$3"
+    cat > "$WORK/.fao-gate-auth.json" << EOF
+{
+  "state": "authorized",
+  "action_type": "git-push",
+  "target_remote": "origin",
+  "target_ref": "$TEST7_REF",
+  "expires_at": "$expires_val"
+}
+EOF
+    set +e
+    GATE_OUT=$(printf '%s\n' "$VALID_LINE7" | bash scripts/external-write-gate.sh origin 2>&1)
+    GATE_STATUS=$?
+    set -e
+    if [[ "$expect_allowed" == "yes" ]]; then
+        if [[ $GATE_STATUS -eq 0 ]] && echo "$GATE_OUT" | grep -q "\[allowed\]"; then
+            echo "PASS: $name allowed"
+        else
+            echo "FAIL: $name should be allowed"; echo "$GATE_OUT"
+            FAILURES=$((FAILURES + 1))
+        fi
+    else
+        if [[ $GATE_STATUS -eq 0 ]]; then
+            echo "FAIL: $name allowed"
+            FAILURES=$((FAILURES + 1))
+        elif ! echo "$GATE_OUT" | grep -q "not a real calendar time"; then
+            echo "FAIL: $name blocked without calendar reason"; echo "$GATE_OUT"
+            FAILURES=$((FAILURES + 1))
+        else
+            echo "PASS: $name blocked"
+        fi
+    fi
+}
+
+# 负向：字形合法但日历不存在
+run_cal_case "7a month 13"        "2026-13-01T00:00:00Z" no
+run_cal_case "7b feb 30"          "2026-02-30T00:00:00Z" no
+run_cal_case "7c hour 25:61:61"   "2026-09-29T25:61:61Z" no
+run_cal_case "7d non-leap feb 29" "2025-02-29T00:00:00Z" no
+# 正向：有效闰日 + 有效未来时间
+run_cal_case "7e valid leap day"  "2028-02-29T00:00:00Z" yes
+run_cal_case "7f valid future"    "2030-01-01T00:00:00Z" yes
+
+echo ""
 echo "=== 后置状态（cleanup 前）==="
 echo "本地分支: $(git branch --format='%(refname:short)' | tr '\n' ' ')"
 echo "远端分支: $(git --git-dir="$BARE" branch --format='%(refname:short)' | tr '\n' ' ')"
