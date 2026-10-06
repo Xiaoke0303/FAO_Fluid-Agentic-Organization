@@ -127,7 +127,7 @@ For the full mapping file list, see the **mapping/ 迁移与映射（横向参�
 mapping/ 是横向映射与转译层，用于概念、legacy、domain case、运行时对照和外部参照的对齐；当前不纳入主干阅读顺序。
 
 - [mapping/OPENCLAW-MAPPING.md](mapping/OPENCLAW-MAPPING.md) - OpenClaw 映射文档
-- [mapping/HERMES-MAPPING.md](mapping/HERMES-MAPPING.md) - Hermes 运行时路由样本映射
+- [mapping/HERMES-MAPPING.md](mapping/HERMES-MAPPING.md) - Hermes 运行时路由样本映射（历史参考，停止持续更新）
 - [mapping/CODEX-MAPPING.md](mapping/CODEX-MAPPING.md) - Codex 适配映射
 - [mapping/META-ACTIONS-CROSSWALK.md](mapping/META-ACTIONS-CROSSWALK.md) - 元动作跨运行时对照表
 - [mapping/CROSS-RUNTIME-ADAPTER-MAP.md](mapping/CROSS-RUNTIME-ADAPTER-MAP.md) - 跨运行体适配映射

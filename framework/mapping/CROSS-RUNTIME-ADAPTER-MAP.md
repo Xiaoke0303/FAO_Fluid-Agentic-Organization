@@ -2,7 +2,7 @@
 
 > **Truth-State**: analysis only. based on OpenClaw, Hermes, Codex / Claude Code public documentation. no external re-check performed unless explicitly stated. no framework patch implied.
 >
-> **Runtime Conformance**: 本文的符合性声明只覆盖三个已单独取证的运行体：**OpenClaw、Hermes、Codex**。其中 L0 (Documented) 为 [verified]，L1–L5 均为 [unverified]（除非文中给出特定证据）。**Claude Code 与 Codex 同属工作空间智能体，仅参与对照讨论，尚无单独的符合性取证结论**，不计入上述声明。单项状态见 [CODEX-MAPPING.md](CODEX-MAPPING.md)（仅覆盖 Codex）。
+> **Runtime Conformance**: 本文的符合性声明只覆盖三个已单独取证的运行体：**OpenClaw、Hermes、Codex**。其中 L0 (Documented) 为 [verified]，L1–L5 均为 [unverified]（除非文中给出特定证据）。其中 **Hermes 的取证声明以原记录的版本、日期与场景为限——该映射已停止持续更新**。**Claude Code 与 Codex 同属工作空间智能体，仅参与对照讨论，尚无单独的符合性取证结论**，不计入上述声明。单项状态见 [CODEX-MAPPING.md](CODEX-MAPPING.md)（仅覆盖 Codex）。
 
 ---
 

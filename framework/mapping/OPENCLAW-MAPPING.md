@@ -56,7 +56,13 @@
 
 ### 6. `lightContext`
 
-开启后只保留 `HEARTBEAT.md`。这是特殊轻量模式，不是常规默认模式。
+轻量 bootstrap 模式，非默认模式。按对象分列（本节点 v2026.4.14 的适用性未复核，三种对象不得互相推广）：
+
+- **heartbeat 运行**：2026-10-06 查阅的官方活文档（https://docs.openclaw.ai/gateway/heartbeat）载：轻量模式跳过工作区 bootstrap 文件，heartbeat runner 仍注入 monitor scratch。
+- **cron 轻量运行**：既有镜像转引的发布记录及计划材料描述了跳过 bootstrap 文件注入的轻量运行方案（https://docs.openclaw.ai/experiments/plans/cron-add-hardening 为计划路径）；本轮未据对应版本实现或运行证据确认其落地行为 [待核]。
+- **子代理 spawn**：已有资料将其描述为轻量 bootstrap 上下文；具体省略或保留清单 [待核]。context-engine 对预启动钩子的说明（https://docs.openclaw.ai/concepts/context-engine），不足以单独证明全部工作区文件、技能、工具定义或系统提示均被省略。
+
+不实测、不估算降本幅度，不宣称预算可控性已解决。
 
 ### 7. `agent:bootstrap` hook 的地位
 
@@ -84,7 +90,7 @@
 | `TOOLS-SKILLS.md` | 工具入口 | `TOOLS.md` | 是 | 一对一对应 |
 | `CONTEXT-BUDGET.md` | 控本 | 当前无原生一对一文件 | 否 | OpenClaw 有 bootstrap 预算限制，但缺显式工作规则文件 |
 | `TRUTH-CONTRACT.md` | 求真 | 当前无原生同名 bootstrap 文件 | 否 | 应由通用框架/工具包承接，不伪装成 OpenClaw 原生文件 |
-| `EXTERNAL-CALL-PROTOCOL.md` | 验证 | `exec` 工具（可执行 git push 等） | 否 | 外部调用协议由工具包承接；exec 工具可承载外部写入，需触发 External Write Gate；OpenClaw 原生是否具备 push gate → [unverified] |
+| `EXTERNAL-CALL-PROTOCOL.md` | 验证 | `exec` 工具（可执行 git push 等） | 否 | 外部调用协议由工具包承接；exec 工具可承载外部写入，需触发 External Write Gate。执行策略分版本：2026-10-03 查阅的官方活文档（https://docs.openclaw.ai/tools/exec）载 `tools.exec.mode` 五级策略（deny/allowlist/ask/auto/full，含 allowlist、人类审批、模型自动审查），本轮所查资料未确认 Git push 专用授权机制 [官方活文档，2026-10-03]；本节点（v2026.4.14）`tools.exec` 无显式配置，该安装版本的默认行为 [待核]。fao-gate 为针对 Git push 的本地补充护栏；通用执行审批能否覆盖同场景，取决于版本、配置与入口。 |
 | `FAILURE-PROTOCOL.md` | 失败暴露 | 当前无原生同名文件 | 否 | 失败协议应由工具包承接 |
 | `ENVIRONMENT-PRECONDITIONS.md` | 环境切分 | 当前缺口 | 否 | 环境前提检查缺失 |
 | `HEARTBEAT.md` | 代谢 | `HEARTBEAT.md` | 是 | 一对一对应 |
@@ -114,7 +120,8 @@
 2. hook 能扩展 bootstrap context，但不改变默认文件集合的公开定义
 3. 通用框架中的若干接口目前在 OpenClaw 中无原生一对一承接，这正是本框架的增量价值
 4. **OpenClaw Runtime Conformance**: L0 Documented [verified]；L1–L5 [unverified]（无 runtime-specific 探针/负向测试证据）
-5. **OpenClaw External Write Gate**: exec 工具可执行 git push，但 OpenClaw 是否原生具备 push gate / human checkpoint → [unverified]
+5. **OpenClaw External Write Gate**: 2026-10-03 查阅的官方活文档（https://docs.openclaw.ai/tools/exec）显示 OpenClaw 存在通用执行策略机制（`tools.exec.mode` 五级），但本轮所查资料未确认 Git push 专用授权机制。本节点（v2026.4.14）未显式配置执行策略，该版本默认行为 [待核]。仓库 scripts/external-write-gate.sh 为针对 Git push 的本地补充护栏（协作护栏，非独立强制边界）；通用执行审批能否覆盖同场景，取决于版本、配置与入口。
+6. **Sub-agent 上下文**：2026-10-06 查阅的官方活文档（https://docs.openclaw.ai/concepts/session-tool）描述：非线程 spawn 默认使用隔离上下文；可通过 `context: "fork"` 显式请求继承，文档列明的条件包括 `runtime: "subagent"` 且与请求者为同一 agent。线程绑定场景另受其默认上下文策略影响（`threadBindings.defaultSpawnContext`，默认 `fork`）。此为官方设计说明，不证明本节点旧版本或既往调用的实际行为。"隔离上下文"指会话上下文隔离，不指文件系统隔离、权限隔离或跨组读取已被阻止；具体一次调用是否继承父历史，取决于实际调用参数与记录。
 
 ---
 

@@ -1,6 +1,7 @@
 # Codex / Claude Code 映射文档
 
 > **Truth-State**: mapping note only. selected Codex product-state claims externally re-checked against OpenAI primary sources as of 2026-07-13. no framework patch implied.
+> **快照限定**：本文保留为截至 2026-07-13 的产品状态快照；本轮未复核当前产品状态。未发现反证不等于已确认仍成立。
 > **Scope**: 单体映射 → 参见横向比较：`CROSS-RUNTIME-ADAPTER-MAP.md` / `RUNTIME-BACK-PRESSURE-REVIEW.md`
 
 > 不是 Codex 产品手册。不是 FAO 主干概念。不是 governance 规则。
